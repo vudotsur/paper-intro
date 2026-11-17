@@ -94,6 +94,14 @@
       price: 37.00,
       path: "lt_11_kit_mei_fluxo_caixa/index.html",
       pitch: "Descubra seu lucro real e organize o fluxo de caixa do seu MEI em 15 minutos:"
+    },
+    {
+      txid: "LT12",
+      title: "Kit Perfil Dark no TikTok: 60 Roteiros Prontos, Prompts e Plano de 7 Dias",
+      audience: "Criadores e afiliados que querem monetizar no TikTok sem mostrar o rosto",
+      price: 29.90,
+      path: "lt_12_kit_perfil_dark_tiktok/index.html",
+      pitch: "Crie e monetize um Perfil Dark no TikTok em 7 dias sem aparecer:"
     }
   ];
 

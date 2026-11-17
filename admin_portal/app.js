@@ -192,6 +192,17 @@
       pagesUrl: "https://vudotsur.github.io/paper-intro/low_ticket_10/lt_11_kit_mei_fluxo_caixa/index.html",
       pitch: "Descubra seu lucro real e organize o fluxo de caixa do seu MEI em 15 minutos:",
       keywords: "mei fluxo de caixa planilha faturamento das simples nacional maquininha lucro taxas"
+    },
+    {
+      txid: "LT12",
+      title: "Kit Perfil Dark no TikTok: 60 Roteiros Prontos, Prompts e Plano de 7 Dias",
+      audience: "Criadores e afiliados que querem monetizar no TikTok sem mostrar o rosto",
+      price: 29.90,
+      category: "negocios",
+      path: "../low_ticket_10/lt_12_kit_perfil_dark_tiktok/index.html",
+      pagesUrl: "https://vudotsur.github.io/paper-intro/low_ticket_10/lt_12_kit_perfil_dark_tiktok/index.html",
+      pitch: "Crie e monetize um Perfil Dark no TikTok em 7 dias sem aparecer:",
+      keywords: "perfil dark tiktok roteiros prompts plano 7 dias sem aparecer video curto"
     }
   ];
 
