@@ -5,8 +5,36 @@
   var MERCHANT_NAME = "FELIPE LINARES";
   var MERCHANT_CITY = "LONDRINA";
   var TXID = "LT12";
-  var BASE_PRICE = 29.90;
+  var DEFAULT_BASE_PRICE = 29.90;
+  var CHANNEL_DISCOUNT_PRICE = 19.90;
   var BUMP_PRICE = 14.90;
+  var ALLOWED_PRICES = Object.freeze([19.90, 29.90, 14.90]);
+  var CHANNEL_COUPON_SOURCES = Object.freeze(["shorts", "kwai", "reels"]);
+
+  function isAllowedPrice(val) {
+    var num = Number(Number(val).toFixed(2));
+    return ALLOWED_PRICES.indexOf(num) !== -1;
+  }
+
+  function resolveChannelOffer(searchQuery) {
+    var params = new URLSearchParams(searchQuery || "");
+    var rawSrc = (params.get("src") || "").trim().toLowerCase();
+    var hasCoupon = CHANNEL_COUPON_SOURCES.indexOf(rawSrc) !== -1;
+    var candidateBase = hasCoupon ? CHANNEL_DISCOUNT_PRICE : DEFAULT_BASE_PRICE;
+    var safeBase = isAllowedPrice(candidateBase) ? candidateBase : DEFAULT_BASE_PRICE;
+    var safeBump = isAllowedPrice(BUMP_PRICE) ? BUMP_PRICE : 14.90;
+    return {
+      src: hasCoupon ? rawSrc : "",
+      hasChannelOffer: hasCoupon && safeBase === CHANNEL_DISCOUNT_PRICE,
+      basePrice: safeBase,
+      bumpPrice: safeBump
+    };
+  }
+
+  var channelOffer = resolveChannelOffer(
+    typeof window !== "undefined" && window.location ? window.location.search : ""
+  );
+  var BASE_PRICE = channelOffer.basePrice;
 
   // --- EMVCo Pix BR Code Generator ---
   function tlv(id, value) {
@@ -532,7 +560,9 @@
 
   function refreshPixState() {
     var isBump = Boolean(orderBumpEl && orderBumpEl.checked);
-    var total = BASE_PRICE + (isBump ? BUMP_PRICE : 0);
+    var safeBase = isAllowedPrice(BASE_PRICE) ? BASE_PRICE : DEFAULT_BASE_PRICE;
+    var safeBump = isAllowedPrice(BUMP_PRICE) ? BUMP_PRICE : 14.90;
+    var total = Number((safeBase + (isBump ? safeBump : 0)).toFixed(2));
     if (modalTotalEl) {
       modalTotalEl.textContent = formatMoney(total);
     }
@@ -541,6 +571,41 @@
       renderQRSvg(qrContainer, currentBrCode);
     }
   }
+
+  function applyChannelOfferToDom() {
+    if (!channelOffer.hasChannelOffer) return;
+    var bannerEl = document.getElementById("channel-offer-banner");
+    var noteEl = document.getElementById("channel-offer-note");
+    var modalBadgeEl = document.getElementById("modal-channel-badge");
+    var heroOldEl = document.getElementById("hero-price-old");
+    var heroCurrentEl = document.getElementById("hero-price-current");
+    var ctaHeroEl = document.getElementById("cta-hero");
+    var ctaMidEl = document.getElementById("cta-mid");
+    var faqPriceEl = document.getElementById("faq-price-amount");
+
+    var discountStr = formatMoney(channelOffer.basePrice);
+    var originalStr = formatMoney(DEFAULT_BASE_PRICE);
+    var offerHeadline = "Oferta Especial do Canal: De " + originalStr + " por " + discountStr;
+
+    if (bannerEl) {
+      bannerEl.textContent = offerHeadline;
+      bannerEl.classList.remove("hidden");
+    }
+    if (noteEl) {
+      noteEl.classList.remove("hidden");
+    }
+    if (modalBadgeEl) {
+      modalBadgeEl.textContent = offerHeadline;
+      modalBadgeEl.classList.remove("hidden");
+    }
+    if (heroOldEl) heroOldEl.textContent = "De " + originalStr;
+    if (heroCurrentEl) heroCurrentEl.textContent = discountStr;
+    if (ctaHeroEl) ctaHeroEl.textContent = "Quero meu Kit Perfil Dark agora — " + discountStr;
+    if (ctaMidEl) ctaMidEl.textContent = "Quero meu Kit Perfil Dark agora — " + discountStr;
+    if (faqPriceEl) faqPriceEl.textContent = discountStr;
+  }
+
+  applyChannelOfferToDom();
 
   function openModal() {
     refreshPixState();

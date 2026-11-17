@@ -37,10 +37,14 @@
       </p>
 
       <div class="mt-6 flex flex-col items-center">
-        <div class="flex items-baseline gap-2.5">
-          <span class="text-sm text-slate-400 line-through font-medium">De R$ 79,00</span>
-          <span class="text-3xl sm:text-4xl font-extrabold text-slate-950">R$ 29,90</span>
+        <div id="channel-offer-banner" class="hidden inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-300 text-amber-900 text-xs font-bold mb-3">
+          Oferta Especial do Canal: De R$ 29,90 por R$ 19,90
         </div>
+        <div class="flex items-baseline gap-2.5">
+          <span id="hero-price-old" class="text-sm text-slate-400 line-through font-medium">De R$ 79,00</span>
+          <span id="hero-price-current" class="text-3xl sm:text-4xl font-extrabold text-slate-950">R$ 29,90</span>
+        </div>
+        <p id="channel-offer-note" class="hidden text-xs text-emerald-800 font-semibold mt-1">Cupom transparente de boas-vindas do canal aplicado automaticamente (sem cronômetro falso).</p>
         <p class="text-xs text-slate-500 mt-1">Pagamento único via Pix • Sem mensalidades • Acesso vitalício</p>
         <button id="cta-hero" type="button" class="mt-5 w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-600/20 transition cursor-pointer">
           Quero meu Kit Perfil Dark agora — R$ 29,90
@@ -131,7 +135,7 @@
         </div>
         <div class="py-3.5">
           <h3 class="font-bold text-slate-900">Tem alguma mensalidade ou taxa escondida?</h3>
-          <p class="mt-1 text-slate-600">Nenhuma. É um pagamento único de R$ 29,90 com acesso vitalício aos 60 roteiros, prompts e plano de 7 dias.</p>
+          <p class="mt-1 text-slate-600">Nenhuma. É um pagamento único de <span id="faq-price-amount">R$ 29,90</span> com acesso vitalício aos 60 roteiros, prompts e plano de 7 dias.</p>
         </div>
         <div class="py-3.5">
           <h3 class="font-bold text-slate-900">Quando recebo o material após fazer o Pix?</h3>
@@ -144,7 +148,7 @@
     <footer class="mt-8 text-center text-xs text-slate-500 space-y-1 pb-6">
       <p>Privacidade e Segurança: Este site opera sem rastreadores invasivos. Nenhum dado pessoal é vendido ou compartilhado.</p>
       <p>Atendimento, suporte e garantia: vudotsur@gmail.com • Pagamento seguro instantâneo via Pix</p>
-      <p>Código de Defesa do Consumidor (Lei nº 8.078/1990 Art. 37 e Art. 49 aplicados com rigor).</p>
+      <p>Código de Defesa do Consumidor (Lei nº 8.078/1990 Art. 30, Art. 37 e Art. 49 aplicados com rigor).</p>
     </footer>
   </main>
 
@@ -154,6 +158,7 @@
       <button id="modal-close" type="button" aria-label="Fechar" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold flex items-center justify-center cursor-pointer">×</button>
       <h2 id="modal-title" class="text-lg font-extrabold text-slate-950 pr-8">Finalize seu acesso via Pix</h2>
       <p class="text-xs text-slate-500 mt-0.5">Liberação instantânea do Kit Perfil Dark logo abaixo.</p>
+      <p id="modal-channel-badge" class="hidden mt-2 text-xs font-semibold text-amber-900 bg-amber-50 border border-amber-200 rounded-lg px-3 py-1.5">Oferta Especial do Canal: De R$ 29,90 por R$ 19,90</p>
 
       <!-- Order Bump -->
       <label class="mt-4 flex items-start gap-3 p-3.5 rounded-xl border-2 border-amber-300 bg-amber-50/70 cursor-pointer">
