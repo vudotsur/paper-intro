@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caixa de Prompts Práticos para Pequenos Negócios (Cardápio, Posts, Atendimento)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Hero -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold mb-4">
+        <span>Entrega imediata após o Pix • 40+ comandos prontos</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-950 leading-tight">
+        Escreva Cardápios, Posts e Respostas de Clientes em 30 Segundos Sem Contratar Agência
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        Receba a <strong>Caixa com 40+ Comandos Prontos (Prompts)</strong> para usar no ChatGPT ou Gemini gratuito e criar descrições que dão água na boca, legendas para Instagram e respostas rápidas para o seu negócio.
+      </p>
+
+      <div class="mt-6 flex flex-col items-center">
+        <div class="flex items-baseline gap-2.5">
+          <span class="text-sm text-slate-400 line-through font-medium">De R$ 69,00</span>
+          <span class="text-3xl sm:text-4xl font-extrabold text-slate-950">R$ 24,90</span>
+        </div>
+        <p class="text-xs text-slate-500 mt-1">Pagamento único via Pix • Acesso vitalício</p>
+        <button id="cta-hero" type="button" class="mt-5 w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-600/20 transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 24,90
+        </button>
+        <p class="mt-2.5 text-xs text-slate-500">Garantia incondicional de 7 dias • Reembolso integral via Pix</p>
+      </div>
+    </section>
+
+    <!-- PAS -->
+    <section class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-slate-950">Por que a maioria dos donos de negócio desiste de postar e divulgar?</h2>
+      <div class="mt-4 space-y-3 text-slate-700 text-sm sm:text-base leading-relaxed">
+        <p><strong>O problema:</strong> Depois de um dia inteiro atendendo clientes, você abre o Instagram ou o iFood e trava na frente da tela em branco sem saber o que escrever.</p>
+        <p><strong>O custo:</strong> Quando você tenta pedir ajuda para uma inteligência artificial com frases genéricas, ela devolve textos robóticos, cheios de palavras difíceis que não combinam com a sua loja.</p>
+        <p><strong>A solução prática:</strong> Nossa Caixa de Prompts já vem calibrada com o tom certo para pequenos negócios brasileiros — é só copiar o comando, preencher o nome da sua loja e colar.</p>
+      </div>
+
+      <h3 class="mt-6 text-base font-bold text-slate-950">O que você recebe imediatamente após o Pix:</h3>
+      <ul class="mt-3 space-y-2.5 text-sm sm:text-base text-slate-700">
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>10 comandos de Cardápio &amp; Catálogo</strong> para transformar descrições secas em textos irresistíveis no iFood e WhatsApp.</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>10 comandos de Posts, Reels e Stories</strong> com ideias para a semana inteira em menos de 10 minutos.</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>10 comandos de Atendimento &amp; Avaliações</strong> para responder reclamações e elogios no Google com elegância.</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>10 comandos de Promoções &amp; Datas Comemorativas</strong> para girar estoque parado sem queimar sua margem.</span></li>
+      </ul>
+    </section>
+
+    <!-- Interactive Free Mini-Tool -->
+    <section class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-xl font-bold text-slate-950">Teste Grátis: Montador de Comando para seu Negócio</h2>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">Prévia gratuita</span>
+      </div>
+      <p class="mt-1.5 text-sm text-slate-600">Personalize os campos abaixo e copie o comando pronto para colar no ChatGPT ou Gemini.</p>
+
+      <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="pr-nicho" class="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">Tipo de negócio</label>
+          <select id="pr-nicho" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="Restaurante / Delivery">Restaurante / Delivery</option>
+            <option value="Loja de Roupas / Estética">Loja de Roupas / Estética</option>
+            <option value="Prestador de Serviços">Prestador de Serviços</option>
+            <option value="Padaria / Mercado de Bairro">Padaria / Mercado de Bairro</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="pr-obj" class="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">O que você quer criar?</label>
+          <select id="pr-obj" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="cardapio">Descrição de Cardápio / Produto</option>
+            <option value="post">Legenda para Post no Instagram</option>
+            <option value="atendimento">Resposta de Atendimento / Google</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="pr-loja" class="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">Nome do seu negócio</label>
+          <input id="pr-loja" type="text" value="Cantinho do Sabor" placeholder="Ex: Cantinho do Sabor" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <div>
+          <label for="pr-item" class="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">Produto ou oferta principal</label>
+          <input id="pr-item" type="text" value="Combo Hambúrguer Artesanal + Fritas" placeholder="Ex: Combo Hambúrguer" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+      </div>
+
+      <div class="mt-5 rounded-xl bg-slate-50 border border-slate-200 p-4">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="text-xs font-bold uppercase tracking-wide text-slate-500">Comando pronto para copiar e colar</span>
+          <button id="pr-copy" type="button" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-900 text-white hover:bg-slate-800 transition cursor-pointer">Copiar comando</button>
+        </div>
+        <p id="pr-output" class="text-sm text-slate-800 leading-relaxed whitespace-pre-line"></p>
+      </div>
+
+      <div class="mt-6 text-center">
+        <button id="cta-mid" type="button" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base shadow-md transition cursor-pointer">
+          QUERO OS 40+ COMANDOS PRONTOS VIA PIX — R$ 24,90
+        </button>
+      </div>
+    </section>
+
+    <!-- Micro-FAQ -->
+    <section class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-slate-950">Dúvidas Frequentes</h2>
+      <div class="mt-4 divide-y divide-slate-200 text-sm sm:text-base">
+        <div class="py-3.5">
+          <h3 class="font-bold text-slate-900">Como funciona a garantia de 7 dias?</h3>
+          <p class="mt-1 text-slate-600">Você tem 7 dias corridos de garantia incondicional (CDC Art. 49). Se achar que os comandos não economizam seu tempo, devolvemos 100% via Pix.</p>
+        </div>
+        <div class="py-3.5">
+          <h3 class="font-bold text-slate-900">Preciso pagar alguma assinatura de ferramenta?</h3>
+          <p class="mt-1 text-slate-600">Não. Todos os comandos funcionam perfeitamente nas versões gratuitas do ChatGPT ou do Google Gemini pelo celular ou computador.</p>
+        </div>
+        <div class="py-3.5">
+          <h3 class="font-bold text-slate-900">Quando recebo o material após o Pix?</h3>
+          <p class="mt-1 text-slate-600">Imediatamente na tela de pagamento, sem precisar esperar e-mail ou aprovação manual.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-8 text-center text-xs text-slate-500 space-y-1 pb-6">
+      <p>Privacidade LGPD: Este site utiliza zero cookies de rastreamento. Nenhum dado pessoal é coletado ou enviado a terceiros.</p>
+      <p>Atendimento e garantia: vudotsur@gmail.com • Pagamento seguro via Pix</p>
+    </footer>
+  </main>
+
+  <!-- Pix Checkout Modal -->
+  <div id="pix-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative my-auto">
+      <button id="modal-close" type="button" aria-label="Fechar" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold flex items-center justify-center cursor-pointer">×</button>
+      <h2 id="modal-title" class="text-lg font-extrabold text-slate-950 pr-8">Finalize seu acesso via Pix</h2>
+      <p class="text-xs text-slate-500 mt-0.5">Entrega instantânea logo abaixo após o pagamento.</p>
+
+      <label class="mt-4 flex items-start gap-3 p-3.5 rounded-xl border-2 border-amber-300 bg-amber-50/70 cursor-pointer">
+        <input id="order-bump" type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+        <div class="text-xs leading-relaxed">
+          <span class="inline-block px-1.5 py-0.5 rounded bg-amber-200 text-amber-900 font-bold uppercase text-[10px] mb-1">Oferta adicional</span>
+          <p class="font-bold text-slate-900">+ R$ 9,90 — Modelos de Bio do Instagram &amp; Google Meu Negócio</p>
+          <p class="text-slate-600">Comandos extras para deixar seu perfil profissional e aparecer melhor nas buscas do bairro.</p>
+        </div>
+      </label>
+
+      <div class="mt-4 flex items-center justify-between bg-slate-50 rounded-xl px-4 py-3 border border-slate-200">
+        <span class="text-sm font-semibold text-slate-700">Total a pagar via Pix:</span>
+        <span id="modal-total" class="text-xl font-extrabold text-emerald-700">R$ 24,90</span>
+      </div>
+
+      <div class="mt-4 flex flex-col items-center">
+        <div id="qr-container" class="p-3 bg-white border border-slate-200 rounded-xl shadow-inner"></div>
+        <p class="mt-2 text-xs text-slate-500">Abra o app do seu banco e escaneie o QR Code acima</p>
+      </div>
+
+      <div class="mt-4 space-y-2">
+        <button id="copy-brcode" type="button" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold transition cursor-pointer">
+          Copiar Código Pix (Copia e Cola)
+        </button>
+        <button id="copy-pixkey" type="button" class="w-full py-2 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition cursor-pointer">
+          Copiar Chave Pix: vudotsur@gmail.com
+        </button>
+      </div>
+
+      <div class="mt-5 pt-4 border-t border-slate-200">
+        <p class="text-xs font-semibold text-slate-700 mb-2">Já realizou o Pix? Libere seu arquivo agora:</p>
+        <button id="download-btn" type="button" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md transition cursor-pointer">
+          Baixar Caixa de Prompts Completa (.txt)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

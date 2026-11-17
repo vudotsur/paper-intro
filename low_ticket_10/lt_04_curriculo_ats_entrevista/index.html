@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pack Currículo Aprovado em Robôs (ATS) + 25 Respostas de Entrevista</title>
+  <meta name="description" content="Pare de ser eliminado antes da entrevista. Modelo de currículo compatível com triagem automática (ATS) + 25 respostas prontas para o RH.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+  <!-- Distraction-Free Above-the-Fold Hero (NO top nav bar) -->
+  <header class="bg-white border-b border-slate-200/80">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-12 sm:pt-14 sm:pb-16 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide uppercase mb-5">
+        <span>Entrega Imediata</span>
+        <span aria-hidden="true">•</span>
+        <span>Currículo + Entrevista</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-950 leading-tight mb-4">
+        Passe pelos robôs de triagem (ATS) e chegue pronto para responder às 25 perguntas do RH
+      </h1>
+
+      <p class="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-7">
+        Receba o <strong class="text-slate-900">Pack Currículo ATS + 25 Respostas de Entrevista</strong>: estrutura limpa que os sistemas de recrutamento leem 100% + roteiros prontos para defender seu salário e suas entregas.
+      </p>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 max-w-md mx-auto mb-6 shadow-sm">
+        <div class="flex items-center justify-center gap-3 mb-2">
+          <span class="text-sm text-slate-400 line-through font-medium">De R$ 47,00</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">68% de desconto</span>
+        </div>
+        <div class="text-4xl sm:text-5xl font-extrabold text-slate-950 tracking-tight mb-1">
+          R$ 14,90
+        </div>
+        <p class="text-xs text-slate-500 mb-5">Download imediato do pacote completo (.txt) após o Pix</p>
+
+        <button type="button" data-open-pix class="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-600/20 transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 14,90
+        </button>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-500">
+        Garantia incondicional de 7 dias (CDC Art. 49) • Pagamento único • Uso imediato
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+
+    <!-- Interactive Free Preview / ATS Keyword Checker -->
+    <section aria-labelledby="calc-heading" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+      <div class="mb-6">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Prévia Gratuita Interativa</span>
+        <h2 id="calc-heading" class="text-2xl font-bold text-slate-950 mt-1">
+          Verificador Rápido de Currículo para Robôs (ATS)
+        </h2>
+        <p class="text-sm text-slate-600 mt-1">
+          Escolha sua área e cole um trecho do seu currículo (ou marque o que ele já tem) para medir sua chance de passar na triagem automática.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+        <div>
+          <label for="ats-area" class="block text-xs font-semibold text-slate-700 mb-1.5">Área da vaga</label>
+          <select id="ats-area" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="admin">Administrativo / Financeiro</option>
+            <option value="vendas">Comercial / Vendas / Atendimento</option>
+            <option value="tech">Tecnologia / Dados / Produto</option>
+            <option value="saude">Saúde / Operações / Logística</option>
+          </select>
+        </div>
+        <div class="flex items-end">
+          <div class="w-full rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-2.5 flex items-center justify-between">
+            <span class="text-xs font-bold uppercase text-emerald-800">Nota ATS Estimada</span>
+            <span id="ats-score" class="text-2xl font-extrabold text-emerald-700">45%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <label for="ats-text" class="block text-xs font-semibold text-slate-700 mb-1.5">Cole suas palavras-chave ou resumo profissional (opcional):</label>
+        <textarea id="ats-text" rows="3" placeholder="Ex: Reduzi custos em 18%, gestão de planilhas, atendimento ao cliente, indicadores..." class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5 text-xs sm:text-sm">
+        <label class="flex items-center gap-2.5 p-2.5 rounded-lg border border-slate-200 cursor-pointer">
+          <input type="checkbox" class="ats-check h-4 w-4 rounded text-emerald-600" checked>
+          <span>Coluna única (sem tabelas ou barras laterais)</span>
+        </label>
+        <label class="flex items-center gap-2.5 p-2.5 rounded-lg border border-slate-200 cursor-pointer">
+          <input type="checkbox" class="ats-check h-4 w-4 rounded text-emerald-600">
+          <span>Resultados com números (%, R$, prazos)</span>
+        </label>
+        <label class="flex items-center gap-2.5 p-2.5 rounded-lg border border-slate-200 cursor-pointer">
+          <input type="checkbox" class="ats-check h-4 w-4 rounded text-emerald-600" checked>
+          <span>Sem foto, ícones ou gráficos de "nível de habilidade"</span>
+        </label>
+        <label class="flex items-center gap-2.5 p-2.5 rounded-lg border border-slate-200 cursor-pointer">
+          <input type="checkbox" class="ats-check h-4 w-4 rounded text-emerald-600">
+          <span>Palavras-chave idênticas às da vaga</span>
+        </label>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+        <div class="text-xs font-bold uppercase text-slate-700 mb-2">Palavras-chave recomendadas para sua área:</div>
+        <div id="ats-keywords-list" class="flex flex-wrap gap-2"></div>
+      </div>
+    </section>
+
+    <!-- PAS + Fascination Bullets -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-950 mb-3">Por que currículos bonitos do Canva são descartados em 3 segundos?</h2>
+        <p class="text-slate-600 leading-relaxed mb-3">
+          <strong>O problema:</strong> 7 em cada 10 empresas usam robôs de triagem automática (ATS) que não conseguem ler colunas duplas, caixas de texto ou barrinhas coloridas. Seu currículo fica em branco para o sistema e você nem chega à etapa humana.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          <strong>A solução prática:</strong> use o modelo de estrutura limpa que os sistemas leem 100%, combine com verbos de impacto e treine as 25 respostas que mais aprovam em entrevistas com o RH e gestores.
+        </p>
+      </div>
+
+      <div class="border-t border-slate-200 pt-6">
+        <h3 class="text-lg font-bold text-slate-950 mb-4">O que você recebe imediatamente:</h3>
+        <ul class="space-y-3 text-slate-700 text-sm sm:text-base">
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Modelo de Currículo Aprovado em ATS:</strong> pronto para copiar no Word ou Google Docs sem quebrar a leitura dos sistemas de vagas.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Banco de 40 Verbos de Resultado:</strong> troque "responsável por" por frases que mostram impacto financeiro e agilidade.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>25 Respostas Prontas de Entrevista:</strong> como responder "fale sobre você", "qual seu maior defeito", "pretensão salarial" e "por que saiu do último emprego".</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-2">
+        <button type="button" data-open-pix class="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base sm:text-lg shadow-md transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 14,90
+        </button>
+      </div>
+    </section>
+
+    <!-- Risk-Reversal Micro-FAQ -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+      <h2 class="text-xl font-bold text-slate-950 mb-5">Dúvidas Frequentes e Garantia</h2>
+      <div class="space-y-4 text-sm text-slate-600">
+        <div class="border-b border-slate-100 pb-4">
+          <h3 class="font-bold text-slate-900 mb-1">1. Serve para quem está buscando o primeiro emprego ou transição de carreira?</h3>
+          <p>Sim! O pacote inclui variações de resumo profissional para iniciantes, profissionais experientes e quem está mudando de área.</p>
+        </div>
+        <div class="border-b border-slate-100 pb-4">
+          <h3 class="font-bold text-slate-900 mb-1">2. Posso pedir reembolso se não gostar?</h3>
+          <p>Sim, garantia total de 7 dias via Pix (CDC Art. 49). Basta enviar um e-mail para <span class="font-semibold text-slate-800">vudotsur@gmail.com</span>.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900 mb-1">3. Como recebo os arquivos?</h3>
+          <p>Download imediato na própria tela após o Pix, em formato texto universal (.txt) compatível com celular, Word e Google Docs.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LGPD Zero-Cookie Footer -->
+  <footer class="border-t border-slate-200 bg-white py-8 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-3xl mx-auto space-y-2">
+      <p class="font-semibold text-slate-700">Privacidade e Conformidade Legal (LGPD &amp; CDC)</p>
+      <p>Zero cookies de rastreamento. Nenhum dado do seu currículo é enviado para servidores externos; toda a análise ocorre no seu navegador (Lei 13.709/2018 - LGPD).</p>
+      <p>Garantia de 7 dias conforme CDC Art. 49 (Lei 8.078/1990). Suporte: vudotsur@gmail.com.</p>
+    </div>
+  </footer>
+
+  <!-- Pix Checkout Modal -->
+  <div id="pix-modal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="pix-modal-title">
+    <div class="bg-white rounded-2xl max-w-md w-full max-h-[92vh] overflow-y-auto p-6 shadow-2xl border border-slate-200 relative">
+      <button id="close-pix-modal" type="button" aria-label="Fechar janela de pagamento" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer">
+        ✕
+      </button>
+
+      <div class="mb-4 pr-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Pagamento Seguro via Pix</span>
+        <h2 id="pix-modal-title" class="text-xl font-extrabold text-slate-950 mt-0.5">Pack Currículo ATS + Entrevista</h2>
+      </div>
+
+      <!-- Order Bump -->
+      <label class="block bg-amber-50 border-2 border-amber-300 rounded-xl p-3.5 mb-5 cursor-pointer hover:bg-amber-100/60 transition">
+        <div class="flex items-start gap-3">
+          <input id="order-bump-checkbox" type="checkbox" class="mt-1 h-4 w-4 rounded border-amber-400 text-emerald-600 focus:ring-emerald-500">
+          <div class="text-xs sm:text-sm">
+            <div class="font-bold text-slate-950">Adicionar Carta de Apresentação + Abordagem LinkedIn (+ R$ 7,90)</div>
+            <p class="text-slate-600 mt-0.5">3 modelos de mensagem direta para chamar atenção de recrutadores no LinkedIn e por e-mail. Total: <strong>R$ 22,80</strong>.</p>
+          </div>
+        </div>
+      </label>
+
+      <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 mb-4">
+        <span class="text-sm font-semibold text-slate-700">Total a pagar via Pix:</span>
+        <span id="modal-total-price" class="text-2xl font-extrabold text-emerald-700">R$ 14,90</span>
+      </div>
+
+      <div class="flex flex-col items-center bg-white border border-slate-200 rounded-xl p-4 mb-4">
+        <div id="qr-svg-container" class="w-44 h-44 flex items-center justify-center"></div>
+        <p class="text-xs text-slate-500 mt-2 text-center">Escaneie o QR Code no aplicativo do seu banco</p>
+      </div>
+
+      <div class="space-y-2.5 mb-5">
+        <div class="flex items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
+          <div class="text-xs truncate">
+            <span class="text-slate-500">Chave Pix (E-mail): </span>
+            <strong class="text-slate-900">vudotsur@gmail.com</strong>
+          </div>
+          <button id="btn-copy-key" type="button" class="shrink-0 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold cursor-pointer">
+            Copiar Chave
+          </button>
+        </div>
+
+        <div>
+          <label for="pix-brcode-input" class="block text-xs font-semibold text-slate-600 mb-1">Pix Copia e Cola:</label>
+          <div class="flex gap-2">
+            <input id="pix-brcode-input" type="text" readonly class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs text-slate-700 font-mono">
+            <button id="btn-copy-brcode" type="button" class="shrink-0 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold cursor-pointer">
+              Copiar Código
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-200 pt-4">
+        <p class="text-xs text-slate-600 text-center mb-2.5">Após concluir o Pix, baixe o pacote completo:</p>
+        <button id="btn-download-txt" type="button" class="w-full py-3.5 px-4 rounded-xl bg-slate-950 hover:bg-slate-800 text-white text-sm font-bold transition cursor-pointer">
+          Baixar Pack Currículo ATS + 25 Respostas (.txt)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

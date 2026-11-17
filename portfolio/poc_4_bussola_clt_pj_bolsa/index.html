@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bússola Líquida 2026 | CLT vs PJ (Fator-R 28% Anexo III) vs Bolsa CAPES/CNPq</title>
+  <meta name="description" content="Calculadora exata ao centavo: compare Salário CLT (INSS/IRPF/FGTS/Férias/13º), PJ Simples Nacional (Fator-R 28% Anexo III 6% vs Anexo V 15,5%), Exportação (3,05%) e Bolsa CAPES/CNPq.">
+  <meta property="og:title" content="Bússola Líquida 2026 — Quanto Sobra de Verdade: CLT vs PJ vs Bolsa?">
+  <meta property="og:description" content="Descubra o salário líquido real e o ponto de equilíbrio entre CLT, PJ (Fator-R 28%), Exportação em Dólar e Bolsa Acadêmica.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://portfolio.local/poc_4_bussola_clt_pj_bolsa/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #090e14; color: #f8fafc; }
+    .font-serif-ed { font-family: 'Playfair Display', serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-teal-500 selection:text-slate-950">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/90 sticky top-0 z-30 backdrop-blur">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse"></span>
+        <span class="font-mono-code text-xs uppercase tracking-wider text-teal-400 font-semibold">PRECISÃO AO CENTAVO • INSS/IRPF 2026 + LC 123 FATOR-R 28%</span>
+      </div>
+      <div class="flex items-center gap-3 text-xs font-mono-code text-slate-400">
+        <span>Anexo III: <strong class="text-slate-100">6,00%</strong> vs Anexo V: <strong class="text-slate-100">15,50%</strong></span>
+        <button id="btn-open-pix-top" type="button" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-3 py-1 rounded text-xs transition">
+          Kit Fiscal &amp; Contrato PJ R$ 19,90
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+    <!-- Hero -->
+    <section class="space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-semibold">
+        <span>CARREIRA, FREELANCE &amp; PÓS-GRADUAÇÃO (UEL / CAPES / CNPQ / TECH)</span>
+      </div>
+      <h1 class="font-serif-ed text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        Bússola Líquida 2026: CLT vs. PJ (Fator-R 28%) vs. Bolsa Acadêmica
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-3xl">
+        Vai trocar de emprego, abrir uma <strong>SLU no Simples Nacional</strong> ou acumular <strong>Bolsa Mestrado/Doutorado (CAPES/CNPq)</strong> com projetos? Veja quanto sobra livre no seu bolso todo mês com cálculo progressivo exato ao centavo.
+      </p>
+    </section>
+
+    <!-- Inputs & Quick Comparison -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+      <div class="lg:col-span-7 space-y-5">
+        <h2 class="text-sm font-mono-code uppercase tracking-wider text-teal-400 font-semibold">
+          1. Simule as Propostas Financeiras
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="input-clt-gross" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Salário Bruto CLT (R$/mês)</label>
+            <input id="input-clt-gross" type="number" min="1518" max="60000" step="100" value="7500"
+                   class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm font-mono-code text-white focus:border-teal-400 focus:outline-none">
+          </div>
+
+          <div>
+            <label for="input-clt-benefits" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Benefícios CLT (VR/VA + Saúde R$)</label>
+            <input id="input-clt-benefits" type="number" min="0" max="10000" step="50" value="1250"
+                   class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm font-mono-code text-white focus:border-teal-400 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="input-pj-gross" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Faturamento Mensal PJ (R$/mês)</label>
+            <input id="input-pj-gross" type="number" min="2000" max="120000" step="200" value="11500"
+                   class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm font-mono-code text-white focus:border-teal-400 focus:outline-none">
+          </div>
+
+          <div>
+            <label for="select-pj-mode" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Regime Tributário PJ</label>
+            <select id="select-pj-mode" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-teal-400 focus:outline-none">
+              <option value="fator_r" selected>Simples Anexo III (Fator-R &ge; 28% &rarr; 6,0%)</option>
+              <option value="anexo_v">Simples Anexo V (Sem Fator-R &rarr; 15,5%)</option>
+              <option value="export_usd">Exportação Exterior Polar.sh (~3,05% Isento ISS)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="select-bolsa-tier" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Bolsa Acadêmica (Isenta IRPF)</label>
+            <select id="select-bolsa-tier" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-teal-400 focus:outline-none">
+              <option value="3100" selected>Doutorado CAPES/CNPq (R$ 3.100,00)</option>
+              <option value="2100">Mestrado CAPES/CNPq (R$ 2.100,00)</option>
+              <option value="5200">Pós-Doutorado CNPq/Fundação (R$ 5.200,00)</option>
+              <option value="700">Iniciação Científica PIBIC (R$ 700,00)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="input-bolsa-extra" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Renda Extra / Docência / Projeto (R$)</label>
+            <input id="input-bolsa-extra" type="number" min="0" max="30000" step="100" value="3500"
+                   class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm font-mono-code text-white focus:border-teal-400 focus:outline-none">
+          </div>
+        </div>
+      </div>
+
+      <!-- Best Option Verdict -->
+      <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-4">
+        <div class="space-y-2">
+          <span class="text-xs font-mono-code uppercase text-slate-400">Vencedor em Renda Líquida Real (Pacote Total Mensalizado)</span>
+          <div id="out-winner-badge" class="inline-block px-3 py-1 rounded-lg font-mono-code font-extrabold text-xs sm:text-sm bg-teal-500/20 text-teal-300 border border-teal-500/40">
+            PJ COM FATOR-R 28% VENCE POR +R$ 1.542,18/MÊS
+          </div>
+          <div class="pt-1">
+            <span class="text-xs text-slate-400 block">Faturamento PJ Mínimo para Empatar com a CLT:</span>
+            <span id="out-breakeven-pj" class="text-2xl sm:text-3xl font-extrabold font-mono-code text-amber-400">R$ 9.784,50</span>
+          </div>
+          <p id="out-fator-r-tip" class="text-xs text-slate-300 leading-relaxed">
+            Ao ajustar o Pró-Labore para 28% do faturamento, sua alíquota do Simples cai de 15,5% (Anexo V) para 6,0% (Anexo III).
+          </p>
+        </div>
+
+        <div class="bg-teal-950/30 border border-teal-700/40 rounded-lg p-3 space-y-1">
+          <span class="text-xs font-semibold text-teal-300 block">Economia Tributária Anual com Fator-R 28%:</span>
+          <span id="out-annual-tax-saved" class="text-xl font-bold font-mono-code text-teal-400">R$ 8.694,00 / ano</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2.5">
+          <a id="btn-whatsapp-share" href="https://wa.me/?text=Bussola%20CLT%20PJ" target="_blank" rel="noopener noreferrer"
+             class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition">
+            Compartilhar no WhatsApp
+          </a>
+          <button id="btn-copy-summary" type="button"
+                  class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-lg text-xs transition">
+            Copiar Comparativo
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-Column Detailed Breakdown -->
+    <section class="space-y-4">
+      <h2 class="text-lg sm:text-xl font-bold text-white">Detalhamento Contábil ao Centavo (CLT vs. PJ vs. Bolsa)</h2>
+      <div id="comparison-cards" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Populated via pure DOM in app.js -->
+      </div>
+    </section>
+
+    <!-- WhatsApp Card + Monetization -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3 flex flex-col justify-between">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono-code uppercase text-teal-400 font-semibold">CARD DE NEGOCIAÇÃO SALARIAL PARA WHATSAPP</span>
+            <span id="copy-feedback" class="text-xs font-mono-code text-emerald-400 hidden">Copiado!</span>
+          </div>
+          <pre id="whatsapp-preview-box" class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs font-mono-code text-slate-200 whitespace-pre-wrap leading-relaxed overflow-x-auto"></pre>
+        </div>
+        <p class="text-xs text-slate-400">
+          Use este resumo para negociar contrapropostas com recrutadores ou alinhar com seu contador.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5 bg-gradient-to-br from-teal-500/15 via-slate-900 to-slate-950 border border-teal-500/40 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+        <div class="space-y-2">
+          <span class="inline-block px-2.5 py-0.5 rounded bg-teal-400 text-slate-950 font-mono-code font-bold text-xs">
+            KIT PLANEJAMENTO FISCAL • PIX R$ 19,90
+          </span>
+          <h3 class="text-xl font-bold text-white">
+            Kit Planejamento Fiscal Fator-R 28% + Minuta Contrato PJ Blindado
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Inclui planilha editável de apuração mensal do <strong>Fator-R (Anexo III vs. V)</strong>, guia de CNAEs permitidos, checklist de acumulação legal de Bolsa CAPES/CNPq (Portaria 133/2023) e modelo de contrato PJ de prestação de serviços.
+          </p>
+        </div>
+
+        <div class="pt-2 border-t border-slate-800 flex items-center justify-between gap-3">
+          <div>
+            <span class="text-xs text-slate-400 block">Download Imediato</span>
+            <span class="text-2xl font-extrabold font-mono-code text-teal-400">R$ 19,90</span>
+            <span class="text-[11px] text-slate-400"> / único no Pix</span>
+          </div>
+          <button id="btn-open-pix-card" type="button"
+                  class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-extrabold px-5 py-3 rounded-xl text-sm transition shadow-lg">
+            Baixar Kit R$ 19,90
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Configurable Pix / Polar.sh Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <span class="text-xs font-mono-code uppercase text-teal-400 font-semibold">CHECKOUT SEGURO • PIX / POLAR.SH</span>
+          <h3 id="modal-title" class="text-lg font-bold text-white mt-0.5">Kit Planejamento Fiscal &amp; Contrato PJ (R$ 19,90)</h3>
+        </div>
+        <button id="btn-close-modal" type="button" class="text-slate-400 hover:text-white text-sm font-mono-code px-2 py-1 rounded">
+          [ESC]
+        </button>
+      </div>
+
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+        <!-- Padrão EMVCo BR.GOV.BCB.PIX -->
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Status Chave Pix:</span>
+          <span class="text-emerald-400 font-semibold">CHAVE ATIVA • vudotsur@gmail.com</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Valor Pix (BCB):</span>
+          <span class="text-white font-bold">R$ 19,90</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Identificador (txid):</span>
+          <span id="modal-txid" class="text-teal-300">POC04</span>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-key-input" class="block text-xs font-mono-code text-slate-400">Chave Pix (E-mail Direto):</label>
+        <div class="flex gap-2">
+          <input id="pix-key-input" type="text" readonly value="vudotsur@gmail.com"
+                 class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-emerald-300 font-bold select-all">
+          <button id="btn-copy-pix-key" type="button" class="bg-slate-800 hover:bg-slate-700 text-teal-300 font-mono-code font-bold px-3 py-2 rounded-lg text-xs transition">
+            Copiar Chave Pix
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-brcode-input" class="block text-xs font-mono-code text-slate-400">Pix Copia e Cola (EMVCo Bacen c/ valor R$ 19,90 preenchido):</label>
+        <input id="pix-brcode-input" type="text" readonly
+               value="00020126400014br.gov.bcb.pix0118vudotsur@gmail.com520400005303986540519.905802BR5908VUDOTSUR6008LONDRINA62090505POC0463041BE0"
+               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-slate-300 select-all">
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+        <button id="btn-copy-pix" type="button" class="flex-1 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm transition">
+          Copiar Código Pix Copia e Cola
+        </button>
+        <a id="link-polar-fallback" href="https://polar.sh" target="_blank" rel="noopener noreferrer"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition">
+          Cartão Global (Polar.sh)
+        </a>
+      </div>
+
+      <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
+        <button id="btn-unlock-pro" type="button" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-lg text-xs transition">
+          Já Paguei • Baixar Kit Fiscal Fator-R (CSV)
+        </button>
+        <a id="link-confirm-pix" href="mailto:vudotsur@gmail.com?subject=Comprovante%20Pix%20POC04%20Bussola%20CLT%20PJ"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono-code py-2 px-3 rounded-lg text-xs text-center transition">
+          Confirmar por E-mail
+        </a>
+      </div>
+      <p id="pix-copied-msg" class="text-xs font-mono-code text-emerald-400 text-center hidden">
+        Copiado para a área de transferência! Chave: vudotsur@gmail.com
+      </p>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 px-4 text-center text-xs text-slate-500 font-mono-code">
+    Bússola Líquida 2026 • Tabelas Progressivas INSS/IRPF + LC 123/2006 Fator-R + Portaria CAPES 133/2023 • Zero raw HTML injection
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit Decisão CLT vs PJ + Checklist de Contrato &amp; Impostos 2026</title>
+  <meta name="description" content="Não troque CLT por PJ no escuro. Compare seu ganho líquido real com 13º, férias, FGTS e impostos 2026 antes de assinar qualquer proposta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+  <!-- Distraction-Free Above-the-Fold Hero (NO top nav bar) -->
+  <header class="bg-white border-b border-slate-200/80">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-12 sm:pt-14 sm:pb-16 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide uppercase mb-5">
+        <span>Entrega Imediata</span>
+        <span aria-hidden="true">•</span>
+        <span>Regras 2026</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-950 leading-tight mb-4">
+        Descubra se a proposta PJ realmente paga mais que a sua CLT antes de pedir demissão
+      </h1>
+
+      <p class="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-7">
+        Receba o <strong class="text-slate-900">Kit Decisão CLT vs PJ 2026</strong>: planilha comparativa completa com impostos (Simples Nacional), FGTS, 13º, férias, benefícios e checklist de cláusulas perigosas no contrato PJ.
+      </p>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 max-w-md mx-auto mb-6 shadow-sm">
+        <div class="flex items-center justify-center gap-3 mb-2">
+          <span class="text-sm text-slate-400 line-through font-medium">De R$ 49,90</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">60% de desconto</span>
+        </div>
+        <div class="text-4xl sm:text-5xl font-extrabold text-slate-950 tracking-tight mb-1">
+          R$ 19,90
+        </div>
+        <p class="text-xs text-slate-500 mb-5">Planilha comparativa (.csv) + checklist de contrato após o Pix</p>
+
+        <button type="button" data-open-pix class="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-600/20 transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 19,90
+        </button>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-500">
+        Garantia incondicional de 7 dias (CDC Art. 49) • Pagamento único • Sem mensalidade
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+
+    <!-- Interactive Free Preview / Live Comparison -->
+    <section aria-labelledby="calc-heading" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+      <div class="mb-6">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Prévia Gratuita Interativa</span>
+        <h2 id="calc-heading" class="text-2xl font-bold text-slate-950 mt-1">
+          Comparador Rápido: Salário Líquido Real CLT vs PJ
+        </h2>
+        <p class="text-sm text-slate-600 mt-1">
+          Coloque sua remuneração CLT e a proposta PJ para ver quanto sobra de verdade no bolso por mês (já contando 13º, férias e FGTS).
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div>
+          <label for="clt-gross" class="block text-xs font-semibold text-slate-700 mb-1.5">Salário Bruto CLT (R$/mês)</label>
+          <input id="clt-gross" type="number" min="1412" max="100000" step="200" value="6000" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+        <div>
+          <label for="clt-benefits" class="block text-xs font-semibold text-slate-700 mb-1.5">Benefícios CLT líquidos (VR/VA/Plano - R$/mês)</label>
+          <input id="clt-benefits" type="number" min="0" max="20000" step="50" value="950" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+        <div>
+          <label for="pj-gross" class="block text-xs font-semibold text-slate-700 mb-1.5">Proposta Bruta PJ (R$/mês)</label>
+          <input id="pj-gross" type="number" min="1500" max="150000" step="200" value="9000" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+        <div>
+          <label for="pj-tax-rate" class="block text-xs font-semibold text-slate-700 mb-1.5">Alíquota Simples Nacional (%)</label>
+          <select id="pj-tax-rate" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="0.06" selected>6% (Anexo III / Fator R)</option>
+            <option value="0.11">11% (Faixa intermediária)</option>
+            <option value="0.155">15,5% (Anexo V direto)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+          <div class="text-xs font-bold uppercase text-slate-500">Pacote Real CLT (Equivalente Mensal)</div>
+          <div id="clt-real-total" class="text-2xl font-extrabold text-slate-950 mt-1">R$ 6.685,00</div>
+          <p id="clt-breakdown" class="text-xs text-slate-600 mt-1">Inclui líquido + 13º/férias proporcionais + FGTS + benefícios</p>
+        </div>
+        <div class="rounded-xl border border-emerald-200 bg-emerald-50/70 p-4">
+          <div class="text-xs font-bold uppercase text-emerald-800">Líquido Real PJ (Após Impostos + Contador)</div>
+          <div id="pj-real-total" class="text-2xl font-extrabold text-emerald-700 mt-1">R$ 7.895,00</div>
+          <p id="pj-breakdown" class="text-xs text-emerald-900/80 mt-1">Descontado Simples, INSS pró-labore e R$ 250 de contabilidade</p>
+        </div>
+      </div>
+
+      <div id="clt-pj-verdict" class="rounded-xl border border-slate-200 bg-slate-900 text-white px-4 py-3 text-xs sm:text-sm font-semibold text-center">
+        Veredito: PJ compensa (+ R$ 1.210,00/mês). Mínimo recomendado para empatar: R$ 7.900,00.
+      </div>
+    </section>
+
+    <!-- PAS + Fascination Bullets -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-950 mb-3">O erro caro de aceitar "salário + 30%" para virar PJ</h2>
+        <p class="text-slate-600 leading-relaxed mb-3">
+          <strong>O problema:</strong> muita gente olha só o valor da nota fiscal e esquece que no PJ não existe 13º, férias remuneradas, 1/3 constitucional, FGTS nem aviso prévio. Um aumento aparente de 30% muitas vezes significa ganhar menos por hora trabalhada.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          <strong>A solução prática:</strong> use nossa planilha pronta para simular cenários de negociação, calcular seu preço mínimo de contrato e revisar as 12 cláusulas que protegem você antes de assinar.
+        </p>
+      </div>
+
+      <div class="border-t border-slate-200 pt-6">
+        <h3 class="text-lg font-bold text-slate-950 mb-4">O que você recebe imediatamente:</h3>
+        <ul class="space-y-3 text-slate-700 text-sm sm:text-base">
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Planilha Comparativa CLT vs PJ 2026 (.csv):</strong> tabela pronta com faixas de INSS, IRRF, Simples Nacional (Anexo III e V), Fator R e custo de contador.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Calculadora de Valor Mínimo para Negociar:</strong> saiba exatamente quanto pedir na entrevista para não sair no prejuízo.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Checklist de Contrato PJ Seguro:</strong> 12 pontos críticos (multa rescisória, aviso prévio, recesso remunerado e propriedade intelectual).</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-2">
+        <button type="button" data-open-pix class="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base sm:text-lg shadow-md transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 19,90
+        </button>
+      </div>
+    </section>
+
+    <!-- Risk-Reversal Micro-FAQ -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+      <h2 class="text-xl font-bold text-slate-950 mb-5">Dúvidas Frequentes e Garantia</h2>
+      <div class="space-y-4 text-sm text-slate-600">
+        <div class="border-b border-slate-100 pb-4">
+          <h3 class="font-bold text-slate-900 mb-1">1. Funciona para quem ainda é MEI ou quer abrir ME?</h3>
+          <p>Sim! A planilha inclui linhas comparando MEI (quando permitido pela atividade) e Simples Nacional Anexo III / V.</p>
+        </div>
+        <div class="border-b border-slate-100 pb-4">
+          <h3 class="font-bold text-slate-900 mb-1">2. E se não atender ao que eu preciso?</h3>
+          <p>Garantia incondicional de 7 dias (CDC Art. 49). Envie um e-mail para <span class="font-semibold text-slate-800">vudotsur@gmail.com</span> e fazemos o estorno integral via Pix.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900 mb-1">3. O pagamento é único?</h3>
+          <p>Sim, sem assinaturas ou cobranças futuras. Baixou, é seu para usar em quantas propostas quiser.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LGPD Zero-Cookie Footer -->
+  <footer class="border-t border-slate-200 bg-white py-8 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-3xl mx-auto space-y-2">
+      <p class="font-semibold text-slate-700">Privacidade e Conformidade Legal (LGPD &amp; CDC)</p>
+      <p>Zero cookies de rastreamento. Seus valores salariais não são enviados para nenhum servidor e ficam apenas no seu navegador (Lei 13.709/2018 - LGPD).</p>
+      <p>Simulações de caráter educacional e financeiro; consulte um contador para enquadramento tributário específico. Garantia de 7 dias (CDC Art. 49). Contato: vudotsur@gmail.com.</p>
+    </div>
+  </footer>
+
+  <!-- Pix Checkout Modal -->
+  <div id="pix-modal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="pix-modal-title">
+    <div class="bg-white rounded-2xl max-w-md w-full max-h-[92vh] overflow-y-auto p-6 shadow-2xl border border-slate-200 relative">
+      <button id="close-pix-modal" type="button" aria-label="Fechar janela de pagamento" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer">
+        ✕
+      </button>
+
+      <div class="mb-4 pr-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Pagamento Seguro via Pix</span>
+        <h2 id="pix-modal-title" class="text-xl font-extrabold text-slate-950 mt-0.5">Kit Decisão CLT vs PJ 2026</h2>
+      </div>
+
+      <!-- Order Bump -->
+      <label class="block bg-amber-50 border-2 border-amber-300 rounded-xl p-3.5 mb-5 cursor-pointer hover:bg-amber-100/60 transition">
+        <div class="flex items-start gap-3">
+          <input id="order-bump-checkbox" type="checkbox" class="mt-1 h-4 w-4 rounded border-amber-400 text-emerald-600 focus:ring-emerald-500">
+          <div class="text-xs sm:text-sm">
+            <div class="font-bold text-slate-950">Adicionar Planilha de Reserva de Férias e 13º PJ (+ R$ 9,90)</div>
+            <p class="text-slate-600 mt-0.5">Controle mensal automático para nunca ficar sem dinheiro quando tirar férias como PJ. Total: <strong>R$ 29,80</strong>.</p>
+          </div>
+        </div>
+      </label>
+
+      <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 mb-4">
+        <span class="text-sm font-semibold text-slate-700">Total a pagar via Pix:</span>
+        <span id="modal-total-price" class="text-2xl font-extrabold text-emerald-700">R$ 19,90</span>
+      </div>
+
+      <div class="flex flex-col items-center bg-white border border-slate-200 rounded-xl p-4 mb-4">
+        <div id="qr-svg-container" class="w-44 h-44 flex items-center justify-center"></div>
+        <p class="text-xs text-slate-500 mt-2 text-center">Aponte a câmera do app do seu banco para o QR Code</p>
+      </div>
+
+      <div class="space-y-2.5 mb-5">
+        <div class="flex items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
+          <div class="text-xs truncate">
+            <span class="text-slate-500">Chave Pix (E-mail): </span>
+            <strong class="text-slate-900">vudotsur@gmail.com</strong>
+          </div>
+          <button id="btn-copy-key" type="button" class="shrink-0 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold cursor-pointer">
+            Copiar Chave
+          </button>
+        </div>
+
+        <div>
+          <label for="pix-brcode-input" class="block text-xs font-semibold text-slate-600 mb-1">Pix Copia e Cola:</label>
+          <div class="flex gap-2">
+            <input id="pix-brcode-input" type="text" readonly class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs text-slate-700 font-mono">
+            <button id="btn-copy-brcode" type="button" class="shrink-0 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold cursor-pointer">
+              Copiar Código
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-200 pt-4">
+        <p class="text-xs text-slate-600 text-center mb-2.5">Após concluir o Pix, baixe sua planilha completa:</p>
+        <button id="btn-download-csv" type="button" class="w-full py-3.5 px-4 rounded-xl bg-slate-950 hover:bg-slate-800 text-white text-sm font-bold transition cursor-pointer">
+          Baixar Planilha CLT vs PJ 2026 (.csv)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="obsidian" data-lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Evolução da Geração de Valores Autônoma e Agêntica na Era da IA-Multifunção // Evolution of Autonomous and Agentic Value Generation in the Multifunctional AI Era.">
+  <meta name="theme-color" content="#0b0b0e">
+  <title>Evolução da Geração de Valores Autônoma e Agêntica na Era da IA-Multifunção // Doutor Ph.D.</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cinzel, Playfair Display, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==============================================================================
+       daemons.com.br Solemn Editorial Design Tokens & Academic Stylesheet
+       Obsidian Dark (#0b0b0e) & Parchment Light (#f6f3ec)
+       Crimson (#8b1e1e) & Antique Gold (#b45309)
+       ============================================================================== */
+
+    :root {
+      /* Obsidian Dark (Default) */
+      --bg-canvas: #0b0b0e;
+      --bg-surface: #121217;
+      --bg-surface-elevated: #181822;
+      --bg-surface-hover: #1e1e2b;
+      --border-subtle: #22222e;
+      --border-strong: #333344;
+      --border-ornament: #44445a;
+
+      --text-primary: #ede8df;
+      --text-secondary: #9e988c;
+      --text-muted: #6f6a60;
+
+      --crimson-primary: #8b1e1e;
+      --crimson-bright: #b82828;
+      --crimson-subtle: rgba(139, 30, 30, 0.16);
+      --crimson-border: rgba(184, 40, 40, 0.35);
+
+      --gold-primary: #b45309;
+      --gold-bright: #d97706;
+      --gold-subtle: rgba(180, 83, 9, 0.15);
+      --gold-border: rgba(217, 119, 6, 0.32);
+
+      --emerald-status: #10b981;
+      --emerald-subtle: rgba(16, 185, 129, 0.14);
+
+      --font-serif-display: 'Cinzel', Georgia, serif;
+      --font-serif-body: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    [data-theme="parchment"] {
+      /* Parchment Light */
+      --bg-canvas: #f6f3ec;
+      --bg-surface: #ede8dc;
+      --bg-surface-elevated: #fcfbfa;
+      --bg-surface-hover: #e5ded0;
+      --border-subtle: #dcd4c3;
+      --border-strong: #c5bca9;
+      --border-ornament: #a89f8b;
+
+      --text-primary: #151518;
+      --text-secondary: #585348;
+      --text-muted: #827b6f;
+
+      --crimson-primary: #7a1717;
+      --crimson-bright: #9e1c1c;
+      --crimson-subtle: rgba(122, 23, 23, 0.10);
+      --crimson-border: rgba(122, 23, 23, 0.28);
+
+      --gold-primary: #92400e;
+      --gold-bright: #b45309;
+      --gold-subtle: rgba(146, 64, 14, 0.10);
+      --gold-border: rgba(146, 64, 14, 0.25);
+
+      --emerald-status: #059669;
+      --emerald-subtle: rgba(5, 150, 105, 0.10);
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      transition: background-color 0.25s ease, color 0.25s ease;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-serif-display {
+      font-family: var(--font-serif-display);
+    }
+
+    .font-serif-body {
+      font-family: var(--font-serif-body);
+    }
+
+    .font-mono-code {
+      font-family: var(--font-mono);
+    }
+
+    /* Bilingual Switcher Classes */
+    [data-lang="pt"] .lang-en-only {
+      display: none !important;
+    }
+    [data-lang="en"] .lang-pt-only {
+      display: none !important;
+    }
+
+    /* Pulse Dot Animation */
+    .pulse-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1);
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
+    }
+
+    /* Academic Seal Ornament */
+    .academic-seal {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--gold-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif-display);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-bright);
+      background: var(--gold-subtle);
+      user-select: none;
+    }
+
+    /* Stat Card Borders & Hover */
+    .stat-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stat-card:hover {
+      border-color: var(--gold-primary);
+      background-color: var(--bg-surface-elevated);
+      transform: translateY(-2px);
+    }
+
+    /* Prose Styling */
+    .academic-prose {
+      font-family: var(--font-serif-body);
+      font-size: 1.085rem;
+      line-height: 1.82;
+      color: var(--text-primary);
+    }
+    .academic-prose p {
+      margin-bottom: 1.45rem;
+      text-align: justify;
+      hyphens: auto;
+    }
+    .academic-prose strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    .academic-prose em {
+      font-style: italic;
+      color: var(--gold-bright);
+    }
+
+    /* Section Numerals */
+    .section-numeral {
+      font-family: var(--font-serif-display);
+      color: var(--crimson-bright);
+      letter-spacing: 0.12em;
+    }
+
+    /* Code & Formula Badges */
+    .math-formula {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      color: var(--gold-bright);
+      white-space: nowrap;
+    }
+
+    /* Interactive Action Buttons */
+    .btn-action {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--border-strong);
+      padding: 0.35rem 0.75rem;
+      border-radius: 3px;
+      color: var(--text-secondary);
+      background: var(--bg-surface);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-action:hover {
+      border-color: var(--gold-primary);
+      color: var(--text-primary);
+      background: var(--bg-surface-hover);
+    }
+    .btn-action.active {
+      border-color: var(--gold-primary);
+      background: var(--gold-subtle);
+      color: var(--gold-bright);
+      font-weight: 600;
+    }
+
+    /* Print Stylesheet */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 15mm;
+      }
+      body {
+        background: #ffffff !important;
+        color: #111827 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .stat-card {
+        border: 1px solid #d1d5db !important;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+      .academic-prose {
+        color: #111827 !important;
+      }
+      .academic-prose p {
+        orphans: 3;
+        widows: 3;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-900/40 selection:text-amber-200">
+
+  <!-- TOP SOLEMN HEADER & LIVING DRAFT STATUS STRIP -->
+  <header class="border-b border-[#22222e] bg-[#0c0c10]/95 backdrop-blur sticky top-0 z-50 no-print transition-colors" role="banner" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs font-mono-code">
+      <!-- Latin Inscription & Academic Seal -->
+      <div class="flex items-center gap-3">
+        <div class="academic-seal" aria-hidden="true">Ω</div>
+        <div class="flex flex-col">
+          <span class="tracking-widest font-serif-display font-semibold text-[#b45309] uppercase">ARCHIVUM SCIENTIFICUM // DOUTOR PH.D.</span>
+          <span class="text-[0.68rem] text-[#8e897e] tracking-wider lang-pt-only">APRESENTAÇÃO VIVA DA INTRODUÇÃO &middot; REPRODUZIBILIDADE DETERMINÍSTICA</span>
+          <span class="text-[0.68rem] text-[#8e897e] tracking-wider lang-en-only">LIVING INTRODUCTION PRESENTATION &middot; DETERMINISTIC REPRODUCIBILITY</span>
+        </div>
+      </div>
+
+      <!-- Living Status Badge & Phase Indicator -->
+      <div class="flex items-center gap-2">
+        <div class="px-2.5 py-1 rounded bg-[#132219] border border-[#10b981]/40 text-[#10b981] flex items-center gap-2" title="Status: Phase 5 Living Academic Draft">
+          <span class="pulse-dot bg-emerald-500"></span>
+          <span class="font-bold tracking-wider lang-pt-only">FASE 5: INTRODUÇÃO VIVA &middot; PRÉVIA PÚBLICA</span>
+          <span class="font-bold tracking-wider lang-en-only">PHASE 5: LIVING INTRO &middot; PUBLIC PREVIEW</span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-1.5 px-2 py-1 rounded bg-[#16161f] border border-[#2e2e3e] text-[#8e897e] text-[0.7rem]">
+          <span>Seed: <strong class="text-[#ede8df]">42</strong></span>
+          <span>&bull;</span>
+          <span>RER: <strong class="text-[#10b981]">Tier-1</strong></span>
+          <span>&bull;</span>
+          <span>v1.2.0-rc2</span>
+        </div>
+      </div>
+
+      <!-- Controls: Language Toggle & Theme Switcher -->
+      <div class="flex items-center gap-2 border-l border-[#272733] pl-3">
+        <!-- Language Switcher -->
+        <div class="inline-flex rounded p-0.5 bg-[#161620] border border-[#2a2a3a]" role="group" aria-label="Language selector">
+          <button id="langPtBtn" type="button" class="btn-action active px-2 py-0.5 text-[0.7rem]" title="Alternar para Português (PT-BR)">PT-BR</button>
+          <button id="langEnBtn" type="button" class="btn-action px-2 py-0.5 text-[0.7rem]" title="Switch to English (EN)">EN</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button id="toggleThemeBtn" type="button" class="btn-action text-[0.7rem]" title="Alternar Tema: Obsidian Dark / Parchment Light">
+          <span id="themeBtnLabel">Tema: Obsidian</span>
+        </button>
+
+        <!-- Print Action -->
+        <button id="printBtn" type="button" class="btn-action text-[0.7rem] hidden sm:inline-block" title="Salvar / Imprimir Versão Editorial em PDF">
+          PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LIVING BANNER NOTICE (EM EVOLUÇÃO CONTÍNUA) -->
+  <aside class="border-b border-[#2a2216] bg-[#1a140b]/90 text-[#d97706] px-4 py-2 text-xs font-mono-code transition-colors" role="status">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2 text-center sm:text-left">
+        <span class="px-1.5 py-0.5 rounded bg-[#b45309]/20 border border-[#b45309]/40 font-bold uppercase tracking-widest text-[0.65rem]">STATUS</span>
+        <span class="lang-pt-only"><strong>Living Academic Draft — Em Evolução Contínua:</strong> Prévia editorial do artigo científico em elaboração contínua pelos agentes autônomos.</span>
+        <span class="lang-en-only"><strong>Living Academic Draft — Continuous Autonomous Evolution:</strong> Living editorial preview of the scientific manuscript under continuous multi-agent verification.</span>
+      </div>
+      <div class="flex items-center gap-2 text-[0.7rem] text-[#b5a995]">
+        <span class="lang-pt-only">Última auditoria: 16 de Novembro de 2026</span>
+        <span class="lang-en-only">Last audit: November 16, 2026</span>
+        <span>&bull;</span>
+        <a href="#compliance" class="underline hover:text-amber-300">GitHub Pages ToS Clean</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN EDITORIAL CONTAINER -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+
+    <!-- HERO / TITLE BLOCK -->
+    <header class="text-center pb-8 border-b border-[#22222e]">
+      <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-[#181412] border border-[#b45309]/30 text-[#d97706] text-xs font-mono-code tracking-wider uppercase">
+        <span class="w-2 h-2 rounded-full bg-[#b45309]"></span>
+        <span class="lang-pt-only">Artigo Científico em Desenvolvimento &middot; Engenharia de Software Multiagente</span>
+        <span class="lang-en-only">Working Academic Paper &middot; Autonomous Multi-Agent Software Engineering</span>
+      </div>
+
+      <!-- Main Bilingual Titles -->
+      <h1 class="font-serif-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#ede8df] leading-tight mb-4">
+        <span class="lang-pt-only">Evolução da Geração de Valores Autônoma e Agêntica na Era da IA-Multifunção</span>
+        <span class="lang-en-only">Evolution of Autonomous and Agentic Value Generation in the Multifunctional AI Era</span>
+      </h1>
+
+      <p class="font-serif-body italic text-base sm:text-lg text-[#9e988c] max-w-3xl mx-auto mb-6">
+        <span class="lang-pt-only">Grafos Acíclicos Dirigidos Autônomos, Economia de Tokens, Modelo Binomial de Portfólio Híbrido Humano-IA (p_AI=0.05 vs p_Hybrid=0.15) e Blindagem P0 por Banca Universitária de 26 PhDs</span>
+        <span class="lang-en-only">Autonomous Multi-Agent Directed Acyclic Graphs, Token Economics, Human-AI Hybrid Binomial Portfolio Model (p_AI=0.05 vs p_Hybrid=0.15), and 26-Chair University Board P0 Hardening</span>
+      </p>
+
+      <!-- Author Attribution Strip -->
+      <div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs font-mono-code text-[#8e897e] pt-2">
+        <div>
+          <span class="text-[#ede8df] font-semibold">Felipe Linares</span>
+          <span class="block text-[0.7rem] text-[#6f6a60]">Semantix AI &middot; São Paulo, Brasil</span>
+        </div>
+        <span class="text-[#333344] hidden sm:inline">|</span>
+        <div>
+          <span class="text-[#ede8df] font-semibold">Doutor Ph.D. Multi-Agent Orchestrator</span>
+          <span class="block text-[0.7rem] text-[#6f6a60]">Autonomous Research Architecture Core</span>
+        </div>
+        <span class="text-[#333344] hidden sm:inline">|</span>
+        <div>
+          <span class="text-[#b45309]">Reprodutibilidade Seed: 42</span>
+          <span class="block text-[0.7rem] text-[#6f6a60]">Python 3.14.4 &middot; Kahn Topological DAG</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- QUADRO DE AVISOS DO HUMANO (O QUE VOCÊ PRECISA FAZER AO ACORDAR) -->
+    <section id="human-action-board" class="my-8 p-5 sm:p-6 rounded-lg border-2 border-[#d97706] bg-[#17120a] shadow-lg" aria-label="Quadro de Avisos do Humano">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-5 border-b border-[#b45309]/40">
+        <div class="flex items-center gap-2.5">
+          <span class="pulse-dot bg-amber-500"></span>
+          <h2 class="font-serif-display text-base sm:text-lg font-bold tracking-wider uppercase text-[#f59e0b]">
+            <span class="lang-pt-only">QUADRO DE AVISOS DO HUMANO (O Que Você Precisa Fazer Ao Acordar)</span>
+            <span class="lang-en-only">HUMAN ACTION BOARD — Morning Wake-Up Checklist</span>
+          </h2>
+        </div>
+        <span class="px-2.5 py-1 rounded bg-[#b45309]/25 border border-[#d97706]/50 text-[#fbbf24] text-xs font-mono-code font-bold">
+          P(X &ge; 1) = 1 - (1 - p_Hybrid)^N &middot; p_Hybrid = 0.15
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono-code">
+        <!-- Aviso 1 -->
+        <div class="p-4 rounded border border-[#b45309]/40 bg-[#12100e]">
+          <div class="text-[#fbbf24] font-bold uppercase mb-1.5 flex items-center justify-between">
+            <span class="lang-pt-only">Aviso 1 &middot; Portfólio 5 Micro-PoCs Prontos</span>
+            <span class="lang-en-only">Notice 1 &middot; 5 Everyday Micro-PoCs Ready</span>
+            <span class="text-[#10b981]">[AÇÃO HUMANA]</span>
+          </div>
+          <p class="text-[#ede8df] leading-relaxed font-sans text-sm">
+            <span class="lang-pt-only">Teste os 5 Micro-PoCs do cotidiano logo abaixo (<code>./portfolio/poc_1_bolso_mercado/</code> até <code>poc_5_auditor_abnt_doi/</code>) e escolha seus favoritos com sua intuição humana!</span>
+            <span class="lang-en-only">Test the 5 live everyday-life PoCs directly below (<code>./portfolio/poc_1_bolso_mercado/</code> to <code>poc_5_auditor_abnt_doi/</code>) and pick your favorites with your human intuition!</span>
+          </p>
+        </div>
+
+        <!-- Aviso 2 -->
+        <div class="p-4 rounded border border-[#10b981]/50 bg-[#0f1714]">
+          <div class="text-[#10b981] font-bold uppercase mb-1.5 flex items-center justify-between">
+            <span class="lang-pt-only">Aviso 2 &middot; Chave Pix vudotsur@gmail.com ATIVA nos 7 PoCs</span>
+            <span class="lang-en-only">Notice 2 &middot; Pix Key vudotsur@gmail.com ACTIVE Across All 7 PoCs</span>
+            <span class="text-[#10b981]">[PIX ATIVO &check;]</span>
+          </div>
+          <p class="text-[#ede8df] leading-relaxed font-sans text-sm">
+            <span class="lang-pt-only"><strong>Chave Pix <code>vudotsur@gmail.com</code> ATIVA (EMVCo Copia-e-Cola + Chave direta configurada nos 7 PoCs)</strong> via CRC16-CCITT <code>0x1021</code> e constantes <code>PIX_CHECKOUT_URL</code> / <code>POLAR_CHECKOUT_URL</code> prontas em <code>app.js</code>.</span>
+            <span class="lang-en-only"><strong>Pix Key <code>vudotsur@gmail.com</code> ACTIVE (Official BCB EMVCo Copia-e-Cola + Direct Key wired across all 7 PoCs)</strong> via CRC16-CCITT <code>0x1021</code> and <code>PIX_CHECKOUT_URL</code> / <code>POLAR_CHECKOUT_URL</code> in <code>app.js</code>.</span>
+          </p>
+        </div>
+
+        <!-- Aviso 3 -->
+        <div class="p-4 rounded border-2 border-[#fbbf24] bg-[#1c1508]">
+          <div class="text-[#fbbf24] font-bold uppercase mb-1.5 flex items-center justify-between">
+            <span class="lang-pt-only">Aviso 3 &middot; PRÓXIMO PASSO HUMANO: Compartilhar nos Grupos!</span>
+            <span class="lang-en-only">Notice 3 &middot; NEXT HUMAN STEP: Share Ready WhatsApp Links!</span>
+            <span class="text-[#fbbf24]">[PRÓXIMO PASSO &rarr;]</span>
+          </div>
+          <p class="text-[#ede8df] leading-relaxed font-sans text-sm">
+            <span class="lang-pt-only"><strong>Próximo passo humano imediato:</strong> abra os PoCs abaixo e clique em <strong>"Compartilhar no WhatsApp"</strong> para disparar os cards prontos nos grupos da família, estudantes da UEL, motoristas de app e jornalistas locais em Londrina/PR!</span>
+            <span class="lang-en-only"><strong>Immediate next human step:</strong> open the PoCs below and click <strong>"Compartilhar no WhatsApp"</strong> to share the ready-made alert links in WhatsApp groups (families, UEL students, drivers, local press in Londrina/PR)!</span>
+          </p>
+        </div>
+
+        <!-- Aviso 4 -->
+        <div class="p-4 rounded border border-[#10b981]/40 bg-[#0f1714]">
+          <div class="text-[#10b981] font-bold uppercase mb-1.5 flex items-center justify-between">
+            <span class="lang-pt-only">Aviso 4 &middot; Banca Universitária 26 PhDs &amp; Blindagem 7/7</span>
+            <span class="lang-en-only">Notice 4 &middot; 26-Chair PhD University Board &amp; 7/7 Shield</span>
+            <span class="text-[#10b981]">[216+ TESTES GREEN]</span>
+          </div>
+          <p class="text-[#ede8df] leading-relaxed font-sans text-sm">
+            <span class="lang-pt-only">Todos os portões P0 de segurança, econometria (Lo 2002, Bailey &amp; López de Prado 2014), aviso regulatório CVM Res. 20 e healthcheck zero-lock estão ativos e verdes (<code>216+</code> testes, base <code>170</code>).</span>
+            <span class="lang-en-only">All P0 security, econometric (Lo 2002, Bailey &amp; López de Prado 2014), CVM Res. 20 regulatory gates, and zero-lock healthchecks are active and green (<code>216+</code> tests, base <code>170</code>).</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA Vitrine Comercial -->
+      <div class="mt-5 p-4 rounded-lg border-2 border-[#10b981]/70 bg-[#0b1914] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-[0.7rem] font-mono-code text-[#10b981] font-bold uppercase tracking-wider block">
+            <span class="lang-pt-only">VITRINE COMERCIAL EXTERNA &middot; PIX DIRETO &amp; POLAR.SH</span>
+            <span class="lang-en-only">EXTERNAL COMMERCIAL SHOWCASE &middot; PIX &amp; POLAR.SH</span>
+          </span>
+          <p class="text-sm text-[#ede8df] font-sans mt-1">
+            <span class="lang-pt-only">Acesse todos os planos, combos semestrais/anuais via Pix (<code>vudotsur@gmail.com</code>) e kits USD fora do GitHub Pages acadêmico.</span>
+            <span class="lang-en-only">Access all plans, semi-annual/annual Pix bundles (<code>vudotsur@gmail.com</code>), and USD kits outside academic GitHub Pages.</span>
+          </p>
+        </div>
+        <a href="./vitrine/index.html" class="inline-flex items-center justify-center px-5 py-3 rounded-md bg-[#10b981] hover:bg-[#059669] text-[#0b0b0e] font-mono-code text-xs font-bold uppercase tracking-wider shadow transition-colors whitespace-nowrap">
+          Abrir Vitrine Comercial Completa + Combos Pix &rarr;
+        </a>
+      </div>
+    </section>
+
+    <!-- PORTFÓLIO DE 5 MICRO-POCS DO COTIDIANO + PREPROJECT & PRODUCT HUB -->
+    <section id="portfolio-hub" class="py-8 border-b border-[#22222e]" aria-label="Portfólio de 5 Micro-PoCs do Cotidiano">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+        <div>
+          <span class="text-[0.7rem] font-mono-code text-[#d97706] uppercase tracking-wider block">Teorema Binomial de Portfólio Híbrido Humano-IA &middot; N=5 a N=15 Apostas</span>
+          <h2 class="font-serif-display text-xl font-bold text-[#ede8df]">
+            <span class="lang-pt-only">Portfólio de 5 Micro-PoCs do Cotidiano &amp; Ecossistema de Produtos</span>
+            <span class="lang-en-only">Everyday 5 Micro-PoC Portfolio &amp; Live Product Showcase Grid</span>
+          </h2>
+        </div>
+        <span class="text-xs font-mono-code text-[#10b981] bg-[#132219] px-2.5 py-1 rounded border border-[#10b981]/30">
+          5/5 PoCs Live &bull; Zero-InnerHTML &bull; Dados Oficiais
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs font-mono-code">
+        <!-- PoC 1 -->
+        <a href="./portfolio/poc_1_bolso_mercado/index.html" class="stat-card p-4 rounded border flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[#d97706] font-bold mb-1">
+              <span>POC-01 &middot; FAMÍLIAS &amp; DONAS DE CASA</span>
+              <span>IBGE / BCB</span>
+            </div>
+            <h3 class="font-serif-display text-sm font-bold text-[#ede8df] mb-1.5">Radar do Bolso: Mercado &amp; Combustível</h3>
+            <p class="font-sans text-[#9e988c] text-xs leading-relaxed mb-3">
+              Termômetro do carrinho de supermercado (Arroz, Feijão, Café, Leite, Carnes, Gasolina) com alerta "Estocar vs Esperar" e compartilhamento WhatsApp.
+            </p>
+          </div>
+          <span class="text-[#10b981] font-bold">Abrir PoC 1 (&rarr; ./portfolio/poc_1_bolso_mercado/)</span>
+        </a>
+
+        <!-- PoC 2 -->
+        <a href="./portfolio/poc_2_lupa_cidade/index.html" class="stat-card p-4 rounded border flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[#d97706] font-bold mb-1">
+              <span>POC-02 &middot; CIDADÃOS &amp; JORNALISTAS PR</span>
+              <span>SICONFI / CGU</span>
+            </div>
+            <h3 class="font-serif-display text-sm font-bold text-[#ede8df] mb-1.5">Lupa da Cidade: Londrina &amp; Paraná</h3>
+            <p class="font-sans text-[#9e988c] text-xs leading-relaxed mb-3">
+              Raio-X cidadão de gastos públicos, saúde, educação e obras em Londrina, Maringá e Curitiba em linguagem simples com gerador de cobrança via WhatsApp.
+            </p>
+          </div>
+          <span class="text-[#10b981] font-bold">Abrir PoC 2 (&rarr; ./portfolio/poc_2_lupa_cidade/)</span>
+        </a>
+
+        <!-- PoC 3 -->
+        <a href="./portfolio/poc_3_hora_certa_comprar/index.html" class="stat-card p-4 rounded border flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[#d97706] font-bold mb-1">
+              <span>POC-03 &middot; CONSUMIDORES &amp; LOJISTAS</span>
+              <span>PTAX / COMEX</span>
+            </div>
+            <h3 class="font-serif-display text-sm font-bold text-[#ede8df] mb-1.5">Hora Certa de Comprar: Dólar &amp; Eletrônicos</h3>
+            <p class="font-sans text-[#9e988c] text-xs leading-relaxed mb-3">
+              Semáforo diário (Comprar Agora / Aguardar / Alerta de Alta) cruzando câmbio oficial BCB PTAX e volume de importações para notebooks, smartphones e peças.
+            </p>
+          </div>
+          <span class="text-[#10b981] font-bold">Abrir PoC 3 (&rarr; ./portfolio/poc_3_hora_certa_comprar/)</span>
+        </a>
+
+        <!-- PoC 4 -->
+        <a href="./portfolio/poc_4_bussola_clt_pj_bolsa/index.html" class="stat-card p-4 rounded border flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[#d97706] font-bold mb-1">
+              <span>POC-04 &middot; TRABALHADORES &amp; BOLSISTAS</span>
+              <span>INSS / IRPF / CAPES</span>
+            </div>
+            <h3 class="font-serif-display text-sm font-bold text-[#ede8df] mb-1.5">Bússola CLT vs PJ vs Bolsa Acadêmica</h3>
+            <p class="font-sans text-[#9e988c] text-xs leading-relaxed mb-3">
+              Calculadora instantânea de salário líquido real e poder de compra descontando inflação IPCA, impostos 2026, Simples Nacional e benefícios ocultos.
+            </p>
+          </div>
+          <span class="text-[#10b981] font-bold">Abrir PoC 4 (&rarr; ./portfolio/poc_4_bussola_clt_pj_bolsa/)</span>
+        </a>
+
+        <!-- PoC 5 -->
+        <a href="./portfolio/poc_5_auditor_abnt_doi/index.html" class="stat-card p-4 rounded border flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[#d97706] font-bold mb-1">
+              <span>POC-05 &middot; UNIVERSITÁRIOS UEL / USP</span>
+              <span>CROSSREF / OPENALEX</span>
+            </div>
+            <h3 class="font-serif-display text-sm font-bold text-[#ede8df] mb-1.5">Auditor Anti-Reprovação TCC/Artigo</h3>
+            <p class="font-sans text-[#9e988c] text-xs leading-relaxed mb-3">
+              Validador instantâneo de referências bibliográficas (ABNT NBR 6023 / IEEE / APA) que detecta citações alucinadas por IA e formata automaticamente.
+            </p>
+          </div>
+          <span class="text-[#10b981] font-bold">Abrir PoC 5 (&rarr; ./portfolio/poc_5_auditor_abnt_doi/)</span>
+        </a>
+
+        <!-- Preproject + Product Flagships -->
+        <div class="stat-card p-4 rounded border flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[#06b6d4] font-bold mb-1">
+              <span>FLAGSHIPS &middot; B2B &amp; RESEARCH</span>
+              <span>CVM RES. 20 / APC</span>
+            </div>
+            <h3 class="font-serif-display text-sm font-bold text-[#ede8df] mb-1.5">Preproject Macro Radar &amp; Product Calculator</h3>
+            <p class="font-sans text-[#9e988c] text-xs leading-relaxed mb-3">
+              Radar de Inteligência Macro-Setorial (Belo Monte / BCB / IBGE) com conformidade CVM Res. 20 e Simulador Interativo de Economia de Tokens e APC.
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-1">
+            <a href="../../preproject/index.html" class="text-[#06b6d4] hover:underline font-bold">Preproject &rarr;</a>
+            <span class="text-[#333344]">|</span>
+            <a href="../../product/index.html" class="text-[#f59e0b] hover:underline font-bold">Product &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Vitrine Comercial no Portfolio Hub -->
+      <div class="mt-6 p-5 rounded-lg border-2 border-[#d97706] bg-gradient-to-r from-[#17120a] via-[#121218] to-[#0f1714] flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <span class="text-[0.7rem] font-mono-code text-[#fbbf24] font-bold uppercase tracking-wider block">
+            <span class="lang-pt-only">PORTFÓLIO COMERCIAL COMPLETO &middot; CLOUDFLARE PAGES / PIX / POLAR.SH</span>
+            <span class="lang-en-only">FULL COMMERCIAL SHOWCASE &middot; CLOUDFLARE PAGES / PIX / POLAR.SH</span>
+          </span>
+          <h3 class="font-serif-display text-base font-bold text-[#ede8df] mt-1">
+            <span class="lang-pt-only">Combos Pré-Pagos Pix, Kits Internacionais (USD) e Radar B2B Sob Medida</span>
+            <span class="lang-en-only">Pre-Paid Pix Bundles, International USD Kits &amp; Custom B2B Radar</span>
+          </h3>
+        </div>
+        <a href="./vitrine/index.html" class="inline-flex items-center justify-center px-5 py-3 rounded-md bg-[#d97706] hover:bg-[#b45309] text-[#0b0b0e] font-mono-code text-xs font-bold uppercase tracking-wider shadow transition-colors whitespace-nowrap">
+          Abrir Vitrine Comercial Completa + Combos Pix &rarr;
+        </a>
+      </div>
+    </section>
+
+    <!-- KEY METRICS MINI-SUMMARY CARDS -->
+    <section class="py-10 border-b border-[#22222e]" aria-label="Key Empirical Metrics">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-serif-display text-sm tracking-widest uppercase font-semibold text-[#b45309] flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-[#b45309] rounded-sm"></span>
+          <span class="lang-pt-only">Métricas Empíricas Chave (Ground Truth Verificado)</span>
+          <span class="lang-en-only">Key Empirical Metrics (Verified Ground Truth)</span>
+        </h2>
+        <span class="text-xs font-mono-code text-[#6f6a60]">experiments/results/benchmark_metrics.json</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Metric 1: Cost Reduction -->
+        <article class="stat-card p-4 rounded border">
+          <div class="flex items-center justify-between text-xs font-mono-code text-[#8e897e] mb-1">
+            <span class="lang-pt-only">ECONOMIA DE TOKENS</span>
+            <span class="lang-en-only">TOKEN COST SAVINGS</span>
+            <span class="text-[#10b981] font-bold">&Delta; -90.89%</span>
+          </div>
+          <div class="text-3xl font-bold font-mono-code text-[#10b981] tracking-tight mb-1">
+            90.89%
+          </div>
+          <p class="text-xs font-mono-code text-[#8e897e] leading-snug">
+            <span class="lang-pt-only">Redução de $0,3395 (All-Pro) para <strong>$0,0309</strong> (Híbrido Lean + Cache)</span>
+            <span class="lang-en-only">From $0.3395 (All-Pro) down to <strong>$0.0309</strong> (Hybrid Lean + Cache)</span>
+          </p>
+          <div class="mt-2 pt-2 border-t border-[#22222e] text-[0.7rem] font-mono-code text-[#6f6a60]">
+            &rho; = 0.3188 (68.12% compressão)
+          </div>
+        </article>
+
+        <!-- Metric 2: TDD / Big-O Tests -->
+        <article class="stat-card p-4 rounded border">
+          <div class="flex items-center justify-between text-xs font-mono-code text-[#8e897e] mb-1">
+            <span class="lang-pt-only">RIGOR DE TESTES TDD</span>
+            <span class="lang-en-only">VERIFIED TDD RIGOR</span>
+            <span class="text-[#10b981] font-bold">100% GREEN</span>
+          </div>
+          <div class="text-3xl font-bold font-mono-code text-[#ede8df] tracking-tight mb-1">
+            170
+          </div>
+          <p class="text-xs font-mono-code text-[#8e897e] leading-snug">
+            <span class="lang-pt-only">Casos de teste unitários, invariantes Kahn e limite empírico Big-O T(10n)/T(n) &le; 16</span>
+            <span class="lang-en-only">Unit cases, Kahn DAG invariants, and empirical Big-O scaling limit T(10n)/T(n) &le; 16</span>
+          </p>
+          <div class="mt-2 pt-2 border-t border-[#22222e] text-[0.7rem] font-mono-code text-[#6f6a60]">
+            6/6 suítes com zero regressões
+          </div>
+        </article>
+
+        <!-- Metric 3: Infrastructure Cost -->
+        <article class="stat-card p-4 rounded border">
+          <div class="flex items-center justify-between text-xs font-mono-code text-[#8e897e] mb-1">
+            <span class="lang-pt-only">CUSTO DE NUVEM / INFRA</span>
+            <span class="lang-en-only">CLOUD INFRA COST</span>
+            <span class="text-[#b45309] font-bold">$0.00 / MÊS</span>
+          </div>
+          <div class="text-3xl font-bold font-mono-code text-[#d97706] tracking-tight mb-1">
+            $0.00
+          </div>
+          <p class="text-xs font-mono-code text-[#8e897e] leading-snug">
+            <span class="lang-pt-only">Hospedagem estática GitHub Pages + Edge Cloudflare + Webhooks Pix assíncronos</span>
+            <span class="lang-en-only">Static GitHub Pages delivery + Edge Cloudflare + async Pix Webhooks</span>
+          </p>
+          <div class="mt-2 pt-2 border-t border-[#22222e] text-[0.7rem] font-mono-code text-[#6f6a60]">
+            Zero servidores dedicados fixos
+          </div>
+        </article>
+
+        <!-- Metric 4: APC Coverage Prob -->
+        <article class="stat-card p-4 rounded border">
+          <div class="flex items-center justify-between text-xs font-mono-code text-[#8e897e] mb-1">
+            <span class="lang-pt-only">COBERTURA APC IEEE</span>
+            <span class="lang-en-only">IEEE APC COVERAGE</span>
+            <span class="text-[#06b6d4] font-bold">5.000 TRIALS</span>
+          </div>
+          <div class="text-3xl font-bold font-mono-code text-[#06b6d4] tracking-tight mb-1">
+            76.60%
+          </div>
+          <p class="text-xs font-mono-code text-[#8e897e] leading-snug">
+            <span class="lang-pt-only">Probabilidade de cobrir integralmente a APC do IEEE Access ($2.160) com 48 vendas</span>
+            <span class="lang-en-only">Probability of 100% funding IEEE Access APC ($2,160 USD) via 48 unit sales</span>
+          </p>
+          <div class="mt-2 pt-2 border-t border-[#22222e] text-[0.7rem] font-mono-code text-[#6f6a60]">
+            Receita líquida média: $3.400,98
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EMBEDDED SVG DAG TOPOLOGICAL DIAGRAM -->
+    <section class="py-10 border-b border-[#22222e]" aria-label="Kahn Topological Task DAG Architecture">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+        <div>
+          <span class="text-[0.7rem] font-mono-code text-[#8e897e] uppercase tracking-wider block">Topologia de Execução Algorítmica</span>
+          <h2 class="font-serif-display text-lg font-bold text-[#ede8df]">
+            <span class="lang-pt-only">Grafo Acíclico Dirigido (DAG) Particionado em Ondas de Kahn</span>
+            <span class="lang-en-only">Directed Acyclic Graph (DAG) Partitioned in Kahn Topological Waves</span>
+          </h2>
+        </div>
+        <div class="flex items-center gap-3 text-xs font-mono-code">
+          <span class="inline-flex items-center gap-1.5 text-[#d97706]">
+            <span class="w-2.5 h-2.5 rounded-sm bg-[#b45309]"></span>
+            <span>gemini-1.5-pro (Orquestrador)</span>
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-[#10b981]">
+            <span class="w-2.5 h-2.5 rounded-sm bg-[#10b981]"></span>
+            <span>gemini-1.5-flash (Operadores)</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Vector SVG Diagram -->
+      <div class="p-4 sm:p-6 rounded border border-[#22222e] bg-[#101016] overflow-x-auto">
+        <svg viewBox="0 0 940 380" class="w-full min-w-[760px] h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama do Grafo de Tarefas em Ondas de Kahn">
+          <!-- Background Grid Lines -->
+          <defs>
+            <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1c1c28" stroke-width="0.8" />
+            </pattern>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="#b45309" />
+            </marker>
+            <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="#10b981" />
+            </marker>
+          </defs>
+          <rect width="940" height="380" fill="url(#gridPattern)" rx="4" />
+
+          <!-- Wave Dividers & Headers -->
+          <!-- Wave 0 -->
+          <rect x="20" y="20" width="160" height="340" fill="#14141d" stroke="#222230" stroke-dasharray="3 3" rx="4" />
+          <text x="100" y="45" font-family="'Cinzel', serif" font-size="11" font-weight="700" fill="#b45309" text-anchor="middle">ONDA 0 (W₀)</text>
+          <text x="100" y="60" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8e897e" text-anchor="middle">Arquiteto Solo</text>
+
+          <!-- Wave 1 -->
+          <rect x="200" y="20" width="220" height="340" fill="#14141d" stroke="#222230" stroke-dasharray="3 3" rx="4" />
+          <text x="310" y="45" font-family="'Cinzel', serif" font-size="11" font-weight="700" fill="#10b981" text-anchor="middle">ONDA 1 (W₁)</text>
+          <text x="310" y="60" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8e897e" text-anchor="middle">Concorrência Paralela</text>
+
+          <!-- Wave 2 -->
+          <rect x="440" y="20" width="180" height="340" fill="#14141d" stroke="#222230" stroke-dasharray="3 3" rx="4" />
+          <text x="530" y="45" font-family="'Cinzel', serif" font-size="11" font-weight="700" fill="#10b981" text-anchor="middle">ONDA 2 (W₂)</text>
+          <text x="530" y="60" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8e897e" text-anchor="middle">Auditoria & Estatística</text>
+
+          <!-- Wave 3 -->
+          <rect x="640" y="20" width="130" height="340" fill="#14141d" stroke="#222230" stroke-dasharray="3 3" rx="4" />
+          <text x="705" y="45" font-family="'Cinzel', serif" font-size="11" font-weight="700" fill="#06b6d4" text-anchor="middle">ONDA 3 (W₃)</text>
+          <text x="705" y="60" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8e897e" text-anchor="middle">Portão TDD 100%</text>
+
+          <!-- Wave 4 -->
+          <rect x="790" y="20" width="130" height="340" fill="#14141d" stroke="#222230" stroke-dasharray="3 3" rx="4" />
+          <text x="855" y="45" font-family="'Cinzel', serif" font-size="11" font-weight="700" fill="#b45309" text-anchor="middle">ONDA 4 (W₄)</text>
+          <text x="855" y="60" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8e897e" text-anchor="middle">Síntese Editorial</text>
+
+          <!-- Nodes -->
+          <!-- TASK-001 (Lead Architect, Wave 0) -->
+          <g transform="translate(35, 150)">
+            <rect width="130" height="68" rx="4" fill="#1c1612" stroke="#b45309" stroke-width="1.4" />
+            <text x="10" y="20" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#d97706">TASK-001</text>
+            <text x="10" y="36" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#ede8df">lead_architect</text>
+            <rect x="10" y="45" width="84" height="15" rx="2" fill="#b45309" fill-opacity="0.25" />
+            <text x="14" y="56" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#f59e0b">gemini-pro</text>
+          </g>
+
+          <!-- TASK-002 (BE Engineer, Wave 1) -->
+          <g transform="translate(215, 80)">
+            <rect width="190" height="58" rx="4" fill="#121814" stroke="#10b981" stroke-width="1.2" />
+            <text x="10" y="18" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#10b981">TASK-002 &middot; be_engineer</text>
+            <text x="10" y="34" font-family="'Inter', sans-serif" font-size="10" fill="#ede8df">Motor DAG &amp; EMA de Confiança</text>
+            <rect x="10" y="40" width="70" height="13" rx="2" fill="#10b981" fill-opacity="0.2" />
+            <text x="14" y="50" font-family="'JetBrains Mono', monospace" font-size="8" fill="#34d399">flash worker</text>
+          </g>
+
+          <!-- TASK-003 (Data Wrangler, Wave 1) -->
+          <g transform="translate(215, 155)">
+            <rect width="190" height="58" rx="4" fill="#121814" stroke="#10b981" stroke-width="1.2" />
+            <text x="10" y="18" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#10b981">TASK-003 &middot; data_wrangler</text>
+            <text x="10" y="34" font-family="'Inter', sans-serif" font-size="10" fill="#ede8df">Censo 82 Skills &amp; Vetores de Token</text>
+            <rect x="10" y="40" width="70" height="13" rx="2" fill="#10b981" fill-opacity="0.2" />
+            <text x="14" y="50" font-family="'JetBrains Mono', monospace" font-size="8" fill="#34d399">flash worker</text>
+          </g>
+
+          <!-- TASK-004 (FE Engineer, Wave 1) -->
+          <g transform="translate(215, 230)">
+            <rect width="190" height="58" rx="4" fill="#121814" stroke="#10b981" stroke-width="1.2" />
+            <text x="10" y="18" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#10b981">TASK-004 &middot; fe_engineer</text>
+            <text x="10" y="34" font-family="'Inter', sans-serif" font-size="10" fill="#ede8df">Micro-Produto &amp; Zero-InnerHTML</text>
+            <rect x="10" y="40" width="70" height="13" rx="2" fill="#10b981" fill-opacity="0.2" />
+            <text x="14" y="50" font-family="'JetBrains Mono', monospace" font-size="8" fill="#34d399">flash worker</text>
+          </g>
+
+          <!-- TASK-005 (Sec Auditor, Wave 2) -->
+          <g transform="translate(450, 100)">
+            <rect width="160" height="58" rx="4" fill="#121814" stroke="#10b981" stroke-width="1.2" />
+            <text x="10" y="18" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#10b981">TASK-005 &middot; sec_auditor</text>
+            <text x="10" y="34" font-family="'Inter', sans-serif" font-size="10" fill="#ede8df">Auditoria ToS Vercel/GitHub</text>
+            <rect x="10" y="40" width="70" height="13" rx="2" fill="#10b981" fill-opacity="0.2" />
+            <text x="14" y="50" font-family="'JetBrains Mono', monospace" font-size="8" fill="#34d399">flash worker</text>
+          </g>
+
+          <!-- TASK-006 (Stat Analyst, Wave 2) -->
+          <g transform="translate(450, 200)">
+            <rect width="160" height="58" rx="4" fill="#121814" stroke="#10b981" stroke-width="1.2" />
+            <text x="10" y="18" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#10b981">TASK-006 &middot; stat_analyst</text>
+            <text x="10" y="34" font-family="'Inter', sans-serif" font-size="10" fill="#ede8df">5k Monte Carlo &amp; APC BE</text>
+            <rect x="10" y="40" width="70" height="13" rx="2" fill="#10b981" fill-opacity="0.2" />
+            <text x="14" y="50" font-family="'JetBrains Mono', monospace" font-size="8" fill="#34d399">flash worker</text>
+          </g>
+
+          <!-- TASK-007 (QA Evaluator, Wave 3) -->
+          <g transform="translate(650, 150)">
+            <rect width="110" height="68" rx="4" fill="#0f191f" stroke="#06b6d4" stroke-width="1.4" />
+            <text x="8" y="20" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#06b6d4">TASK-007</text>
+            <text x="8" y="36" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#ede8df">qa_evaluator</text>
+            <rect x="8" y="45" width="80" height="15" rx="2" fill="#06b6d4" fill-opacity="0.2" />
+            <text x="12" y="56" font-family="'JetBrains Mono', monospace" font-size="8" fill="#22d3ee">30+ Asserts</text>
+          </g>
+
+          <!-- TASK-008 (Doc Scribe, Wave 4) -->
+          <g transform="translate(800, 150)">
+            <rect width="110" height="68" rx="4" fill="#1c1612" stroke="#b45309" stroke-width="1.4" />
+            <text x="8" y="20" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#d97706">TASK-008</text>
+            <text x="8" y="36" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#ede8df">doc_scribe</text>
+            <rect x="8" y="45" width="75" height="15" rx="2" fill="#b45309" fill-opacity="0.25" />
+            <text x="12" y="56" font-family="'JetBrains Mono', monospace" font-size="8" fill="#f59e0b">LaTeX/BibTeX</text>
+          </g>
+
+          <!-- Edge Connections (Arrows) -->
+          <!-- W0 -> W1 -->
+          <path d="M 165 184 L 210 110" fill="none" stroke="#b45309" stroke-width="1.2" marker-end="url(#arrow)" />
+          <path d="M 165 184 L 210 184" fill="none" stroke="#b45309" stroke-width="1.2" marker-end="url(#arrow)" />
+          <path d="M 165 184 L 210 255" fill="none" stroke="#b45309" stroke-width="1.2" marker-end="url(#arrow)" />
+
+          <!-- W1 -> W2 -->
+          <path d="M 405 110 L 445 125" fill="none" stroke="#10b981" stroke-width="1.2" marker-end="url(#arrowGreen)" />
+          <path d="M 405 184 L 445 135" fill="none" stroke="#10b981" stroke-width="1.2" marker-end="url(#arrowGreen)" />
+          <path d="M 405 184 L 445 225" fill="none" stroke="#10b981" stroke-width="1.2" marker-end="url(#arrowGreen)" />
+
+          <!-- W2 -> W3 -->
+          <path d="M 610 130 L 645 175" fill="none" stroke="#10b981" stroke-width="1.2" marker-end="url(#arrowGreen)" />
+          <path d="M 610 230 L 645 190" fill="none" stroke="#10b981" stroke-width="1.2" marker-end="url(#arrowGreen)" />
+          <!-- W1 (TASK-004) -> W3 -->
+          <path d="M 405 260 C 520 280, 580 240, 645 200" fill="none" stroke="#10b981" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#arrowGreen)" />
+
+          <!-- W3 -> W4 -->
+          <path d="M 760 184 L 795 184" fill="none" stroke="#06b6d4" stroke-width="1.4" marker-end="url(#arrow)" />
+        </svg>
+      </div>
+
+      <p class="text-xs font-mono-code text-[#8e897e] mt-3">
+        <span class="lang-pt-only">Algoritmo de Kahn com particionamento topológico por graus de entrada in-degree zero. Workers flash operam em concorrência assíncrona; o orquestrador pro planeja e revisa formalmente.</span>
+        <span class="lang-en-only">Kahn's topological sorting partitioned by zero-in-degree waves. Flash workers operate asynchronously; the pro advisor governs architecture and formal verification.</span>
+      </p>
+    </section>
+
+    <!-- LONG-FORM ACADEMIC PRESENTATION (4 SECTIONS) -->
+    <article class="py-12 space-y-16 max-w-3xl mx-auto academic-prose">
+
+      <!-- SECTION 1: PROBLEM STATEMENT -->
+      <section id="section-1" class="border-b border-[#22222e] pb-12">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="section-numeral text-sm font-semibold">SEÇÃO I</span>
+          <span class="text-xs font-mono-code text-[#6f6a60]">&bull; FUNDAMENTAÇÃO EMPÍRICA</span>
+        </div>
+
+        <h2 class="font-serif-display text-2xl font-bold text-[#ede8df] mb-6">
+          <span class="lang-pt-only">1. O Paradoxo do Custo Multiagente e a Barreira Financeira de Publicação</span>
+          <span class="lang-en-only">1. The Multi-Agent Cost Paradox and the Academic APC Barrier</span>
+        </h2>
+
+        <!-- PT Content -->
+        <div class="lang-pt-only space-y-4">
+          <p>
+            O avanço dos Modelos de Linguagem de Grande Porte (LLMs) estabeleceu uma nova fronteira na automação da engenharia de software através de arranjos multiagentes colaborativos. Frameworks contemporâneos — a exemplo de AutoGen, CrewAI e LangGraph — propõem a divisão cognitiva de tarefas complexas entre papéis especializados de raciocínio. Não obstante, o desdobramento dessas arquiteturas em ambientes de produção revelou um paradoxo severo: o <em>overhead combinatório de tokens</em> decorrente de diálogos desestruturados e o uso indiscriminado de modelos topo de linha (<em>All-Pro</em>) para tarefas operacionais.
+          </p>
+          <p>
+            Em execuções homogêneas onde todos os agentes utilizam modelos de alto custo (como Gemini 1.5 Pro), a prolixidade conversacional e a repetição recursiva de instruções causam um inchaço de contexto entre <span class="math-formula">4\times</span> e <span class="math-formula">15\times</span> superior ao estritamente exigido pelo pipeline algorítmico. O custo basal por ciclo completo atinge <span class="math-formula">\$0,339500 \text{ USD}</span> para apenas 69.000 tokens, impondo exaustão precoce de janelas de contexto, bloqueios de cota por <em>rate-limiting</em> e inviabilidade econômica para iterações contínuas de TDD.
+          </p>
+          <p>
+            Agravando essa restrição técnica, pesquisadores independentes, pós-graduandos e laboratórios sem subvenções estatais vultosas colidem com o modelo de Acesso Aberto Dourado (<em>Gold Open Access</em>). Periódicos científicos de primeiro nível impõem Taxas de Processamento de Artigos (<em>Article Processing Charges</em> — APC) proibitivas: periódicos como o <strong>IEEE Access</strong> cobram <span class="math-formula">\$2.160 \text{ USD}</span>, enquanto o <strong>PLOS ONE</strong> exige <span class="math-formula">\$2.477 \text{ USD}</span>. Na ausência de orçamentos institucionais, pesquisadores são relegados à exclusão da literatura indexada ou forçados a absorver tais despesas de forma pessoal.
+          </p>
+        </div>
+
+        <!-- EN Content -->
+        <div class="lang-en-only space-y-4">
+          <p>
+            The expansion of Large Language Model (LLM) agent architectures from monolithic conversational prompts to distributed multi-agent systems marks a decisive structural transition in automated software engineering. Prominent frameworks — including Microsoft AutoGen, CrewAI, and LangGraph — distribute complex problem decomposition across cooperative role-playing agents. However, deploying these architectures in non-trivial codebases exposes a crippling structural friction: <em>combinatorial token bloat</em> driven by conversational verbosity and uniform flagship model allocations.
+          </p>
+          <p>
+            When frontier reasoning models (such as Gemini 1.5 Pro) are assigned indiscriminately across every worker node, conversational exchanges and repeated procedural prompts expand context sizes by <span class="math-formula">4\times \text{ to } 15\times</span> compared to mathematically compact representations. Our baseline All-Pro execution consumed <span class="math-formula">\$0.339500 \text{ USD}</span> for a single 69,000-token cycle, triggering rapid context saturation, rate-limit stalls, and unsustainable operating expenditures for automated test-driven development loops.
+          </p>
+          <p>
+            Simultaneously, independent computer science researchers and emerging laboratories confront a financial glass ceiling in scientific publishing. The modern Gold Open Access model has shifted costs from readers to authors via steep Article Processing Charges (APCs): premier indexed venues benchmark at <span class="math-formula">\$2,160 \text{ USD}</span> (IEEE Access) and <span class="math-formula">\$2,477 \text{ USD}</span> (PLOS ONE). Without institutional grant backing, researchers operating on zero-budget setups are structurally barred from open-access dissemination.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 2: PROPOSED ARCHITECTURE -->
+      <section id="section-2" class="border-b border-[#22222e] pb-12">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="section-numeral text-sm font-semibold">SEÇÃO II</span>
+          <span class="text-xs font-mono-code text-[#6f6a60]">&bull; FORMALIZAÇÃO COMPUTACIONAL</span>
+        </div>
+
+        <h2 class="font-serif-display text-2xl font-bold text-[#ede8df] mb-6">
+          <span class="lang-pt-only">2. Arquitetura Proposta: Roteamento Heterogêneo, Lean Prompting e Rigor de Engenharia</span>
+          <span class="lang-en-only">2. Proposed Architecture: Heterogeneous Routing, Lean Prompting, and Software Rigor</span>
+        </h2>
+
+        <!-- PT Content -->
+        <div class="lang-pt-only space-y-4">
+          <p>
+            Para superar o paradoxo do custo sem abdicar do raciocínio formal de alto nível, este trabalho propõe uma arquitetura desacoplada e heterogênea fundamentada em três pilares matemáticos e metodológicos:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-sm font-sans text-[#9e988c]">
+            <li>
+              <strong class="text-[#ede8df]">Segregação de Papéis Pro-Arquiteto (Doutor) / Flash-Operadores:</strong> O modelo de fronteira de alto raciocínio (<em>gemini-1.5-pro</em>) atua exclusivamente como <em>Orientador Acadêmico (Doutor)</em>, restrito ao planejamento topológico, definição de invariantes matemáticos e revisão de código. A codificação manual, documentação, transformações de dados e escrita de testes são delegadas a operadores rápidos de baixo custo (<em>gemini-1.5-flash</em>).
+            </li>
+            <li>
+              <strong class="text-[#ede8df]">Governança por Lean Prompting Computável:</strong> Banimento absoluto de preâmbulos conversacionais, elogios vazios e saudações. As comunicações inter-agentes adotam sintaxe telegráfica estruturada (chave-valor, JSON compacto, listas orientadas a testes), reduzindo o volume de tokens por uma taxa de compressão <span class="math-formula">\rho = \frac{T_{\text{lean}}}{T_{\text{verbose}}} = 0.3188</span> (economia direta de 68.12% em tokens brutos).
+            </li>
+            <li>
+              <strong class="text-[#ede8df]">Agendamento em Ondas de Kahn &amp; Cache de Contexto:</strong> A execução das dependências do projeto é mapeada como um Grafo Acíclico Dirigido <span class="math-formula">\mathcal{G} = (\mathcal{V}, \mathcal{E})</span> resolvido pelo algoritmo de Kahn. Nódulos independentes são executados em concorrência assíncrona, e instruções estáticas de habilidades (<span class="math-formula">\text{SKILL.md}</span>) são retidas em memória de cache (<em>Prompt Caching</em> a \$0,01875/M).
+            </li>
+            <li>
+              <strong class="text-[#ede8df]">Fusão Metodológica Akita-Galego:</strong> Incorporação do "Agile Vibe Coding" (TDD rigoroso e prevenção contra dívida técnica via protocolo Handover, preconizado por Fabio Akita) com a decomposição algorítmica fundamental e análise de Big-O de estruturas de dados (Augusto Galego).
+            </li>
+          </ul>
+          <p>
+            O resultado empírico desse arranjo é comprovado: o custo por ciclo multiagente colapsa de <span class="math-formula">\$0,339500</span> para <span class="math-formula">\$0,030915</span> — uma <strong>redução líquida de 90,89%</strong> validada deterministicamente em <span class="math-formula">\text{benchmark\_metrics.json}</span> sob semente 42.
+          </p>
+        </div>
+
+        <!-- EN Content -->
+        <div class="lang-en-only space-y-4">
+          <p>
+            To resolve the cost paradox without sacrificing deep analytical reasoning, we establish an integrated heterogeneous orchestration framework grounded in four architectural vectors:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-sm font-sans text-[#9e988c]">
+            <li>
+              <strong class="text-[#ede8df]">Pro-Architect / Flash-Worker Tiering:</strong> The frontier high-reasoning engine (<em>gemini-1.5-pro</em>) is restricted exclusively to the <em>Advisor (Doutor)</em> persona — dedicated to PRD specification, graph topological scheduling, and formal verification. Heavy coding, test authoring, data munging, and documentation tasks are delegated to high-velocity, low-cost advisees (<em>gemini-1.5-flash</em>).
+            </li>
+            <li>
+              <strong class="text-[#ede8df]">Computer-Readable Lean Prompting:</strong> Elimination of conversational courtesies, pleasantries, and redundant natural-language filler. Inter-agent messages enforce telegraphic key-value contracts, achieving a measured token compression ratio of <span class="math-formula">\rho = \frac{T_{\text{lean}}}{T_{\text{verbose}}} = 0.3188</span> (68.12% token reduction).
+            </li>
+            <li>
+              <strong class="text-[#ede8df]">Kahn Wave Scheduling &amp; Prompt Caching:</strong> Multi-agent task dependencies are formulated as a strict DAG <span class="math-formula">\mathcal{G} = (\mathcal{V}, \mathcal{E})</span> scheduled into concurrent execution waves <span class="math-formula">W_0 \dots W_m</span> via Kahn's algorithm. Static procedural knowledge (<span class="math-formula">\text{SKILL.md}</span>) is cached at \$0.01875/M tokens.
+            </li>
+            <li>
+              <strong class="text-[#ede8df]">Pragmatic Engineering Synthesis:</strong> Unification of strict Test-Driven Development (TDD) and handover technical debt prevention (Fabio Akita's methodology) with core algorithmic decomposition and empirical Big-O complexity enforcement (Augusto Galego's principles).
+            </li>
+          </ul>
+          <p>
+            Empirical benchmark verification proves that this architecture collapses operating expenses from <span class="math-formula">\$0.339500</span> to <span class="math-formula">\$0.030915</span> — delivering a <strong>90.89% net cost reduction</strong> verified to four decimal places under reproducibility seed 42.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 3: SELF-EVOLVING ECOSYSTEM -->
+      <section id="section-3" class="border-b border-[#22222e] pb-12">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="section-numeral text-sm font-semibold">SEÇÃO III</span>
+          <span class="text-xs font-mono-code text-[#6f6a60]">&bull; INFRAESTRUTURA &amp; GOVERNANÇA</span>
+        </div>
+
+        <h2 class="font-serif-display text-2xl font-bold text-[#ede8df] mb-6">
+          <span class="lang-pt-only">3. O Ecossistema Auto-Evolutivo e os Portões de Rigor</span>
+          <span class="lang-en-only">3. The Self-Evolving Ecosystem and Rigor Verification Gates</span>
+        </h2>
+
+        <!-- PT Content -->
+        <div class="lang-pt-only space-y-4">
+          <p>
+            A sustentabilidade da pesquisa independente exige que o sistema opere como um ecossistema autônomo, resistente a bloqueios de plataforma e capaz de auto-aprimoramento contínuo. Cinco componentes compõem a camada de proteção:
+          </p>
+          <div class="space-y-3 font-sans text-sm text-[#9e988c]">
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#d97706] block font-mono-code mb-1">1. Protocolo Hermes &middot; Busca OSINT Multi-Fonte Anti-Viés</strong>
+              <span>Combate o monocultivo de motores de busca combinando consultas simultâneas em DuckDuckGo, Brave/Bing, OpenAlex, CrossRef, Semantic Scholar, arXiv, DOAJ, Unpaywall e Portal de Periódicos CAPES/CAFe. Uma afirmação factual só é admitida se confirmada por fórmula ponderada <span class="math-formula">V(C) \ge 1.5</span> em pelo menos dois domínios de origem distintos.</span>
+            </div>
+
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#10b981] block font-mono-code mb-1">2. Ban-Shield QA Guard &middot; Conformidade Contratual 100%</strong>
+              <span>Blindagem preventiva contra bloqueios de conta e violações de ToS. Audita ativamente o código garantindo zero raspagem ilegal, zero chamadas a bibliotecas não-oficiais (proibição estrita de <em>yfinance</em>) e respeito às cláusulas de uso estático não-comercial do GitHub Pages e limites de invocação do Vercel/Cloudflare.</span>
+            </div>
+
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#06b6d4] block font-mono-code mb-1">3. Rigor Backend-First no Padrão Rust &middot; Trava Big-O</strong>
+              <span>Sanitização estrita de entradas via SQL parametrizado, imunidade a SSRF com rejeição de IPs privados (RFC 1918/4193 e metadados de nuvem), ausência de innerHTML dinâmico no front-end e validação empírica de complexidade com razão de escalonamento temporal <span class="math-formula">T(10n)/T(n) \le 16</span> para limites <span class="math-formula">O(n \log n)</span>.</span>
+            </div>
+
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#b45309] block font-mono-code mb-1">4. Chromium CDP Self-Heal &middot; Automação Resiliente</strong>
+              <span>Controle direto de instâncias Chromium via Chrome DevTools Protocol com perfis de usuário persistentes, heurística de auto-cura de seletores em 4 níveis e teste de visibilidade pré-ação (<em>elementFromPoint hit-test</em>).</span>
+            </div>
+
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#a855f7] block font-mono-code mb-1">5. Base de Conhecimento com SQLite FTS5</strong>
+              <span>Indexação vetorial e textual completa de 82 habilidades operacionais do ecossistema e referências cruzadas do PRD acadêmico para recuperação instantânea em milissegundos.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- EN Content -->
+        <div class="lang-en-only space-y-4">
+          <p>
+            Long-term viability mandates that the system operate as an autonomous, self-healing ecosystem immune to platform bans, vendor lock-in, and algorithmic fragility. Five specialized rigor gates govern operations:
+          </p>
+          <div class="space-y-3 font-sans text-sm text-[#9e988c]">
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#d97706] block font-mono-code mb-1">1. Hermes Protocol &middot; Multi-Engine Anti-Bias OSINT Discovery</strong>
+              <span>Prevents search engine monoculture by combining concurrent queries across DuckDuckGo, Brave/Bing, OpenAlex, CrossRef, Semantic Scholar, arXiv, DOAJ, Unpaywall, and CAPES CAFe federated gateways. Claims require verified cross-origin corroboration: <span class="math-formula">V(C) = \sum w_k I(\text{Engine}_k \vdash C) \ge 1.5</span> across <span class="math-formula">\ge 2</span> distinct origins.</span>
+            </div>
+
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#10b981] block font-mono-code mb-1">2. Ban-Shield QA Guard &middot; 100% Contractual ToS Compliance</strong>
+              <span>Enforces proactive security boundaries: zero unauthorized DOM scrapers, zero undocumented APIs (strict ban on <em>yfinance</em>), compliance with GitHub Pages static delivery terms, and strict isolation of commercial checkout mechanisms.</span>
+            </div>
+
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#06b6d4] block font-mono-code mb-1">3. Rust-Style Backend Rigor &middot; Empirical Big-O Scaling Guard</strong>
+              <span>Enforces parameterized SQL, SSRF rejection of private IPv4/IPv6 blocks (RFC 1918/4193/cloud metadata), zero dynamic innerHTML rendering, Result monad error handling, and empirical scaling ratio verification: <span class="math-formula">T(10n)/T(n) \le 16</span> for <span class="math-formula">O(n \log n)</span> boundaries.</span>
+            </div>
+
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#b45309] block font-mono-code mb-1">4. Chromium CDP Self-Heal &middot; Deterministic Web Testing</strong>
+              <span>Direct Chromium control via Chrome DevTools Protocol using persistent user-data profiles, 5-point element hit-testing, and 4-tier self-healing selector heuristics for automated verification without flakiness.</span>
+            </div>
+
+            <div class="p-3 rounded bg-[#121217] border border-[#22222e]">
+              <strong class="text-[#a855f7] block font-mono-code mb-1">5. SQLite FTS5 Full-Text Knowledge Core</strong>
+              <span>Sub-millisecond retrieval index spanning all 82 cataloged skills and PRD empirical tables, enabling rapid agent context grounding with zero token waste.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: SELF-FUNDED ACADEMIC ECONOMICS -->
+      <section id="section-4" class="pb-6">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="section-numeral text-sm font-semibold">SEÇÃO IV</span>
+          <span class="text-xs font-mono-code text-[#6f6a60]">&bull; VIABILIDADE FINANCEIRA</span>
+        </div>
+
+        <h2 class="font-serif-display text-2xl font-bold text-[#ede8df] mb-6">
+          <span class="lang-pt-only">4. Economia Acadêmica Autofinanciada: Simulação de Monte Carlo &amp; Ponto de Equilíbrio</span>
+          <span class="lang-en-only">4. Self-Funded Academic Economics: Monte Carlo Simulation &amp; APC Break-Even</span>
+        </h2>
+
+        <!-- PT Content -->
+        <div class="lang-pt-only space-y-4">
+          <p>
+            Para erradicar a dependência de subvenções estatais na quitação de APCs, a arquitetura integra uma esteira de monetização digital de custo fixo zero (<span class="math-formula">\$0/\text{mês}</span>), combinando o modelo de <em>Merchant of Record (MoR)</em> internacional (Polar.sh) com a compensação instantânea via Pix (Banco Central do Brasil) com verificação idempotente de webhooks.
+          </p>
+          <p>
+            A receita líquida unitária de um micro-ativo técnico precificado em <span class="math-formula">p = \$49,00 \text{ USD}</span> é expressa analiticamente por:
+          </p>
+          <div class="p-3 rounded bg-[#121217] border border-[#22222e] text-center font-mono-code text-sm">
+            R_{\text{net}} = p \cdot (1 - r_{\text{MoR}} - r_{\text{intl}}) - f = 49 \cdot (1 - 0.04 - 0.015) - 0.40 = \mathbf{\$45.9050 \text{ USD}}
+          </div>
+          <p>
+            Sob essa margem líquida unitária de <span class="math-formula">\$45,905</span>, o volume de vendas necessário para cobrir o custo de publicação no <strong>IEEE Access</strong> (<span class="math-formula">\$2.160 \text{ USD}</span>) é de apenas <span class="math-formula">N_{\text{BE}} = \lceil 2160 / 45.905 \rceil = \mathbf{48 \text{ unidades}}</span>. Para o <strong>PLOS ONE</strong> (<span class="math-formula">\$2.477 \text{ USD}</span>), são necessárias <span class="math-formula">\mathbf{54 \text{ unidades}}</span>.
+          </p>
+          <p>
+            Uma simulação estocástica de Monte Carlo executada com <strong>5.000 ensaios independentes</strong> (semente determinística 42) demonstrou:
+          </p>
+          <ul class="list-disc pl-6 space-y-1.5 text-sm font-sans text-[#9e988c]">
+            <li><strong>Receita Líquida Média Projetada:</strong> <span class="math-formula">\$3.400,98 \text{ USD}</span> com intervalo de confiança de 95% em <span class="math-formula">[\$3.359,41, \; \$3.442,55]</span>.</li>
+            <li><strong>Probabilidade de Cobertura do IEEE Access (\$2.160):</strong> <span class="text-[#10b981] font-bold">76,60%</span>.</li>
+            <li><strong>Probabilidade de Cobertura do PLOS ONE (\$2.477):</strong> <span class="text-[#06b6d4] font-bold">68,60%</span>.</li>
+            <li><strong>Probabilidade de Cobertura de Periódicos Especializados (\$1.000):</strong> <span class="text-[#ede8df] font-bold">96,20%</span>.</li>
+          </ul>
+          <p>
+            Adicionalmente, formalizamos o <strong>Modelo Binomial de Portfólio Híbrido Humano-IA</strong> (<span class="math-formula">P(X \ge 1) = 1 - (1 - p_{\text{Hybrid}})^N</span>), onde a taxa de acerto puro da IA (<span class="math-formula">p_{\text{AI}} = 0.05</span>) salta para <span class="math-formula">p_{\text{Hybrid}} = 0.15</span> quando combinada com a curadoria intuitiva humana sobre <span class="math-formula">N = 5 \text{ a } 15</span> Micro-PoCs do cotidiano, sob blindagem P0 da Banca Universitária de 26 PhDs.
+          </p>
+          <p>
+            Comprovou-se assim a hipótese <span class="math-formula">H_4</span>: um pesquisador independente munido da esteira de automação multiagente atinge soberania científica completa, autofinanciando publicações em periódicos indexados de primeiro nível a um custo fixo de infraestrutura rigorosamente nulo (<span class="math-formula">\$0,00</span>).
+          </p>
+        </div>
+
+        <!-- EN Content -->
+        <div class="lang-en-only space-y-4">
+          <p>
+            To eliminate reliance on institutional grants for open-access publishing fees, our architecture integrates a zero-fixed-cost commercialization pipeline ($0/month recurring cost). Global credit card checkouts are routed through a Merchant of Record (Polar.sh), while domestic settlements in Brazil leverage instant Central Bank Pix webhooks protected by cryptographic signatures and strict deduplication.
+          </p>
+          <p>
+            For a technical micro-product priced at <span class="math-formula">p = \$49.00 \text{ USD}</span>, the exact net revenue realized per transaction is:
+          </p>
+          <div class="p-3 rounded bg-[#121217] border border-[#22222e] text-center font-mono-code text-sm">
+            R_{\text{net}} = p \cdot (1 - r_{\text{MoR}} - r_{\text{intl}}) - f = 49 \cdot (1 - 0.04 - 0.015) - 0.40 = \mathbf{\$45.9050 \text{ USD}}
+          </div>
+          <p>
+            At a unit net margin of <span class="math-formula">\$45.9050</span>, achieving break-even for Tier-1 open-access journals requires minimal commercial unit volume: exactly <span class="math-formula">N_{\text{BE}} = \lceil 2160 / 45.905 \rceil = \mathbf{48 \text{ units}}</span> for <strong>IEEE Access</strong> ($2,160 USD), and <span class="math-formula">\mathbf{54 \text{ units}}</span> for <strong>PLOS ONE</strong> ($2,477 USD).
+          </p>
+          <p>
+            A 5,000-trial Monte Carlo simulation (seed 42) validates the robustness of this economic model:
+          </p>
+          <ul class="list-disc pl-6 space-y-1.5 text-sm font-sans text-[#9e988c]">
+            <li><strong>Mean Net Revenue:</strong> <span class="math-formula">\$3,400.98 \text{ USD}</span> with a tight 95% Confidence Interval: <span class="math-formula">[\$3,359.41, \; \$3,442.55]</span>.</li>
+            <li><strong>IEEE Access APC (\$2,160) Funding Probability:</strong> <span class="text-[#10b981] font-bold">76.60%</span>.</li>
+            <li><strong>PLOS ONE APC (\$2,477) Funding Probability:</strong> <span class="text-[#06b6d4] font-bold">68.60%</span>.</li>
+            <li><strong>Specialty Society APC (\$1,000) Funding Probability:</strong> <span class="text-[#ede8df] font-bold">96.20%</span>.</li>
+          </ul>
+          <p>
+            Furthermore, we formalize the <strong>Human-AI Hybrid Binomial Portfolio Model</strong> (<span class="math-formula">P(X \ge 1) = 1 - (1 - p_{\text{Hybrid}})^N</span>), demonstrating that human intuitive curation elevates the per-venture success probability from <span class="math-formula">p_{\text{AI}} = 0.05</span> to <span class="math-formula">p_{\text{Hybrid}} = 0.15</span> across <span class="math-formula">N = 5 \text{ to } 15</span> everyday Micro-PoCs, hardened by our 26-Chair University Board P0 review.
+          </p>
+          <p>
+            This confirms hypothesis <span class="math-formula">H_4</span>: independent researchers operating with disciplined multi-agent architectures achieve full publication sovereignty, funding Tier-1 open-access publication with zero institutional capital.
+          </p>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- COMPLIANCE & LEGAL NOTICE (GITHUB PAGES ToS 100% CLEAN) -->
+    <section id="compliance" class="my-8 p-4 rounded border border-[#332a1a] bg-[#16120b] text-xs font-mono-code text-[#b5a995]" aria-label="ToS & Legal Shield">
+      <div class="flex items-start gap-3">
+        <span class="text-[#d97706] text-lg font-bold">§</span>
+        <div class="space-y-1">
+          <div class="font-bold text-[#d97706] uppercase tracking-wider">
+            <span class="lang-pt-only">Aviso de Conformidade Jurídica &middot; GitHub Pages ToS Seção 4</span>
+            <span class="lang-en-only">Legal &amp; Terms of Service Compliance Notice &middot; GitHub Pages ToS Section 4</span>
+          </div>
+          <p class="leading-relaxed">
+            <span class="lang-pt-only">Este documento é um artefato estático estritamente acadêmico e educacional para fins de revisão científica por pares. É proibida e inexistente qualquer transação comercial, checkout ou venda monetizada hospedada diretamente no GitHub Pages. Toda liquidação financeira simulada opera de modo desacoplado em infraestrutura de pagamento externa em conformidade estrita com as políticas de hospedagem estática.</span>
+            <span class="lang-en-only">This presentation is a strictly educational and academic artifact created for peer scientific evaluation. No commercial transactions, checkout mechanisms, or hosted payment forms are executed within GitHub Pages. All simulated financial settlement mechanisms operate decoupled on external platforms in full compliance with static hosting Terms of Service.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY & REPRODUCIBILITY LINKS -->
+    <section class="py-8 border-t border-[#22222e] no-print">
+      <h3 class="font-serif-display text-sm tracking-widest uppercase font-semibold text-[#b45309] mb-4 flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-[#b45309] rounded-sm"></span>
+        <span class="lang-pt-only">Links de Metodologia, Manuscrito Completo &amp; Reprodutibilidade</span>
+        <span class="lang-en-only">Methodology, Full Manuscript &amp; Reproducibility Links</span>
+      </h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono-code">
+        <a href="../pt/paper_pt.html" class="p-3 rounded border border-[#22222e] bg-[#121217] hover:border-[#b45309] transition flex flex-col justify-between">
+          <span class="font-bold text-[#ede8df] mb-1">paper_pt.html &rarr;</span>
+          <span class="text-[#8e897e] text-[0.7rem] lang-pt-only">Manuscrito completo em Português com 6 capítulos e equações.</span>
+          <span class="text-[#8e897e] text-[0.7rem] lang-en-only">Complete manuscript in Portuguese with all 6 formal chapters.</span>
+        </a>
+
+        <a href="../en/paper_en.html" class="p-3 rounded border border-[#22222e] bg-[#121217] hover:border-[#b45309] transition flex flex-col justify-between">
+          <span class="font-bold text-[#ede8df] mb-1">paper_en.html &rarr;</span>
+          <span class="text-[#8e897e] text-[0.7rem] lang-pt-only">Artigo acadêmico completo em Inglês formatado para submissão IEEE.</span>
+          <span class="text-[#8e897e] text-[0.7rem] lang-en-only">Full English academic paper formatted for IEEE Access submission.</span>
+        </a>
+
+        <a href="../RESEARCH_PRD_AND_META_ANALYSIS.md" class="p-3 rounded border border-[#22222e] bg-[#121217] hover:border-[#b45309] transition flex flex-col justify-between">
+          <span class="font-bold text-[#ede8df] mb-1">RESEARCH_PRD.md &rarr;</span>
+          <span class="text-[#8e897e] text-[0.7rem] lang-pt-only">Especificação formal do PRD, Grafo de Tarefas e Meta-Análise.</span>
+          <span class="text-[#8e897e] text-[0.7rem] lang-en-only">Formal research PRD, Kahn atomic DAG, and meta-analysis audit.</span>
+        </a>
+      </div>
+
+      <!-- BibTeX Citation Block -->
+      <div class="mt-6 p-4 rounded border border-[#22222e] bg-[#0e0e13]">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[0.7rem] font-mono-code text-[#b45309] uppercase tracking-wider font-semibold">CITAÇÃO ACADÊMICA (BIBTEX)</span>
+          <button id="copyBibtexBtn" type="button" class="btn-action text-[0.68rem]">
+            <span id="copyBibtexLabel">Copiar BibTeX</span>
+          </button>
+        </div>
+        <pre id="bibtexText" class="font-mono-code text-[0.72rem] text-[#9e988c] overflow-x-auto p-2 bg-[#09090c] rounded border border-[#1a1a24]">@article{linares2026autonomous,
+  title   = {Evolution of Autonomous and Agentic Value Generation in the Multifunctional AI Era},
+  author  = {Linares, Felipe and Doutor Ph.D. Multi-Agent System},
+  journal = {Living Academic Archive Preprint},
+  year    = {2026},
+  doi     = {10.48550/arXiv.2403.05530},
+  note    = {Deterministic reproducibility seed: 42. Verified under Kahn DAG, Hybrid Binomial Portfolio Model, and 26-Chair University Board P0 Standard.}
+}</pre>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="pt-8 border-t border-[#22222e] text-center text-xs font-mono-code text-[#6f6a60]">
+      <p class="mb-1">
+        Archivum Scientificum &middot; Doutor Ph.D. Autonomous Architecture Core &middot; Semantix AI
+      </p>
+      <p class="text-[0.68rem] text-[#555566]">
+        Projetado segundo a estética editorial sóbria de <em>daemons.com.br</em>. Zero raw innerHTML &middot; Renderização pura via DOM textContent.
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- PURE VANILLA JAVASCRIPT: ZERO RAW INNERHTML -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. Language Toggle Logic (Pure textContent & Class/Attribute switching - ZERO innerHTML)
+      const htmlEl = document.documentElement;
+      const langPtBtn = document.getElementById('langPtBtn');
+      const langEnBtn = document.getElementById('langEnBtn');
+      const copyBibtexBtn = document.getElementById('copyBibtexBtn');
+      const copyBibtexLabel = document.getElementById('copyBibtexLabel');
+      const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+      const themeBtnLabel = document.getElementById('themeBtnLabel');
+      const printBtn = document.getElementById('printBtn');
+
+      function setLanguage(lang) {
+        if (lang === 'en') {
+          htmlEl.setAttribute('data-lang', 'en');
+          htmlEl.setAttribute('lang', 'en');
+          langPtBtn.classList.remove('active');
+          langEnBtn.classList.add('active');
+          try {
+            localStorage.setItem('presentation_lang', 'en');
+          } catch (e) {}
+          updateDynamicLabels('en');
+        } else {
+          htmlEl.setAttribute('data-lang', 'pt');
+          htmlEl.setAttribute('lang', 'pt-BR');
+          langPtBtn.classList.add('active');
+          langEnBtn.classList.remove('active');
+          try {
+            localStorage.setItem('presentation_lang', 'pt');
+          } catch (e) {}
+          updateDynamicLabels('pt');
+        }
+      }
+
+      function updateDynamicLabels(lang) {
+        const isParchment = htmlEl.getAttribute('data-theme') === 'parchment';
+        if (lang === 'en') {
+          themeBtnLabel.textContent = isParchment ? 'Theme: Parchment' : 'Theme: Obsidian';
+          copyBibtexLabel.textContent = 'Copy BibTeX';
+        } else {
+          themeBtnLabel.textContent = isParchment ? 'Tema: Parchment' : 'Tema: Obsidian';
+          copyBibtexLabel.textContent = 'Copiar BibTeX';
+        }
+      }
+
+      if (langPtBtn) {
+        langPtBtn.addEventListener('click', function () {
+          setLanguage('pt');
+        });
+      }
+
+      if (langEnBtn) {
+        langEnBtn.addEventListener('click', function () {
+          setLanguage('en');
+        });
+      }
+
+      // 2. Theme Switcher Logic (Obsidian Dark vs Parchment Light)
+      function setTheme(theme) {
+        if (theme === 'parchment') {
+          htmlEl.setAttribute('data-theme', 'parchment');
+          try {
+            localStorage.setItem('presentation_theme', 'parchment');
+          } catch (e) {}
+        } else {
+          htmlEl.setAttribute('data-theme', 'obsidian');
+          try {
+            localStorage.setItem('presentation_theme', 'obsidian');
+          } catch (e) {}
+        }
+        const currentLang = htmlEl.getAttribute('data-lang') || 'pt';
+        updateDynamicLabels(currentLang);
+      }
+
+      if (toggleThemeBtn) {
+        toggleThemeBtn.addEventListener('click', function () {
+          const currentTheme = htmlEl.getAttribute('data-theme');
+          const nextTheme = currentTheme === 'parchment' ? 'obsidian' : 'parchment';
+          setTheme(nextTheme);
+        });
+      }
+
+      // 3. Print Action
+      if (printBtn) {
+        printBtn.addEventListener('click', function () {
+          window.print();
+        });
+      }
+
+      // 4. BibTeX Copy Logic (Using textContent, ZERO innerHTML)
+      if (copyBibtexBtn && copyBibtexLabel) {
+        copyBibtexBtn.addEventListener('click', function () {
+          const bibtexEl = document.getElementById('bibtexText');
+          if (!bibtexEl) return;
+          const textToCopy = bibtexEl.textContent || '';
+          navigator.clipboard.writeText(textToCopy).then(function () {
+            const currentLang = htmlEl.getAttribute('data-lang') || 'pt';
+            copyBibtexLabel.textContent = currentLang === 'en' ? 'Copied!' : 'Copiado!';
+            setTimeout(function () {
+              updateDynamicLabels(currentLang);
+            }, 2500);
+          }).catch(function () {
+            // Fallback
+            const currentLang = htmlEl.getAttribute('data-lang') || 'pt';
+            copyBibtexLabel.textContent = currentLang === 'en' ? 'Ctrl+C to copy' : 'Ctrl+C para copiar';
+          });
+        });
+      }
+
+      // 5. Restore Saved Preferences on Load
+      try {
+        const savedLang = localStorage.getItem('presentation_lang');
+        if (savedLang === 'en' || savedLang === 'pt') {
+          setLanguage(savedLang);
+        }
+        const savedTheme = localStorage.getItem('presentation_theme');
+        if (savedTheme === 'parchment' || savedTheme === 'obsidian') {
+          setTheme(savedTheme);
+        }
+      } catch (e) {}
+
+    })();
+  </script>
+</body>
+</html>

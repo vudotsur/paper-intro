@@ -1,0 +1,11 @@
+[HOOK (0-3s)]
+VOCÊ SABE SE O SEU MEI ESTÁ DANDO LUCRO OU SE VOCÊ ESTÁ PAGANDO PRA TRABALHAR?
+
+[AGITAÇÃO (3-9s)]
+O dinheiro entra na sua conta, você paga os fornecedores e no final do mês não sobra nada pro seu bolso.
+
+[SOLUÇÃO (9-20s)]
+Essa planilha inteligente faz o cálculo automático das suas contas, do DAS e do seu lucro real em menos de 5 minutos por dia.
+
+[CTA (20-26s)]
+Apenas R$ 37,00 no Pix com entrega imediata. Clique no link da bio e organize sua empresa hoje!

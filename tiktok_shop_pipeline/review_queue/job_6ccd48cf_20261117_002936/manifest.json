@@ -1,0 +1,75 @@
+{
+  "job": {
+    "job_id": "job_6ccd48cf_20261117_002936",
+    "record_id": "6ccd48cf-bddf-5955-922c-72377265c482",
+    "output_video_path": "C:\\Users\\a918803\\admin\\tiktok_shop_pipeline\\review_queue\\job_6ccd48cf_20261117_002936\\video.mp4",
+    "duration_sec": 26.0,
+    "resolution": "1080x1920",
+    "fps": 30,
+    "status": "PENDING_REVIEW",
+    "aigc_labeled": true,
+    "monetization_track": "BIO_PIX_FALLBACK",
+    "preview_image_path": "C:\\Users\\a918803\\admin\\tiktok_shop_pipeline\\review_queue\\job_6ccd48cf_20261117_002936\\preview_frame.png",
+    "script_text_path": "C:\\Users\\a918803\\admin\\tiktok_shop_pipeline\\review_queue\\job_6ccd48cf_20261117_002936\\script_pas.txt",
+    "audio_wav_path": "C:\\Users\\a918803\\admin\\tiktok_shop_pipeline\\review_queue\\job_6ccd48cf_20261117_002936\\narration.wav",
+    "created_at_utc": "2026-11-17T00:29:46.345004+00:00",
+    "notes": "Aguardando validação do operador."
+  },
+  "reference_provenance": {
+    "record_id": "6ccd48cf-bddf-5955-922c-72377265c482",
+    "product_id": "BIO-PIX-LT02",
+    "reference_video_url": "https://www.tiktok.com/@direitos_consumidor_facil/video/7345678912345678910",
+    "competitor_hook_text": "O BANCO COBROU TAXA QUE VOCÊ NÃO CONTRATOU? NÃO PAGUE!",
+    "script_structure_pas": {
+      "hook": "O BANCO COBROU TAXA QUE VOCÊ NÃO CONTRATOU? NÃO PAGUE!",
+      "agitation": "Bancos e operadoras lucram milhões cobrando tarifas indevidas mês a mês porque sabem que quase ninguém reclama.",
+      "solution": "Com os modelos prontos do Kit Defesa do Consumidor você protocola no Consumidor.gov.br em 5 minutos e pede o dobro de volta.",
+      "cta": "Acesse o link direto no meu perfil da bio — liberação imediata no Pix D+0 por R$ 19,90."
+    },
+    "pacing_cut_intervals": [
+      0.0,
+      2.0,
+      4.0,
+      6.2,
+      8.5,
+      11.0,
+      13.5
+    ],
+    "target_audience_pain": "Cobranças indevidas de bancos e receio de gastar com advogado",
+    "commission_rate": 1.0,
+    "aigc_disclosure_required": true,
+    "created_at_utc": "2026-11-16T23:41:53.468339+00:00",
+    "niche_name": "Finanças & Auto-Defesa do Consumidor (Bio Pix D+0)"
+  },
+  "audio": {
+    "narration_wav_path": "C:\\Users\\a918803\\admin\\tiktok_shop_pipeline\\review_queue\\job_6ccd48cf_20261117_002936\\narration.wav",
+    "has_audio": true,
+    "audio_size_bytes": 1457676
+  },
+  "scenes": [
+    {
+      "scene_index": 0,
+      "phase": "hook",
+      "duration_sec": 3.0,
+      "frame_path": "C:\\Users\\a918803\\admin\\tiktok_shop_pipeline\\review_queue\\job_6ccd48cf_20261117_002936\\frame_00_hook.png"
+    },
+    {
+      "scene_index": 1,
+      "phase": "agitation",
+      "duration_sec": 6.0,
+      "frame_path": "C:\\Users\\a918803\\admin\\tiktok_shop_pipeline\\review_queue\\job_6ccd48cf_20261117_002936\\frame_01_agitation.png"
+    },
+    {
+      "scene_index": 2,
+      "phase": "solution",
+      "duration_sec": 11.0,
+      "frame_path": "C:\\Users\\a918803\\admin\\tiktok_shop_pipeline\\review_queue\\job_6ccd48cf_20261117_002936\\frame_02_solution.png"
+    },
+    {
+      "scene_index": 3,
+      "phase": "cta",
+      "duration_sec": 6.0,
+      "frame_path": "C:\\Users\\a918803\\admin\\tiktok_shop_pipeline\\review_queue\\job_6ccd48cf_20261117_002936\\frame_03_cta.png"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor de Editais, Licitações e Concursos da Sua Cidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Hero -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold mb-4">
+        <span>Entrega imediata após o Pix • Guia + Planilha de Controle</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-950 leading-tight">
+        Não Perca Mais Prazos de Concursos, Licitações e Editais da Sua Cidade
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        Receba a <strong>Planilha &amp; Roteiro Prático de Monitoramento Municipal</strong> para acompanhar Diários Oficiais, compras da prefeitura e concursos locais em 10 minutos por semana — sem depender de terceiros.
+      </p>
+
+      <div class="mt-6 flex flex-col items-center">
+        <div class="flex items-baseline gap-2.5">
+          <span class="text-sm text-slate-400 line-through font-medium">De R$ 49,00</span>
+          <span class="text-3xl sm:text-4xl font-extrabold text-slate-950">R$ 14,90</span>
+        </div>
+        <p class="text-xs text-slate-500 mt-1">Pagamento único via Pix • Acesso vitalício</p>
+        <button id="cta-hero" type="button" class="mt-5 w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-600/20 transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 14,90
+        </button>
+        <p class="mt-2.5 text-xs text-slate-500">Garantia incondicional de 7 dias • Reembolso integral via Pix</p>
+      </div>
+    </section>
+
+    <!-- PAS -->
+    <section class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-slate-950">Por que a maioria descobre o edital quando o prazo já acabou?</h2>
+      <div class="mt-4 space-y-3 text-slate-700 text-sm sm:text-base leading-relaxed">
+        <p><strong>O problema:</strong> Editais da prefeitura, chamadas de credenciamento para MEI/autônomos e convocações de concursos saem primeiro no Diário Oficial do Município — e muita gente só fica sabendo pelas redes sociais quando faltam 2 dias para fechar.</p>
+        <p><strong>O prejuízo:</strong> Você perde oportunidades reais de vender para a prefeitura, participar de editais culturais ou garantir sua inscrição com calma antes da correria final.</p>
+        <p><strong>A solução prática:</strong> Com nossa planilha de controle + roteiro de verificação semanal, você sabe exatamente onde clicar, quais palavras buscar e como controlar cada prazo sem esquecer nenhum documento.</p>
+      </div>
+
+      <h3 class="mt-6 text-base font-bold text-slate-950">O que você baixa imediatamente após o Pix:</h3>
+      <ul class="mt-3 space-y-2.5 text-sm sm:text-base text-slate-700">
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>Planilha de Monitoramento (.csv)</strong> pronta para Excel e Google Planilhas com colunas de órgão, objeto, prazo e status.</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>Rotina de 10 minutos por semana</strong> com as palavras-chave exatas para filtrar o Diário Oficial da sua cidade.</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>Controle de validade de certidões</strong> para nunca perder um edital por documento vencido na última hora.</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>Exemplos pré-preenchidos</strong> de licitações, concursos e chamamentos públicos para começar hoje.</span></li>
+      </ul>
+    </section>
+
+    <!-- Interactive Free Mini-Tool -->
+    <section class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-xl font-bold text-slate-950">Teste Grátis: Guia Rápido de Fontes da Sua Cidade</h2>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">Prévia gratuita</span>
+      </div>
+      <p class="mt-1.5 text-sm text-slate-600">Selecione o estado, a cidade e o tipo de oportunidade para ver o roteiro de consulta oficial.</p>
+
+      <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label for="ed-uf" class="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">Estado (UF)</label>
+          <select id="ed-uf" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"></select>
+        </div>
+
+        <div>
+          <label for="ed-cidade" class="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">Cidade</label>
+          <select id="ed-cidade" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"></select>
+        </div>
+
+        <div>
+          <label for="ed-tipo" class="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">Interesse principal</label>
+          <select id="ed-tipo" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="licitacoes">Licitações &amp; Compras</option>
+            <option value="concursos">Concursos &amp; PSS</option>
+            <option value="cultura">Editais Culturais &amp; Chamamentos</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="ed-result" class="mt-5 rounded-xl bg-slate-50 border border-slate-200 p-4 space-y-2 text-sm text-slate-700"></div>
+
+      <div class="mt-6 text-center">
+        <button id="cta-mid" type="button" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base shadow-md transition cursor-pointer">
+          QUERO A PLANILHA DE MONITORAMENTO VIA PIX — R$ 14,90
+        </button>
+      </div>
+    </section>
+
+    <!-- Micro-FAQ -->
+    <section class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-slate-950">Dúvidas Frequentes</h2>
+      <div class="mt-4 divide-y divide-slate-200 text-sm sm:text-base">
+        <div class="py-3.5">
+          <h3 class="font-bold text-slate-900">Como funciona a garantia de 7 dias?</h3>
+          <p class="mt-1 text-slate-600">Você tem 7 dias corridos de garantia incondicional (CDC Art. 49). Se o material não ajudar na sua rotina de acompanhamento, devolvemos 100% via Pix.</p>
+        </div>
+        <div class="py-3.5">
+          <h3 class="font-bold text-slate-900">Funciona para qualquer cidade do Brasil?</h3>
+          <p class="mt-1 text-slate-600">Sim. A planilha e o roteiro de consulta oficial servem tanto para Londrina e capitais quanto para prefeituras do interior em todo o país.</p>
+        </div>
+        <div class="py-3.5">
+          <h3 class="font-bold text-slate-900">Quando recebo o arquivo após o Pix?</h3>
+          <p class="mt-1 text-slate-600">Na mesma hora. O botão de download da planilha é liberado logo abaixo do QR Code na tela de pagamento.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-8 text-center text-xs text-slate-500 space-y-1 pb-6">
+      <p>Privacidade LGPD: Este site utiliza zero cookies de rastreamento. Nenhum dado pessoal é coletado ou enviado a terceiros.</p>
+      <p>Atendimento e garantia: vudotsur@gmail.com • Pagamento seguro via Pix</p>
+    </footer>
+  </main>
+
+  <!-- Pix Checkout Modal -->
+  <div id="pix-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative my-auto">
+      <button id="modal-close" type="button" aria-label="Fechar" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold flex items-center justify-center cursor-pointer">×</button>
+      <h2 id="modal-title" class="text-lg font-extrabold text-slate-950 pr-8">Finalize seu acesso via Pix</h2>
+      <p class="text-xs text-slate-500 mt-0.5">Entrega instantânea logo abaixo após o pagamento.</p>
+
+      <label class="mt-4 flex items-start gap-3 p-3.5 rounded-xl border-2 border-amber-300 bg-amber-50/70 cursor-pointer">
+        <input id="order-bump" type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+        <div class="text-xs leading-relaxed">
+          <span class="inline-block px-1.5 py-0.5 rounded bg-amber-200 text-amber-900 font-bold uppercase text-[10px] mb-1">Oferta adicional</span>
+          <p class="font-bold text-slate-900">+ R$ 9,90 — Kit Documentação MEI &amp; ME para Licitações</p>
+          <p class="text-slate-600">Lista pronta de todas as certidões negativas e documentos básicos exigidos pelas prefeituras.</p>
+        </div>
+      </label>
+
+      <div class="mt-4 flex items-center justify-between bg-slate-50 rounded-xl px-4 py-3 border border-slate-200">
+        <span class="text-sm font-semibold text-slate-700">Total a pagar via Pix:</span>
+        <span id="modal-total" class="text-xl font-extrabold text-emerald-700">R$ 14,90</span>
+      </div>
+
+      <div class="mt-4 flex flex-col items-center">
+        <div id="qr-container" class="p-3 bg-white border border-slate-200 rounded-xl shadow-inner"></div>
+        <p class="mt-2 text-xs text-slate-500">Abra o app do seu banco e escaneie o QR Code acima</p>
+      </div>
+
+      <div class="mt-4 space-y-2">
+        <button id="copy-brcode" type="button" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold transition cursor-pointer">
+          Copiar Código Pix (Copia e Cola)
+        </button>
+        <button id="copy-pixkey" type="button" class="w-full py-2 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition cursor-pointer">
+          Copiar Chave Pix: vudotsur@gmail.com
+        </button>
+      </div>
+
+      <div class="mt-5 pt-4 border-t border-slate-200">
+        <p class="text-xs font-semibold text-slate-700 mb-2">Já realizou o Pix? Libere seu arquivo agora:</p>
+        <button id="download-btn" type="button" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md transition cursor-pointer">
+          Baixar Planilha de Monitoramento (.csv)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_6ccd48cf_20261117_002936/frame_00_hook.png'
+duration 3.0
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_6ccd48cf_20261117_002936/frame_01_agitation.png'
+duration 6.0
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_6ccd48cf_20261117_002936/frame_02_solution.png'
+duration 11.0
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_6ccd48cf_20261117_002936/frame_03_cta.png'
+duration 6.0
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_6ccd48cf_20261117_002936/frame_03_cta.png'

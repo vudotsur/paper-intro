@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditor Acadêmico Anti-Alucinação | Validador DOI/OpenAlex &amp; Formatador ABNT/IEEE</title>
+  <meta name="description" content="Verifique se as referências do seu TCC, dissertação ou artigo existem no Crossref/OpenAlex ou se foram inventadas por IA. Formate em ABNT NBR 6023:2025, IEEE e BibTeX.">
+  <meta property="og:title" content="Auditor Acadêmico Anti-Alucinação — Validador DOI/OpenAlex + ABNT NBR 6023">
+  <meta property="og:description" content="Não seja reprovado na banca por citação inventada pelo ChatGPT. Audite seus DOIs e formate referências em ABNT, IEEE e BibTeX em 1 clique.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://portfolio.local/poc_5_auditor_abnt_doi/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0b0c10; color: #f8fafc; }
+    .font-serif-ed { font-family: 'Playfair Display', serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-rose-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/90 sticky top-0 z-30 backdrop-blur">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-rose-400 animate-pulse"></span>
+        <span class="font-mono-code text-xs uppercase tracking-wider text-rose-400 font-semibold">CROSSREF + OPENALEX + ABNT NBR 6023:2025</span>
+      </div>
+      <div class="flex items-center gap-3 text-xs font-mono-code text-slate-400">
+        <span>Especial: <strong class="text-slate-100">UEL / Pós-Graduação / TCC</strong></span>
+        <button id="btn-open-pix-top" type="button" class="bg-rose-500 hover:bg-rose-400 text-white font-bold px-3 py-1 rounded text-xs transition">
+          Pacote Revisão TCC R$ 14,90
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+    <!-- Hero -->
+    <section class="space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-semibold">
+        <span>INTEGRIDADE CIENTÍFICA • DEFESA DE BANCA (TCC, MESTRADO &amp; DOUTORADO)</span>
+      </div>
+      <h1 class="font-serif-ed text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        Auditor Acadêmico Anti-Alucinação: Validador DOI &amp; Formatador ABNT
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-3xl">
+        Bancas da <strong>UEL, USP, UTFPR e CAPES</strong> estão reprovando trabalhos com referências falsas ("alucinadas") geradas por IA. Cole sua lista de referências abaixo para auditar a existência do DOI/título e formatar automaticamente em <strong>ABNT NBR 6023:2025, IEEE e BibTeX</strong>.
+      </p>
+    </section>
+
+    <!-- Input & Controls -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+      <div class="lg:col-span-7 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <label for="textarea-refs" class="text-sm font-mono-code uppercase tracking-wider text-rose-400 font-semibold">
+            1. Cole Suas Referências ou DOIs (1 por linha)
+          </label>
+          <div class="flex gap-2">
+            <button id="btn-load-sample" type="button" class="text-xs font-mono-code bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-1 rounded transition">
+              Carregar Exemplo c/ Alucinação IA
+            </button>
+          </div>
+        </div>
+
+        <textarea id="textarea-refs" rows="6" maxlength="4000"
+                  class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3.5 text-xs font-mono-code text-slate-100 leading-relaxed focus:border-rose-400 focus:outline-none"></textarea>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="select-style" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Padrão de Formatação</label>
+            <select id="select-style" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-rose-400 focus:outline-none">
+              <option value="abnt" selected>ABNT NBR 6023:2025 (Padrão UEL / Brasil)</option>
+              <option value="ieee">IEEE Transactions (Numérico Internacional)</option>
+              <option value="bibtex">BibTeX (.bib para LaTeX / Overleaf)</option>
+            </select>
+          </div>
+
+          <div class="flex items-end">
+            <button id="btn-run-audit" type="button"
+                    class="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition shadow">
+              Executar Auditoria Anti-Alucinação
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audit Summary Metrics -->
+      <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-4">
+        <div class="space-y-3">
+          <span class="text-xs font-mono-code uppercase text-slate-400">Diagnóstico de Integridade Bibliográfica</span>
+
+          <div class="grid grid-cols-3 gap-2.5">
+            <div class="bg-slate-900 border border-slate-800 rounded-lg p-3 text-center">
+              <span id="stat-verified" class="text-2xl font-extrabold font-mono-code text-emerald-400 block">3</span>
+              <span class="text-[11px] font-mono-code text-slate-400">Verificadas</span>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-lg p-3 text-center">
+              <span id="stat-suspect" class="text-2xl font-extrabold font-mono-code text-rose-400 block">1</span>
+              <span class="text-[11px] font-mono-code text-slate-400">Alucinação IA</span>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-lg p-3 text-center">
+              <span id="stat-incomplete" class="text-2xl font-extrabold font-mono-code text-amber-400 block">1</span>
+              <span class="text-[11px] font-mono-code text-slate-400">Sem DOI</span>
+            </div>
+          </div>
+
+          <p id="out-audit-verdict" class="text-xs text-slate-300 leading-relaxed">
+            Atenção: 1 citação apresenta padrão clássico de alucinação de LLM (DOI inexistente 10.9999/fake ou autor/ano incompatível).
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2.5">
+          <a id="btn-whatsapp-share" href="https://wa.me/?text=Auditor%20ABNT" target="_blank" rel="noopener noreferrer"
+             class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition">
+            Compartilhar no Grupo do TCC
+          </a>
+          <button id="btn-copy-formatted" type="button"
+                  class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-lg text-xs transition">
+            Copiar Formatadas
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Line-by-Line Audit Results -->
+    <section class="space-y-3">
+      <h2 class="text-lg font-bold text-white">Resultado Linha a Linha (Verificação DOI + Formatação Automática)</h2>
+      <div id="audit-results-list" class="space-y-3">
+        <!-- Populated via pure DOM in app.js -->
+      </div>
+    </section>
+
+    <!-- Formatted Output Box + Pix Monetization -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3 flex flex-col justify-between">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono-code uppercase text-rose-400 font-semibold">LISTA FORMATADA PRONTA PARA COLAR NO WORD / OVERLEAF</span>
+            <span id="copy-feedback" class="text-xs font-mono-code text-emerald-400 hidden">Copiado!</span>
+          </div>
+          <pre id="formatted-preview-box" class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs font-mono-code text-slate-200 whitespace-pre-wrap leading-relaxed overflow-x-auto"></pre>
+        </div>
+        <p class="text-xs text-slate-400">
+          As referências marcadas como Alucinação de IA são sinalizadas para substituição por artigos reais do OpenAlex/SciELO.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5 bg-gradient-to-br from-rose-500/15 via-slate-900 to-slate-950 border border-rose-500/40 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+        <div class="space-y-2">
+          <span class="inline-block px-2.5 py-0.5 rounded bg-rose-500 text-white font-mono-code font-bold text-xs">
+            BLINDAGEM DE BANCA • PIX R$ 14,90
+          </span>
+          <h3 class="text-xl font-bold text-white">
+            Pacote Revisão Completa de TCC / Artigo + Substituição de DOIs
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Validação ilimitada de até 150 referências contra <strong>Crossref, OpenAlex e SciELO</strong>, sugestão automática de artigos reais revisados por pares para substituir citações fracas e exportação pronta em Word (.docx) e LaTeX (.bib).
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1 pt-1 font-mono-code">
+            <li>✓ Normas ABNT NBR 6023:2025, APA 7ª ed., Vancouver e IEEE</li>
+            <li>✓ Certificado de Autenticidade de DOIs para anexar na entrega</li>
+            <li>✓ Ideal para TCC, Mestrado, Doutorado e Iniciação Científica</li>
+          </ul>
+        </div>
+
+        <div class="pt-2 border-t border-slate-800 flex items-center justify-between gap-3">
+          <div>
+            <span class="text-xs text-slate-400 block">Acesso Completo por Semestre</span>
+            <span class="text-2xl font-extrabold font-mono-code text-rose-400">R$ 14,90</span>
+            <span class="text-[11px] text-slate-400"> / único no Pix</span>
+          </div>
+          <button id="btn-open-pix-card" type="button"
+                  class="bg-rose-500 hover:bg-rose-400 text-white font-extrabold px-5 py-3 rounded-xl text-sm transition shadow-lg">
+            Liberar Pacote R$ 14,90
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Configurable Pix / Polar.sh Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <span class="text-xs font-mono-code uppercase text-rose-400 font-semibold">CHECKOUT SEGURO • PIX / POLAR.SH</span>
+          <h3 id="modal-title" class="text-lg font-bold text-white mt-0.5">Pacote Revisão Completa TCC/Artigo (R$ 14,90)</h3>
+        </div>
+        <button id="btn-close-modal" type="button" class="text-slate-400 hover:text-white text-sm font-mono-code px-2 py-1 rounded">
+          [ESC]
+        </button>
+      </div>
+
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+        <!-- Padrão EMVCo BR.GOV.BCB.PIX -->
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Status Chave Pix:</span>
+          <span class="text-emerald-400 font-semibold">CHAVE ATIVA • vudotsur@gmail.com</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Valor Pix (BCB):</span>
+          <span class="text-white font-bold">R$ 14,90</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Identificador (txid):</span>
+          <span id="modal-txid" class="text-rose-300">POC05</span>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-key-input" class="block text-xs font-mono-code text-slate-400">Chave Pix (E-mail Direto):</label>
+        <div class="flex gap-2">
+          <input id="pix-key-input" type="text" readonly value="vudotsur@gmail.com"
+                 class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-emerald-300 font-bold select-all">
+          <button id="btn-copy-pix-key" type="button" class="bg-slate-800 hover:bg-slate-700 text-rose-300 font-mono-code font-bold px-3 py-2 rounded-lg text-xs transition">
+            Copiar Chave Pix
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-brcode-input" class="block text-xs font-mono-code text-slate-400">Pix Copia e Cola (EMVCo Bacen c/ valor R$ 14,90 preenchido):</label>
+        <input id="pix-brcode-input" type="text" readonly
+               value="00020126400014br.gov.bcb.pix0118vudotsur@gmail.com520400005303986540514.905802BR5908VUDOTSUR6008LONDRINA62090505POC056304F7F5"
+               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-slate-300 select-all">
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+        <button id="btn-copy-pix" type="button" class="flex-1 bg-rose-500 hover:bg-rose-400 text-white font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm transition">
+          Copiar Código Pix Copia e Cola
+        </button>
+        <a id="link-polar-fallback" href="https://polar.sh" target="_blank" rel="noopener noreferrer"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition">
+          Cartão Global (Polar.sh)
+        </a>
+      </div>
+
+      <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
+        <button id="btn-unlock-pro" type="button" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-lg text-xs transition">
+          Já Paguei • Exportar Laudo Bibliográfico
+        </button>
+        <a id="link-confirm-pix" href="mailto:vudotsur@gmail.com?subject=Comprovante%20Pix%20POC05%20Auditor%20ABNT"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono-code py-2 px-3 rounded-lg text-xs text-center transition">
+          Confirmar por E-mail
+        </a>
+      </div>
+      <p id="pix-copied-msg" class="text-xs font-mono-code text-emerald-400 text-center hidden">
+        Copiado para a área de transferência! Chave: vudotsur@gmail.com
+      </p>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 px-4 text-center text-xs text-slate-500 font-mono-code">
+    Auditor Acadêmico Anti-Alucinação • Crossref + OpenAlex + ABNT NBR 6023:2025 • Zero raw HTML injection
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

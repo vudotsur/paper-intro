@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edital Verticalizado &amp; Ciclo de Revisão Ebbinghaus para Concursos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Hero -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold mb-4">
+        <span>Entrega imediata após o Pix • Planilha pronta</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-950 leading-tight">
+        Pare de Esquecer o que Estudou: Organize seu Edital e Revisões em 5 Minutos
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        Receba a planilha de <strong>Edital Verticalizado + Ciclo de Revisão Ebbinghaus (24h, 7 dias e 30 dias)</strong> para saber exatamente qual matéria estudar e revisar hoje, sem perder tempo montando tabela.
+      </p>
+
+      <div class="mt-6 flex flex-col items-center">
+        <div class="flex items-baseline gap-2.5">
+          <span class="text-sm text-slate-400 line-through font-medium">De R$ 59,00</span>
+          <span class="text-3xl sm:text-4xl font-extrabold text-slate-950">R$ 19,90</span>
+        </div>
+        <p class="text-xs text-slate-500 mt-1">Pagamento único via Pix • Funciona no Excel e Google Planilhas</p>
+        <button id="cta-hero" type="button" class="mt-5 w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-600/20 transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 19,90
+        </button>
+        <p class="mt-2.5 text-xs text-slate-500">Garantia incondicional de 7 dias • Reembolso integral via Pix</p>
+      </div>
+    </section>
+
+    <!-- PAS -->
+    <section class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-slate-950">O que trava a maioria dos concurseiros na hora da prova?</h2>
+      <div class="mt-4 space-y-3 text-slate-700 text-sm sm:text-base leading-relaxed">
+        <p><strong>O problema:</strong> Você estuda uma matéria hoje, avança para outras cinco na semana seguinte e, quando faz simulado no fim do mês, parece que nunca viu aquele assunto.</p>
+        <p><strong>O custo do erro:</strong> Sem revisões espaçadas (24h, 7d e 30d), a curva do esquecimento apaga até 70% do conteúdo em poucos dias — e você acaba recomeçando o edital do zero.</p>
+        <p><strong>A solução prática:</strong> Com o Edital Verticalizado + Ciclo Ebbinghaus pronto em planilha, você marca cada tópico lido e acompanha na hora o percentual de acertos e a data exata de cada revisão.</p>
+      </div>
+
+      <h3 class="mt-6 text-base font-bold text-slate-950">O que você baixa imediatamente após o Pix:</h3>
+      <ul class="mt-3 space-y-2.5 text-sm sm:text-base text-slate-700">
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>Edital Verticalizado completo (.csv)</strong> pronto para abrir no Excel, LibreOffice ou Google Planilhas com acentuação perfeita.</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>Colunas de controle 24h / 7 dias / 30 dias</strong> para nunca mais pular uma revisão obrigatória.</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>Registro de questões e % de acerto por tópico</strong> para focar sua energia exatamente onde a banca mais cobra e você erra.</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-emerald-600 font-bold">✓</span><span><strong>Matérias básicas pré-preenchidas</strong> (Português, Raciocínio Lógico, Informática, Direito Constitucional e Administrativo) para começar hoje mesmo.</span></li>
+      </ul>
+    </section>
+
+    <!-- Interactive Free Mini-Tool -->
+    <section class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-xl font-bold text-slate-950">Teste Grátis: Gerador de Ciclo Semanal Ebbinghaus</h2>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">Prévia gratuita</span>
+      </div>
+      <p class="mt-1.5 text-sm text-slate-600">Informe sua área de concurso e quantas horas líquidas tem por dia para montar seu ciclo agora.</p>
+
+      <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="conc-area" class="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">Área do concurso</label>
+          <select id="conc-area" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="tribunais">Tribunais &amp; Administrativo</option>
+            <option value="policial">Carreiras Policiais</option>
+            <option value="bancario">Bancário (BB / Caixa / BNB)</option>
+            <option value="fiscal">Fiscal &amp; Controle</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="conc-horas" class="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">Horas líquidas por dia</label>
+          <select id="conc-horas" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="2">2 horas/dia (rotina apertada)</option>
+            <option value="3" selected>3 horas/dia (equilibrado)</option>
+            <option value="4">4 horas/dia (intensivo)</option>
+            <option value="6">6 horas/dia (dedicação total)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-5 overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-slate-100 text-slate-700 font-bold">
+            <tr>
+              <th class="px-3 py-2.5">Dia</th>
+              <th class="px-3 py-2.5">Bloco Principal (Teoria + Questões)</th>
+              <th class="px-3 py-2.5">Revisão Ebbinghaus</th>
+            </tr>
+          </thead>
+          <tbody id="cycle-tbody" class="divide-y divide-slate-200 bg-white text-slate-700"></tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 text-center">
+        <button id="cta-mid" type="button" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base shadow-md transition cursor-pointer">
+          QUERO A PLANILHA COMPLETA VIA PIX — R$ 19,90
+        </button>
+      </div>
+    </section>
+
+    <!-- Micro-FAQ -->
+    <section class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-slate-950">Dúvidas Frequentes</h2>
+      <div class="mt-4 divide-y divide-slate-200 text-sm sm:text-base">
+        <div class="py-3.5">
+          <h3 class="font-bold text-slate-900">Como funciona a garantia de 7 dias?</h3>
+          <p class="mt-1 text-slate-600">Você tem 7 dias de garantia incondicional (CDC Art. 49). Se não gostar da planilha, basta enviar um e-mail e devolvemos 100% via Pix.</p>
+        </div>
+        <div class="py-3.5">
+          <h3 class="font-bold text-slate-900">Quando recebo o arquivo após pagar o Pix?</h3>
+          <p class="mt-1 text-slate-600">Imediatamente. O botão de download fica liberado na própria tela de pagamento assim que você concluir o Pix.</p>
+        </div>
+        <div class="py-3.5">
+          <h3 class="font-bold text-slate-900">Posso adaptar para qualquer edital?</h3>
+          <p class="mt-1 text-slate-600">Sim. A planilha vem com a estrutura pronta e matérias base, e você pode adicionar ou editar qualquer tópico do seu concurso em segundos.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-8 text-center text-xs text-slate-500 space-y-1 pb-6">
+      <p>Privacidade LGPD: Este site utiliza zero cookies de rastreamento. Nenhum dado pessoal é coletado ou enviado a terceiros.</p>
+      <p>Atendimento e garantia: vudotsur@gmail.com • Pagamento seguro via Pix</p>
+    </footer>
+  </main>
+
+  <!-- Pix Checkout Modal -->
+  <div id="pix-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative my-auto">
+      <button id="modal-close" type="button" aria-label="Fechar" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold flex items-center justify-center cursor-pointer">×</button>
+      <h2 id="modal-title" class="text-lg font-extrabold text-slate-950 pr-8">Finalize seu acesso via Pix</h2>
+      <p class="text-xs text-slate-500 mt-0.5">Entrega instantânea logo abaixo após o pagamento.</p>
+
+      <label class="mt-4 flex items-start gap-3 p-3.5 rounded-xl border-2 border-amber-300 bg-amber-50/70 cursor-pointer">
+        <input id="order-bump" type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+        <div class="text-xs leading-relaxed">
+          <span class="inline-block px-1.5 py-0.5 rounded bg-amber-200 text-amber-900 font-bold uppercase text-[10px] mb-1">Oferta adicional</span>
+          <p class="font-bold text-slate-900">+ R$ 9,90 — Caderno de Erros &amp; Controle de Simulados</p>
+          <p class="text-slate-600">Linhas extras na planilha para registrar motivos de erro e evolução nos simulados.</p>
+        </div>
+      </label>
+
+      <div class="mt-4 flex items-center justify-between bg-slate-50 rounded-xl px-4 py-3 border border-slate-200">
+        <span class="text-sm font-semibold text-slate-700">Total a pagar via Pix:</span>
+        <span id="modal-total" class="text-xl font-extrabold text-emerald-700">R$ 19,90</span>
+      </div>
+
+      <div class="mt-4 flex flex-col items-center">
+        <div id="qr-container" class="p-3 bg-white border border-slate-200 rounded-xl shadow-inner"></div>
+        <p class="mt-2 text-xs text-slate-500">Abra o app do seu banco e escaneie o QR Code acima</p>
+      </div>
+
+      <div class="mt-4 space-y-2">
+        <button id="copy-brcode" type="button" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold transition cursor-pointer">
+          Copiar Código Pix (Copia e Cola)
+        </button>
+        <button id="copy-pixkey" type="button" class="w-full py-2 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition cursor-pointer">
+          Copiar Chave Pix: vudotsur@gmail.com
+        </button>
+      </div>
+
+      <div class="mt-5 pt-4 border-t border-slate-200">
+        <p class="text-xs font-semibold text-slate-700 mb-2">Já realizou o Pix? Libere seu arquivo agora:</p>
+        <button id="download-btn" type="button" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md transition cursor-pointer">
+          Baixar Edital Verticalizado (.csv)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

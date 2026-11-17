@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lupa da Cidade &amp; Concursos | Londrina/PR &amp; Municípios (Querido Diário + SICONFI)</title>
+  <meta name="description" content="Radar cívico e de carreiras que filtra Diários Oficiais Municipais (Concursos/Nomeações, Licitações, Dispensas e Obras) com alerta de anomalias e pauta pronta para WhatsApp.">
+  <meta property="og:title" content="Lupa da Cidade &amp; Concursos — Diário Oficial em Linguagem Simples">
+  <meta property="og:description" content="Monitore Concursos, Convocações, Dispensas de Licitação e Obras em Londrina/PR e municípios via Querido Diário + SICONFI Tesouro Nacional.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://portfolio.local/poc_2_lupa_cidade/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #090d16; color: #f8fafc; }
+    .font-serif-ed { font-family: 'Playfair Display', serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-slate-950">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/90 sticky top-0 z-30 backdrop-blur">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+        <span class="font-mono-code text-xs uppercase tracking-wider text-sky-400 font-semibold">QUERIDO DIÁRIO (OKBR) + TESOURO SICONFI</span>
+      </div>
+      <div class="flex items-center gap-3 text-xs font-mono-code text-slate-400">
+        <span>IBGE: <strong id="hdr-ibge" class="text-slate-100">4113700 (Londrina/PR)</strong></span>
+        <button id="btn-open-pix-top" type="button" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-3 py-1 rounded text-xs transition">
+          Radar Diário WhatsApp R$ 14,90
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+    <!-- Hero -->
+    <section class="space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs font-semibold">
+        <span>JORNALISMO DE DADOS • CONCURSOS PÚBLICOS • FORNECEDORES B2G</span>
+      </div>
+      <h1 class="font-serif-ed text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        Lupa da Cidade &amp; Concursos: O Diário Oficial Traduzido em 10 Segundos
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-3xl">
+        Não perca convocações de concursos, editais de licitação ou dispensas milionárias no seu município. Cruzamos atos do <strong>Querido Diário</strong> com indicadores fiscais do <strong>SICONFI (Tesouro Nacional)</strong>.
+      </p>
+    </section>
+
+    <!-- Filter & Search Bar -->
+    <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 sm:p-6 space-y-5 shadow-xl">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label for="select-city" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Município Monitorado</label>
+          <select id="select-city" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-sky-400 focus:outline-none">
+            <option value="londrina" selected>Londrina / PR (IBGE 4113700)</option>
+            <option value="maringa">Maringá / PR (IBGE 4115200)</option>
+            <option value="curitiba">Curitiba / PR (IBGE 4106902)</option>
+            <option value="cambe">Cambé / PR (IBGE 4103701)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="select-category" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Tipo de Ato Oficial</label>
+          <select id="select-category" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-sky-400 focus:outline-none">
+            <option value="all" selected>Todos os Atos (Concursos + Contratos + Obras)</option>
+            <option value="concursos">Concursos, Editais &amp; Nomeações</option>
+            <option value="licitacoes">Licitações &amp; Contratos</option>
+            <option value="dispensa">Dispensa de Licitação (Alerta Fiscal)</option>
+            <option value="obras">Obras Públicas &amp; Aditivos</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="input-keyword" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Filtrar por Cargo, Nome, CNPJ ou Bairro</label>
+          <input id="input-keyword" type="text" maxlength="100" placeholder="Ex: Professor, Saúde, Asfalto, 12.345..."
+                 class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:outline-none">
+        </div>
+      </div>
+
+      <!-- SICONFI Municipal Metrics Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-slate-800">
+        <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-3">
+          <span class="text-[11px] font-mono-code text-slate-400 block">Atos Filtrados</span>
+          <span id="stat-count" class="text-xl font-extrabold font-mono-code text-white">6 atos</span>
+        </div>
+        <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-3">
+          <span class="text-[11px] font-mono-code text-slate-400 block">Volume Financeiro</span>
+          <span id="stat-volume" class="text-xl font-extrabold font-mono-code text-sky-400">R$ 18,45 mi</span>
+        </div>
+        <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-3">
+          <span class="text-[11px] font-mono-code text-slate-400 block">Alertas de Anomalia</span>
+          <span id="stat-anomalies" class="text-xl font-extrabold font-mono-code text-amber-400">2 alertas</span>
+        </div>
+        <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-3">
+          <span class="text-[11px] font-mono-code text-slate-400 block">Despesa Pessoal SICONFI</span>
+          <span id="stat-siconfi" class="text-xl font-extrabold font-mono-code text-emerald-400">47,8% RCL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acts Feed + Press Release / WhatsApp Builder -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div class="lg:col-span-7 space-y-3">
+        <div class="flex items-center justify-between">
+          <h2 class="text-lg font-bold text-white">Atos Extraídos do Diário Oficial</h2>
+          <span class="text-xs font-mono-code text-slate-400">Clique em "Gerar Pauta" em qualquer ato</span>
+        </div>
+        <div id="acts-list" class="space-y-3">
+          <!-- Populated via pure DOM nodes in app.js -->
+        </div>
+      </div>
+
+      <!-- Right Column: Press Pitch + Pix Monetization -->
+      <div class="lg:col-span-5 space-y-5 sticky top-16">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono-code uppercase text-sky-400 font-semibold">PAUTA PRONTA PARA JORNALISTA / WHATSAPP</span>
+            <span id="copy-feedback" class="text-xs font-mono-code text-emerald-400 hidden">Copiado!</span>
+          </div>
+          <pre id="pauta-preview-box" class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs font-mono-code text-slate-200 whitespace-pre-wrap leading-relaxed overflow-x-auto"></pre>
+
+          <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+            <a id="btn-whatsapp-share" href="https://wa.me/?text=Lupa%20da%20Cidade" target="_blank" rel="noopener noreferrer"
+               class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition">
+              Enviar Pauta no WhatsApp
+            </a>
+            <button id="btn-copy-pauta" type="button"
+                    class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-lg text-xs transition">
+              Copiar Texto
+            </button>
+          </div>
+        </div>
+
+        <!-- Monetization Box -->
+        <div class="bg-gradient-to-br from-sky-500/15 via-slate-900 to-slate-950 border border-sky-500/40 rounded-2xl p-5 space-y-3">
+          <span class="inline-block px-2.5 py-0.5 rounded bg-sky-400 text-slate-950 font-mono-code font-bold text-xs">
+            MONITORAMENTO AUTOMÁTICO • PIX R$ 14,90
+          </span>
+          <h3 class="text-lg font-bold text-white">
+            Radar Diário por Nome, Cargo ou CNPJ no Seu WhatsApp
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Ideal para <strong>concurseiros</strong> (não perca sua nomeação), <strong>fornecedores da prefeitura</strong> e <strong>jornalistas/assessores</strong>. Receba alerta imediato às 06h00 sempre que sua palavra-chave sair no Diário Oficial.
+          </p>
+          <div class="pt-2 border-t border-slate-800 flex items-center justify-between gap-3">
+            <div>
+              <span class="text-xs text-slate-400 block">Assinatura Mensal Sem Fidelidade</span>
+              <span class="text-2xl font-extrabold font-mono-code text-sky-400">R$ 14,90</span>
+              <span class="text-[11px] text-slate-400"> / mês no Pix</span>
+            </div>
+            <button id="btn-open-pix-card" type="button"
+                    class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold px-4 py-2.5 rounded-xl text-xs sm:text-sm transition shadow-lg">
+              Ativar Radar R$ 14,90
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Configurable Pix / Polar.sh Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <span class="text-xs font-mono-code uppercase text-sky-400 font-semibold">CHECKOUT SEGURO • PIX / POLAR.SH</span>
+          <h3 id="modal-title" class="text-lg font-bold text-white mt-0.5">Radar Diário por Palavra-Chave/CNPJ (R$ 14,90)</h3>
+        </div>
+        <button id="btn-close-modal" type="button" class="text-slate-400 hover:text-white text-sm font-mono-code px-2 py-1 rounded">
+          [ESC]
+        </button>
+      </div>
+
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+        <!-- Padrão EMVCo BR.GOV.BCB.PIX -->
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Status Chave Pix:</span>
+          <span class="text-emerald-400 font-semibold">CHAVE ATIVA • vudotsur@gmail.com</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Valor Pix (BCB):</span>
+          <span class="text-white font-bold">R$ 14,90</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Identificador (txid):</span>
+          <span id="modal-txid" class="text-sky-300">POC02</span>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-key-input" class="block text-xs font-mono-code text-slate-400">Chave Pix (E-mail Direto):</label>
+        <div class="flex gap-2">
+          <input id="pix-key-input" type="text" readonly value="vudotsur@gmail.com"
+                 class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-emerald-300 font-bold select-all">
+          <button id="btn-copy-pix-key" type="button" class="bg-slate-800 hover:bg-slate-700 text-sky-300 font-mono-code font-bold px-3 py-2 rounded-lg text-xs transition">
+            Copiar Chave Pix
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-brcode-input" class="block text-xs font-mono-code text-slate-400">Pix Copia e Cola (EMVCo Bacen c/ valor R$ 14,90 preenchido):</label>
+        <input id="pix-brcode-input" type="text" readonly
+               value="00020126400014br.gov.bcb.pix0118vudotsur@gmail.com520400005303986540514.905802BR5908VUDOTSUR6008LONDRINA62090505POC0263049021"
+               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-slate-300 select-all">
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+        <button id="btn-copy-pix" type="button" class="flex-1 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm transition">
+          Copiar Código Pix Copia e Cola
+        </button>
+        <a id="link-polar-fallback" href="https://polar.sh" target="_blank" rel="noopener noreferrer"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition">
+          Assinar via Polar.sh
+        </a>
+      </div>
+
+      <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
+        <button id="btn-unlock-pro" type="button" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-lg text-xs transition">
+          Já Paguei • Exportar Relatório Atos (CSV)
+        </button>
+        <a id="link-confirm-pix" href="mailto:vudotsur@gmail.com?subject=Comprovante%20Pix%20POC02%20Lupa%20da%20Cidade"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono-code py-2 px-3 rounded-lg text-xs text-center transition">
+          Confirmar por E-mail
+        </a>
+      </div>
+      <p id="pix-copied-msg" class="text-xs font-mono-code text-emerald-400 text-center hidden">
+        Copiado para a área de transferência! Chave: vudotsur@gmail.com
+      </p>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 px-4 text-center text-xs text-slate-500 font-mono-code">
+    Lupa da Cidade &amp; Concursos • API Querido Diário (Open Knowledge Brasil) + Tesouro Nacional SICONFI • Zero raw HTML injection
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

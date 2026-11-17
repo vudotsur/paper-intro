@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planilha Bola de Neve: Saia do Cartão e Cheque Especial em 90 Dias</title>
+  <meta name="description" content="Pare de pagar só o mínimo do cartão e ver a dívida dobrar. Organize suas parcelas pelo método Bola de Neve e economize milhares em juros.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+  <!-- Distraction-Free Above-the-Fold Hero (NO top nav bar) -->
+  <header class="bg-white border-b border-slate-200/80">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-12 sm:pt-14 sm:pb-16 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide uppercase mb-5">
+        <span>Entrega Imediata</span>
+        <span aria-hidden="true">•</span>
+        <span>Plano de Quitação</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-950 leading-tight mb-4">
+        Saia do rotativo do cartão e do cheque especial antes que os juros dobrem sua dívida
+      </h1>
+
+      <p class="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-7">
+        Receba agora a <strong class="text-slate-900">Planilha Bola de Neve (.csv)</strong>: descubra a ordem exata para quitar cada dívida, quanto reservar por mês e como cortar até 60% dos juros pagos ao banco.
+      </p>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 max-w-md mx-auto mb-6 shadow-sm">
+        <div class="flex items-center justify-center gap-3 mb-2">
+          <span class="text-sm text-slate-400 line-through font-medium">De R$ 39,90</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">68% de desconto</span>
+        </div>
+        <div class="text-4xl sm:text-5xl font-extrabold text-slate-950 tracking-tight mb-1">
+          R$ 12,90
+        </div>
+        <p class="text-xs text-slate-500 mb-5">Download imediato da planilha de quitação (.csv) após o Pix</p>
+
+        <button type="button" data-open-pix class="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-600/20 transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 12,90
+        </button>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-500">
+        Garantia incondicional de 7 dias (CDC Art. 49) • Pagamento único • Zero assinatura
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+
+    <!-- Interactive Free Preview / Snowball Debt Payoff Calculator -->
+    <section aria-labelledby="calc-heading" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+      <div class="mb-6">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Prévia Gratuita Interativa</span>
+        <h2 id="calc-heading" class="text-2xl font-bold text-slate-950 mt-1">
+          Calculadora Bola de Neve: Quanto tempo e juros você economiza?
+        </h2>
+        <p class="text-sm text-slate-600 mt-1">
+          Simule sua dívida atual no cartão ou cheque especial e veja o impacto de colocar um valor extra fixo por mês.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div>
+          <label for="debt-balance" class="block text-xs font-semibold text-slate-700 mb-1.5">Saldo total da dívida (R$)</label>
+          <input id="debt-balance" type="number" min="100" max="500000" step="100" value="4500" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+        <div>
+          <label for="debt-rate" class="block text-xs font-semibold text-slate-700 mb-1.5">Juros mensais (% ao mês)</label>
+          <input id="debt-rate" type="number" min="0.5" max="25" step="0.5" value="12" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+        <div>
+          <label for="debt-payment" class="block text-xs font-semibold text-slate-700 mb-1.5">Parcela mensal que você paga hoje (R$)</label>
+          <input id="debt-payment" type="number" min="50" max="50000" step="50" value="650" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+        <div>
+          <label for="debt-extra" class="block text-xs font-semibold text-slate-700 mb-1.5">Reforço mensal Bola de Neve (R$)</label>
+          <input id="debt-extra" type="number" min="0" max="20000" step="50" value="300" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-emerald-50/70 border border-emerald-200 rounded-xl p-5 mb-5">
+        <div>
+          <div class="text-xs font-semibold text-emerald-800 uppercase">Prazo com Bola de Neve</div>
+          <div id="snowball-months" class="text-3xl font-extrabold text-emerald-700 mt-1">6 meses</div>
+          <div id="snowball-baseline" class="text-xs text-emerald-900/80 mt-1">Sem reforço levaria 14 meses</div>
+        </div>
+        <div>
+          <div class="text-xs font-semibold text-emerald-800 uppercase">Juros economizados</div>
+          <div id="snowball-saved" class="text-3xl font-extrabold text-slate-950 mt-1">R$ 2.140,00</div>
+          <div class="text-xs text-slate-600 mt-1">Dinheiro que fica com você, não com o banco</div>
+        </div>
+      </div>
+
+      <div id="snowball-warning" class="hidden rounded-xl bg-rose-50 border border-rose-200 text-rose-800 px-4 py-3 text-xs sm:text-sm font-semibold mb-4"></div>
+
+      <div>
+        <h3 class="text-sm font-bold text-slate-900 mb-2">Prévia do Cronograma de Quitação (primeiros meses):</h3>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-100 text-slate-700 font-semibold">
+              <tr>
+                <th class="py-2 px-3">Mês</th>
+                <th class="py-2 px-3">Juros do mês</th>
+                <th class="py-2 px-3">Pagamento total</th>
+                <th class="py-2 px-3 text-right">Saldo restante</th>
+              </tr>
+            </thead>
+            <tbody id="snowball-preview-body" class="divide-y divide-slate-200 bg-white"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAS + Fascination Bullets -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-950 mb-3">Por que pagar "só um pouquinho acima do mínimo" nunca zera a fatura?</h2>
+        <p class="text-slate-600 leading-relaxed mb-3">
+          <strong>O problema:</strong> juros de cartão de crédito e cheque especial compostos mês a mês fazem sua dívida crescer mais rápido do que você consegue abater pagando valores quebrados sem estratégia.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          <strong>A solução prática:</strong> o método Bola de Neve concentra toda a sua força na primeira dívida até zerar e joga o valor liberado para a próxima, criando alívio imediato no orçamento já nos primeiros 90 dias.
+        </p>
+      </div>
+
+      <div class="border-t border-slate-200 pt-6">
+        <h3 class="text-lg font-bold text-slate-950 mb-4">O que você recebe imediatamente:</h3>
+        <ul class="space-y-3 text-slate-700 text-sm sm:text-base">
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Planilha Bola de Neve (.csv):</strong> organize todas as suas dívidas (cartão, cheque especial, empréstimo) por prioridade e acompanhe o saldo cair mês a mês.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Plano de Ataque 90 Dias:</strong> roteiro de cortes temporários sem sofrimento para liberar de R$ 250 a R$ 600 extras por mês.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Checklist de Troca de Dívida Cara por Barata:</strong> quando vale a pena trocar o rotativo por parcelamento fixo com juros menores.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-2">
+        <button type="button" data-open-pix class="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base sm:text-lg shadow-md transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 12,90
+        </button>
+      </div>
+    </section>
+
+    <!-- Risk-Reversal Micro-FAQ -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+      <h2 class="text-xl font-bold text-slate-950 mb-5">Dúvidas Frequentes e Garantia</h2>
+      <div class="space-y-4 text-sm text-slate-600">
+        <div class="border-b border-slate-100 pb-4">
+          <h3 class="font-bold text-slate-900 mb-1">1. A planilha funciona no celular e no Excel/Google Sheets?</h3>
+          <p>Sim! O arquivo (.csv) abre direto no Excel, Google Planilhas e aplicativos de planilha no celular.</p>
+        </div>
+        <div class="border-b border-slate-100 pb-4">
+          <h3 class="font-bold text-slate-900 mb-1">2. E se eu não conseguir organizar minhas dívidas com ela?</h3>
+          <p>Você tem garantia incondicional de 7 dias (CDC Art. 49). Basta pedir o estorno via Pix pelo e-mail <span class="font-semibold text-slate-800">vudotsur@gmail.com</span>.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900 mb-1">3. O acesso é imediato?</h3>
+          <p>Sim. Assim que concluir o Pix, o botão para baixar a planilha completa fica liberado na hora.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LGPD Zero-Cookie Footer -->
+  <footer class="border-t border-slate-200 bg-white py-8 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-3xl mx-auto space-y-2">
+      <p class="font-semibold text-slate-700">Privacidade e Conformidade Legal (LGPD &amp; CDC)</p>
+      <p>Zero cookies de rastreamento. Seus valores financeiros ficam apenas no seu navegador e nunca são enviados para terceiros (Lei 13.709/2018 - LGPD).</p>
+      <p>Conteúdo educativo de organização financeira pessoal. Garantia de 7 dias (CDC Art. 49). Contato: vudotsur@gmail.com.</p>
+    </div>
+  </footer>
+
+  <!-- Pix Checkout Modal -->
+  <div id="pix-modal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="pix-modal-title">
+    <div class="bg-white rounded-2xl max-w-md w-full max-h-[92vh] overflow-y-auto p-6 shadow-2xl border border-slate-200 relative">
+      <button id="close-pix-modal" type="button" aria-label="Fechar janela de pagamento" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer">
+        ✕
+      </button>
+
+      <div class="mb-4 pr-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Pagamento Seguro via Pix</span>
+        <h2 id="pix-modal-title" class="text-xl font-extrabold text-slate-950 mt-0.5">Planilha Bola de Neve (Dívidas Zero)</h2>
+      </div>
+
+      <!-- Order Bump -->
+      <label class="block bg-amber-50 border-2 border-amber-300 rounded-xl p-3.5 mb-5 cursor-pointer hover:bg-amber-100/60 transition">
+        <div class="flex items-start gap-3">
+          <input id="order-bump-checkbox" type="checkbox" class="mt-1 h-4 w-4 rounded border-amber-400 text-emerald-600 focus:ring-emerald-500">
+          <div class="text-xs sm:text-sm">
+            <div class="font-bold text-slate-950">Adicionar Guia de Negociação com Bancos (+ R$ 7,90)</div>
+            <p class="text-slate-600 mt-0.5">Roteiro pronto para pedir desconto à vista ou redução de juros no gerente, Desenrola e feirões. Total: <strong>R$ 20,80</strong>.</p>
+          </div>
+        </div>
+      </label>
+
+      <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 mb-4">
+        <span class="text-sm font-semibold text-slate-700">Total a pagar via Pix:</span>
+        <span id="modal-total-price" class="text-2xl font-extrabold text-emerald-700">R$ 12,90</span>
+      </div>
+
+      <div class="flex flex-col items-center bg-white border border-slate-200 rounded-xl p-4 mb-4">
+        <div id="qr-svg-container" class="w-44 h-44 flex items-center justify-center"></div>
+        <p class="text-xs text-slate-500 mt-2 text-center">Aponte a câmera do aplicativo do seu banco para o QR Code</p>
+      </div>
+
+      <div class="space-y-2.5 mb-5">
+        <div class="flex items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
+          <div class="text-xs truncate">
+            <span class="text-slate-500">Chave Pix (E-mail): </span>
+            <strong class="text-slate-900">vudotsur@gmail.com</strong>
+          </div>
+          <button id="btn-copy-key" type="button" class="shrink-0 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold cursor-pointer">
+            Copiar Chave
+          </button>
+        </div>
+
+        <div>
+          <label for="pix-brcode-input" class="block text-xs font-semibold text-slate-600 mb-1">Pix Copia e Cola:</label>
+          <div class="flex gap-2">
+            <input id="pix-brcode-input" type="text" readonly class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs text-slate-700 font-mono">
+            <button id="btn-copy-brcode" type="button" class="shrink-0 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold cursor-pointer">
+              Copiar Código
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-200 pt-4">
+        <p class="text-xs text-slate-600 text-center mb-2.5">Após concluir o Pix, baixe sua planilha personalizada:</p>
+        <button id="btn-download-csv" type="button" class="w-full py-3.5 px-4 rounded-xl bg-slate-950 hover:bg-slate-800 text-white text-sm font-bold transition cursor-pointer">
+          Baixar Planilha Bola de Neve (.csv)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

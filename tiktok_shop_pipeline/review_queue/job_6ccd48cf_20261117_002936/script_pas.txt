@@ -1,0 +1,11 @@
+[HOOK (0-3s)]
+O BANCO COBROU TAXA QUE VOCÊ NÃO CONTRATOU? NÃO PAGUE!
+
+[AGITAÇÃO (3-9s)]
+Bancos e operadoras lucram milhões cobrando tarifas indevidas mês a mês porque sabem que quase ninguém reclama.
+
+[SOLUÇÃO (9-20s)]
+Com os modelos prontos do Kit Defesa do Consumidor você protocola no Consumidor.gov.br em 5 minutos e pede o dobro de volta.
+
+[CTA (20-26s)]
+Acesse o link direto no meu perfil da bio — liberação imediata no Pix D+0 por R$ 19,90.

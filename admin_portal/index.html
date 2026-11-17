@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Executivo de Operações &amp; Receita | Vudotsur Admin</title>
+  <meta name="description" content="Dashboard unificado de controle executivo para monitoramento de 6 hubs estratégicos, 10 ofertas low-ticket, telemetria de receita Pix e comandos de operação.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0f172a">
+
+  <script>
+    tailwind = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    .font-mono-code {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.2);
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col md:flex-row antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-200">
+
+  <!-- Toast Notification Container -->
+  <aside id="admin-toast" class="fixed bottom-6 right-6 z-50 hidden max-w-md px-4 py-3 rounded-xl bg-slate-900/95 dark:bg-slate-100/95 text-white dark:text-slate-900 text-xs sm:text-sm font-medium shadow-2xl backdrop-blur-md border border-slate-700/50 dark:border-slate-300/50 transition transform duration-200" role="status" aria-live="polite">
+  </aside>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="w-full md:w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800/80 flex flex-col flex-shrink-0 z-30 transition-colors duration-200">
+    <div class="p-5 border-b border-slate-200 dark:border-slate-800/80 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-black text-lg shadow-sm">
+          V
+        </div>
+        <div>
+          <span class="text-sm font-extrabold tracking-tight text-slate-950 dark:text-white block">Vudotsur Admin</span>
+          <span class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse inline-block"></span>
+            LIVE • $0 Custo Fixo
+          </span>
+        </div>
+      </div>
+      <button id="mobile-menu-toggle" type="button" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Alternar Menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation links -->
+    <nav id="sidebar-nav" class="p-4 space-y-1.5 flex-1 overflow-y-auto custom-scrollbar text-xs sm:text-sm font-medium">
+      <a href="#visao-geral" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-semibold transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+        <span>Visão Geral (KPIs)</span>
+      </a>
+      <a href="#hubs-principais" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+        <span>6 Hubs Estratégicos</span>
+      </a>
+      <a href="#catalogo-ofertas" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <span>10 Ofertas Low-Ticket</span>
+      </a>
+      <a href="#plano-acao-hoje" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">
+        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+        <span>Plano de Ação Hoje</span>
+      </a>
+      <a href="#politicas-antiban" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">
+        <svg class="w-4 h-4 text-rose-600 dark:text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        <span>Políticas Anti-Ban (Cofre)</span>
+      </a>
+      <a href="#registro-pix" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Registro de Receita Pix</span>
+      </a>
+      <a href="#saques-financeiro" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+        <span>Saques &amp; Financeiro</span>
+      </a>
+      <a href="#devops-comandos" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+        <span>Repositórios &amp; Comandos</span>
+      </a>
+    </nav>
+
+    <!-- Sidebar footer -->
+    <div class="p-4 border-t border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/50 text-xs space-y-2">
+      <div class="flex items-center justify-between text-slate-500 dark:text-slate-400">
+        <span>Chave Pix:</span>
+        <span class="font-mono-code font-bold text-slate-900 dark:text-slate-200">vudotsur@gmail.com</span>
+      </div>
+      <button id="sidebar-copy-pix" type="button" class="w-full py-2 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-300 text-xs font-semibold border border-slate-200 dark:border-slate-700/60 transition flex items-center justify-center gap-2">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+        <span>Copiar Chave Pix</span>
+      </button>
+      <div class="pt-2 text-[11px] text-slate-400 dark:text-slate-500 text-center">
+        Vudotsur Engine v2.4 • Zero AI-Slop
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-y-auto custom-scrollbar">
+
+    <!-- Topbar -->
+    <header class="sticky top-0 z-20 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/80 px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4 transition-colors duration-200">
+      <div class="flex items-center gap-3 min-w-0">
+        <h1 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white truncate">
+          Painel Executivo de Gestão &amp; Receita
+        </h1>
+        <span class="hidden sm:inline-flex px-2 py-0.5 rounded text-[11px] font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/50">
+          PROD / LIVE
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
+        <!-- Vitrine Link -->
+        <a href="../vitrine/index.html" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          <span>Abrir Vitrine Pública</span>
+        </a>
+
+        <!-- Quick Pix Copy -->
+        <button id="topbar-copy-pix" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          <span class="hidden xs:inline">Pix:</span> <span>vudotsur@gmail.com</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" type="button" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" aria-label="Alternar Tema Claro/Escuro" title="Alternar Tema Claro/Escuro">
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg id="theme-sun-icon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <!-- Moon Icon (shown in light mode) -->
+          <svg id="theme-moon-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="p-4 sm:p-8 space-y-10 max-w-7xl mx-auto w-full">
+
+      <!-- SECTION 1: Top KPI Bar -->
+      <section id="visao-geral" class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-950 dark:text-white">
+              Painel de Desempenho &amp; Métricas Chave
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              Visão macro consolidada de projetos em produção, saúde financeira e pontos de conversão.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Card 1: Projetos Ativos -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-2">
+            <div class="flex items-center justify-between text-slate-500 dark:text-slate-400">
+              <span class="text-xs font-bold uppercase tracking-wider">Projetos Ativos</span>
+              <span class="p-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </span>
+            </div>
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">
+              16 Ativos
+            </div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">
+              6 Hubs Estratégicos + 10 Ofertas LT01–LT10
+            </div>
+          </div>
+
+          <!-- Card 2: Custo Fixo Mensal -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-2">
+            <div class="flex items-center justify-between text-slate-500 dark:text-slate-400">
+              <span class="text-xs font-bold uppercase tracking-wider">Custo Fixo Mensal</span>
+              <span class="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </span>
+            </div>
+            <div class="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 tabular-nums">
+              R$ 0,00
+            </div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">
+              GitHub Pages + Cloudflare + Pix BCB ($0.00/mês)
+            </div>
+          </div>
+
+          <!-- Card 3: Receita LIVE Confirmada -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-2">
+            <div class="flex items-center justify-between text-slate-500 dark:text-slate-400">
+              <span class="text-xs font-bold uppercase tracking-wider">Receita LIVE Confirmada</span>
+              <span class="p-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+              </span>
+            </div>
+            <div id="kpi-receita-live" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums">
+              R$ 0,00
+            </div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between">
+              <span>Registro Manual Local</span>
+              <span class="text-amber-600 dark:text-amber-400 font-medium">Extrato Real no Banco</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Chave Pix Ativa -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-2">
+            <div class="flex items-center justify-between text-slate-500 dark:text-slate-400">
+              <span class="text-xs font-bold uppercase tracking-wider">Chave Pix Ativa</span>
+              <span class="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+              </span>
+            </div>
+            <div class="font-mono-code font-bold text-base sm:text-lg text-slate-900 dark:text-white truncate">
+              vudotsur@gmail.com
+            </div>
+            <button id="card-copy-pix" type="button" class="w-full py-1.5 px-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 text-xs font-semibold transition flex items-center justify-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+              <span>Copiar Chave 1-Clique</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: Acesso Rápido aos Hubs Principais -->
+      <section id="hubs-principais" class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-950 dark:text-white flex items-center gap-2">
+              <span>6 Hubs Estratégicos Integrados</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60">
+                100% Online
+              </span>
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              Acesso direto para visualização local e links canônicos publicados no GitHub Pages.
+            </p>
+          </div>
+        </div>
+
+        <div id="hubs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Hub cards generated via app.js -->
+        </div>
+
+        <!-- TikTok & TikTok Shop Automation Pipeline Card -->
+        <div id="tiktok-pipeline-card-container" class="pt-2">
+          <!-- Pipeline card generated via app.js -->
+        </div>
+      </section>
+
+      <!-- SECTION 3: Grade Completa das 10 Ofertas Low-Ticket -->
+      <section id="catalogo-ofertas" class="space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-950 dark:text-white flex items-center gap-2">
+              <span>Catálogo das 10 Ofertas Low-Ticket (LT01–LT10)</span>
+              <span id="offers-count-badge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
+                10 Ofertas
+              </span>
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              Páginas de conversão direta com chave Pix, Order Bump, QR Code SVG e mensagens prontas para WhatsApp.
+            </p>
+          </div>
+
+          <!-- Filters -->
+          <div class="flex flex-wrap items-center gap-2.5">
+            <div class="relative flex-1 sm:w-64">
+              <input id="offer-search-input" type="text" placeholder="Buscar por título, TXID ou público..." class="w-full pl-8 pr-3 py-2 text-xs sm:text-sm rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+              <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+            <select id="offer-category-select" class="px-3 py-2 text-xs sm:text-sm rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+              <option value="all">Todas as Categorias</option>
+              <option value="economia">Economia &amp; Finanças</option>
+              <option value="carreira">Carreira &amp; Trabalho</option>
+              <option value="juridico">Direitos &amp; Negociação</option>
+              <option value="estudos">Concursos &amp; ABNT</option>
+              <option value="negocios">Vendas &amp; Negócios</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="offers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+          <!-- Populated by app.js -->
+        </div>
+      </section>
+
+      <!-- SECTION: Plano de Ação Hoje (R$ 0 -> 1ª Venda) -->
+      <section id="plano-acao-hoje" class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-950 dark:text-white flex items-center gap-2">
+              <span>Plano de Ação Hoje (R$ 0 -> 1ª Venda)</span>
+              <span id="checklist-progress-badge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
+                0 de 7 concluídas
+              </span>
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              Roteiro de execução diária desatendida: R$ 0 de custo fixo, zero risco financeiro, distribuição orgânica direcionada e deploy da vitrine comercial em 60s.
+            </p>
+          </div>
+          <button id="reset-checklist-btn" type="button" class="self-start sm:self-auto text-xs text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 underline">
+            Reiniciar Checklist
+          </button>
+        </div>
+
+        <!-- 2-Column layout: Checklist on Left, Cloudflare & Fast Commands on Right -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Left: Interactive Checklist (7 cols) -->
+          <div class="lg:col-span-7 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span>Checklist de Execução de Hoje</span>
+              </h3>
+              <span class="text-[11px] text-slate-400 dark:text-slate-500">Salvo no navegador</span>
+            </div>
+            <!-- Checklist items rendered by app.js (Pure DOM) -->
+            <div id="action-checklist-container" class="space-y-2.5">
+            </div>
+          </div>
+
+          <!-- Right: Cloudflare Pages Deploy Commands (5 cols) -->
+          <div class="lg:col-span-5 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-xs">
+                  CF
+                </div>
+                <div>
+                  <h3 class="text-sm font-bold text-slate-900 dark:text-white">
+                    Deploy Cloudflare Pages ($0 Banda)
+                  </h3>
+                  <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">Uso Comercial Permitido • Anycast Global</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Gere o bundle estático consolidado e publique sua vitrine e ofertas low-ticket com SSL automático e zero custo fixo.
+              </p>
+
+              <!-- Command 1: Bundle -->
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-1.5">
+                <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 block">1. Empacotar Vitrine &amp; Ofertas (Bundle)</span>
+                <code class="font-mono-code text-[11px] text-indigo-600 dark:text-indigo-300 block break-all bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700/60">python scripts/build_cloudflare_bundle.py</code>
+                <button id="cmd-copy-bundle" type="button" class="w-full py-1.5 px-2.5 rounded-lg bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 transition flex items-center justify-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                  <span>Copiar Comando de Build</span>
+                </button>
+              </div>
+
+              <!-- Command 2: Deploy -->
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 space-y-1.5">
+                <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 block">2. Publicar na Cloudflare Pages Free</span>
+                <code class="font-mono-code text-[11px] text-indigo-600 dark:text-indigo-300 block break-all bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700/60">npx wrangler pages deploy dist_cloudflare --project-name=vitrine-brasil</code>
+                <button id="cmd-copy-deploy-cf" type="button" class="w-full py-1.5 px-2.5 rounded-lg bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 transition flex items-center justify-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                  <span>Copiar Comando de Deploy</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pitches Orgânicos de Conversão Prontos (LT01, LT02, LT08) -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                Pitches Orgânicos de Alta Conversão (Copiar &amp; Colar)
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">
+                Textos validados para WhatsApp, Reels, Shorts e Stories sem jargões técnicos: foco em dor real e benefício imediato.
+              </p>
+            </div>
+          </div>
+
+          <div id="pitches-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            <!-- Populated via pure DOM in app.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Políticas Anti-Ban & Boas Práticas (Cofre Vivo) -->
+      <section id="politicas-antiban" class="space-y-6">
+        <div>
+          <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-950 dark:text-white flex items-center gap-2">
+            <span>Políticas Anti-Ban &amp; Boas Práticas (Cofre Vivo)</span>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60">
+              8 Plataformas Auditadas
+            </span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Matriz de conformidade regulatória, termos de uso e controles mandatórios para garantir zero bloqueios de contas ou desativações de tráfego.
+          </p>
+        </div>
+
+        <!-- Explicit Banner -->
+        <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 flex items-start gap-3">
+          <svg class="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          <div>
+            <h3 class="text-xs font-bold text-amber-900 dark:text-amber-200 uppercase tracking-wide">Regra Permanente do Ecossistema</h3>
+            <p class="text-xs text-amber-800 dark:text-amber-300 mt-0.5 font-medium">Regra Permanente: ao adicionar qualquer nova plataforma/serviço, acionar Banca 26/26 (phd-roundtable-chat) e atualizar o Cofre.</p>
+          </div>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="flex flex-wrap items-center gap-2.5">
+          <div class="relative flex-1 sm:w-64">
+            <input id="policy-search-input" type="text" placeholder="Buscar por plataforma, gatilho de ban ou controle..." class="w-full pl-8 pr-3 py-2 text-xs sm:text-sm rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+            <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+          <select id="policy-category-select" class="px-3 py-2 text-xs sm:text-sm rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+            <option value="all">Todas as Categorias</option>
+            <option value="Paid Advertising">Paid Advertising (Google/Meta)</option>
+            <option value="Static Web Hosting">Static Web Hosting (Cloudflare/GitHub)</option>
+            <option value="Infoproduct Gateways">Infoproduct Gateways &amp; MoR</option>
+            <option value="Direct Messaging">Direct Messaging (WhatsApp)</option>
+            <option value="Brazilian Consumer Law">Direito do Consumidor &amp; LGPD</option>
+            <option value="Instant Payment">Bacen Pix &amp; SPI</option>
+          </select>
+        </div>
+
+        <!-- Policies Grid -->
+        <div id="policies-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Populated by app.js (Pure DOM) -->
+        </div>
+      </section>
+
+      <!-- SECTION 4: Registro Manual de Receita Pix (Local Storage) -->
+      <section id="registro-pix" class="space-y-4">
+        <div>
+          <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-950 dark:text-white flex items-center gap-2">
+            <span>Registro de Receita Pix Confirmada</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60">
+              Armazenamento Local Seguro
+            </span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Anotação voluntária de pagamentos recebidos em <strong class="text-slate-800 dark:text-slate-200 font-mono-code">vudotsur@gmail.com</strong> para controle pessoal. O extrato bancário oficial é a única fonte definitiva de liquidação financeira.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Form -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-4">
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white">
+              Novo Lançamento Pix
+            </h3>
+            <form id="pix-ledger-form" class="space-y-3">
+              <div>
+                <label for="ledger-date" class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Data / Hora</label>
+                <input id="ledger-date" type="date" required class="w-full px-3 py-2 text-xs sm:text-sm rounded-lg bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              </div>
+              <div>
+                <label for="ledger-amount" class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Valor Recebido (R$)</label>
+                <input id="ledger-amount" type="number" step="0.01" min="0.01" placeholder="Ex: 19.90" required class="w-full px-3 py-2 text-xs sm:text-sm rounded-lg bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              </div>
+              <div>
+                <label for="ledger-offer" class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Oferta / Origem</label>
+                <select id="ledger-offer" class="w-full px-3 py-2 text-xs sm:text-sm rounded-lg bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                  <option value="LT01">LT01 - Mercado Economia (R$ 9,90)</option>
+                  <option value="LT02">LT02 - Defesa Consumidor Procon (R$ 19,90)</option>
+                  <option value="LT03">LT03 - CLT vs PJ &amp; Impostos (R$ 19,90)</option>
+                  <option value="LT04">LT04 - Currículo Anti-ATS (R$ 14,90)</option>
+                  <option value="LT05">LT05 - Dívidas Zero Bola de Neve (R$ 12,90)</option>
+                  <option value="LT06">LT06 - TCC ABNT Anti-Erro (R$ 14,90)</option>
+                  <option value="LT07">LT07 - Edital Concursos Ebbinghaus (R$ 19,90)</option>
+                  <option value="LT08">LT08 - 50 Mensagens WhatsApp (R$ 17,90)</option>
+                  <option value="LT09">LT09 - Prompts Pequenos Negócios (R$ 24,90)</option>
+                  <option value="LT10">LT10 - Editais &amp; Licitações (R$ 18,90)</option>
+                  <option value="OUTRO">Outro / Doação Direta</option>
+                </select>
+              </div>
+              <div>
+                <label for="ledger-notes" class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Identificador / Nota (Opcional)</label>
+                <input id="ledger-notes" type="text" placeholder="Ex: Pix recebido 14:32 pelo WhatsApp" class="w-full px-3 py-2 text-xs sm:text-sm rounded-lg bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              </div>
+              <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                <span>Salvar Registro Local</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Entries Table & Summary -->
+          <div class="lg:col-span-2 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-sm font-bold text-slate-900 dark:text-white">
+                    Histórico de Lançamentos Locais
+                  </h3>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">
+                    Dados persistidos exclusivamente no seu navegador (localStorage).
+                  </p>
+                </div>
+                <button id="clear-ledger-btn" type="button" class="text-xs text-rose-600 dark:text-rose-400 hover:underline">
+                  Limpar Todos
+                </button>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                  <thead>
+                    <tr class="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
+                      <th class="py-2 px-3 font-semibold">Data</th>
+                      <th class="py-2 px-3 font-semibold">Oferta</th>
+                      <th class="py-2 px-3 font-semibold">Valor</th>
+                      <th class="py-2 px-3 font-semibold">Nota</th>
+                      <th class="py-2 px-3 font-semibold text-right">Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody id="ledger-table-body" class="divide-y divide-slate-100 dark:divide-slate-800/60">
+                    <!-- Populated by app.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Ledger Total Box -->
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-800/40 p-4 rounded-xl">
+              <div>
+                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">Total Registrado Localmente:</span>
+                <span id="ledger-total-value" class="text-xl font-extrabold text-emerald-600 dark:text-emerald-400 tabular-nums">R$ 0,00</span>
+              </div>
+              <div class="text-[11px] text-slate-500 dark:text-slate-400 max-w-xs text-right">
+                O extrato bancário oficial do seu banco vinculado a <span class="font-mono-code font-bold">vudotsur@gmail.com</span> é a única fonte com valor contábil.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: Painel de Saques, Repositórios & Devops (1-clique) -->
+      <section id="saques-financeiro" class="space-y-6">
+        <div>
+          <h2 class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-950 dark:text-white">
+            Saques, Infraestrutura &amp; Comandos de Operação
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Fluxo financeiro sem intermediários, repositórios de código e atalhos rápidos de verificação de integridade.
+          </p>
+        </div>
+
+        <!-- Saques & Gateways -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Pix Banco Central -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                Pix
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">
+                  Pix Banco Central do Brasil (Saque Instantâneo)
+                </h3>
+                <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">0% de taxa de gateway • Liquidação em 3s</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Os pagamentos realizados pelos clientes via Pix caem <strong>instantaneamente</strong> e diretamente na conta bancária vinculada à chave <code class="font-mono-code px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-semibold">vudotsur@gmail.com</code>. Não há saldo retido em gateway de terceiros nem prazo de carência (D+0).
+            </p>
+            <div class="pt-2 flex items-center gap-3">
+              <button id="section-copy-pix" type="button" class="py-2 px-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                <span>Copiar Chave Pix</span>
+              </button>
+              <span class="text-xs text-slate-500 dark:text-slate-400">Extrato no seu banco</span>
+            </div>
+          </div>
+
+          <!-- Polar.sh MoR -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold">
+                MoR
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">
+                  Polar.sh MoR (Merchant of Record Global)
+                </h3>
+                <span class="text-xs text-indigo-600 dark:text-indigo-400 font-semibold">Cartões Internacionais &amp; Assinaturas • $0/mês</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Plataforma de Merchant of Record para vendas globais no cartão e doações recorrentes. Gerencia compliance fiscal e repasses automáticos direto para sua conta bancária sem custo fixo mensal.
+            </p>
+            <div class="pt-2 flex items-center gap-2">
+              <a href="https://polar.sh/dashboard" target="_blank" rel="noopener noreferrer" class="py-2 px-3.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition inline-flex items-center gap-1.5 shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                <span>Acessar Painel Polar.sh</span>
+              </a>
+              <button id="copy-polar-link" type="button" class="py-2 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition">
+                Copiar Link
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repositórios & Links de Deploy -->
+        <div class="space-y-3">
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white">
+            Repositórios de Código &amp; Plataformas de Hospedagem
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- GitHub Admin -->
+            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-2">
+              <div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Repositório Admin</div>
+              <div class="text-sm font-semibold text-slate-900 dark:text-white truncate">vudotsur / admin</div>
+              <div class="flex items-center gap-2 pt-1">
+                <a href="https://github.com/vudotsur/admin" target="_blank" rel="noopener noreferrer" class="text-xs text-indigo-600 dark:text-indigo-400 font-semibold hover:underline inline-flex items-center gap-1">
+                  <span>Abrir GitHub</span>
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- GitHub Pages Paper-Intro -->
+            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-2">
+              <div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Deploy GitHub Pages</div>
+              <div class="text-sm font-semibold text-slate-900 dark:text-white truncate">vudotsur / paper-intro</div>
+              <div class="flex items-center gap-2 pt-1">
+                <a href="https://github.com/vudotsur/paper-intro" target="_blank" rel="noopener noreferrer" class="text-xs text-indigo-600 dark:text-indigo-400 font-semibold hover:underline inline-flex items-center gap-1">
+                  <span>Abrir Repositório</span>
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Polar.sh Dashboard -->
+            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-2">
+              <div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Gateway MoR Global</div>
+              <div class="text-sm font-semibold text-slate-900 dark:text-white truncate">polar.sh / dashboard</div>
+              <div class="flex items-center gap-2 pt-1">
+                <a href="https://polar.sh/dashboard" target="_blank" rel="noopener noreferrer" class="text-xs text-indigo-600 dark:text-indigo-400 font-semibold hover:underline inline-flex items-center gap-1">
+                  <span>Abrir Polar.sh</span>
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Cloudflare Pages -->
+            <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-2">
+              <div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">CDN &amp; DNS Seguro</div>
+              <div class="text-sm font-semibold text-slate-900 dark:text-white truncate">dash.cloudflare.com</div>
+              <div class="flex items-center gap-2 pt-1">
+                <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="text-xs text-indigo-600 dark:text-indigo-400 font-semibold hover:underline inline-flex items-center gap-1">
+                  <span>Abrir Console</span>
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DevOps & Comandos 1-Clique -->
+        <div id="devops-comandos" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 shadow-sm space-y-4">
+          <div>
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span>Comandos de Operação &amp; Testes (1-Clique Copiar)</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300">
+                CLI Rust-Grade
+              </span>
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+              Execute diretamente no PowerShell ou terminal para rodar a suíte de testes e sincronizar alterações.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <!-- Command 1: Testes -->
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 flex flex-col justify-between gap-3">
+              <div class="space-y-1">
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block">1. Bateria Completa de Testes TDD</span>
+                <code class="font-mono-code text-xs text-indigo-600 dark:text-indigo-300 block break-all bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700/60">
+                  python -m unittest discover -s tests
+                </code>
+              </div>
+              <button id="cmd-copy-tests" type="button" class="w-full py-2 px-3 rounded-lg bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 transition flex items-center justify-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                <span>Copiar Comando de Testes</span>
+              </button>
+            </div>
+
+            <!-- Command 2: Ban Shield -->
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 flex flex-col justify-between gap-3">
+              <div class="space-y-1">
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block">2. Verificação Ban Shield QA Guard</span>
+                <code class="font-mono-code text-xs text-indigo-600 dark:text-indigo-300 block break-all bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700/60">
+                  python .gemini/skills/phd-ban-shield-qa-guard/scripts/verify_shield.py
+                </code>
+              </div>
+              <button id="cmd-copy-shield" type="button" class="w-full py-2 px-3 rounded-lg bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 transition flex items-center justify-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                <span>Copiar Comando Ban Shield</span>
+              </button>
+            </div>
+
+            <!-- Command 3: Git Sync -->
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 flex flex-col justify-between gap-3">
+              <div class="space-y-1">
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block">3. Sincronização Automática com GitHub</span>
+                <code class="font-mono-code text-xs text-indigo-600 dark:text-indigo-300 block break-all bg-white dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700/60">
+                  powershell -ExecutionPolicy Bypass -File .gemini/scripts/sync-github.ps1 "sync"
+                </code>
+              </div>
+              <button id="cmd-copy-sync" type="button" class="w-full py-2 px-3 rounded-lg bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 transition flex items-center justify-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                <span>Copiar Comando Sync Git</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="pt-8 border-t border-slate-200 dark:border-slate-800/80 text-center text-xs text-slate-500 dark:text-slate-400 space-y-2 pb-12">
+        <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium">
+          <a href="../vitrine/index.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Vitrine Nacional</a>
+          <span>•</span>
+          <a href="../low_ticket_10/index.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Hub 10 Low-Ticket</a>
+          <span>•</span>
+          <a href="https://github.com/vudotsur/admin" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Repositório Admin</a>
+          <span>•</span>
+          <a href="https://github.com/vudotsur/paper-intro" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Deploy GitHub Pages</a>
+        </div>
+        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+          Vudotsur Engine • Arquitetura Rust-Grade • Zero Sinks XSS • Segurança End-to-End
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

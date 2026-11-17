@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termômetro do Bolso 2026 | Supermercado, Combustível ANP &amp; Conta de Luz</title>
+  <meta name="description" content="Radar interativo de preços em 30 dias (Café, Carne, Azeite, Arroz, Leite, Gasolina ANP, Diesel, Energia) com repasse PTAX BCB e subitens IPCA IBGE.">
+  <meta property="og:title" content="Termômetro do Bolso 2026 — Vai Subir ou Cair nos Próximos 30 Dias?">
+  <meta property="og:description" content="Calcule o impacto no seu mercado, combustível ANP e conta de luz com dados do IBGE IPCA e Banco Central PTAX/Selic. Gere alerta grátis para WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://portfolio.local/poc_1_bolso_mercado/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0b0f17; color: #f1f5f9; }
+    .font-serif-ed { font-family: 'Playfair Display', serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Top Editorial Ticker -->
+  <header class="border-b border-slate-800 bg-slate-950/90 sticky top-0 z-30 backdrop-blur">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="font-mono-code text-xs uppercase tracking-wider text-amber-400 font-semibold">RADAR IPCA/IBGE + BCB PTAX + ANP</span>
+      </div>
+      <div class="flex items-center gap-3 text-xs font-mono-code text-slate-400">
+        <span>PTAX Ref: <strong id="hdr-ptax" class="text-slate-100">R$ 5,82</strong></span>
+        <span>•</span>
+        <span>Selic: <strong id="hdr-selic" class="text-slate-100">14,25% a.a.</strong></span>
+        <button id="btn-open-pix-top" type="button" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3 py-1 rounded text-xs transition">
+          Alerta Semanal R$ 9,90
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+    <!-- Hero -->
+    <section class="space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+        <span>UTILIDADE PÚBLICA • ECONOMIA DOMÉSTICA &amp; COMÉRCIO</span>
+      </div>
+      <h1 class="font-serif-ed text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        Termômetro do Bolso: O Que Vai Subir ou Cair nos Próximos 30 Dias?
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-3xl">
+        Cruzamento estatístico de subitens do <strong>IPCA (IBGE)</strong>, repasse cambial <strong>PTAX (Banco Central)</strong> e paridade <strong>ANP / Bandeira Tarifária</strong>. Descubra o que estocar hoje e o que esperar baixar antes de ir ao mercado ou abastecer.
+      </p>
+    </section>
+
+    <!-- Controls Grid -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+      <div class="lg:col-span-7 space-y-5">
+        <h2 class="text-sm font-mono-code uppercase tracking-wider text-amber-400 font-semibold">
+          1. Configure Seu Perfil e Região
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="select-region" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Região / Praça</label>
+            <select id="select-region" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none">
+              <option value="sul">Sul (Londrina/PR, Curitiba, POA)</option>
+              <option value="sudeste">Sudeste (SP, RJ, BH)</option>
+              <option value="centro">Centro-Oeste (Brasília, Goiânia)</option>
+              <option value="nordeste">Nordeste (Recife, Salvador, Fortaleza)</option>
+              <option value="norte">Norte (Manaus, Belém)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="select-profile" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Perfil de Consumo</label>
+            <select id="select-profile" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none">
+              <option value="familia">Família (Supermercado + Luz + Carro)</option>
+              <option value="restaurante">Restaurante / Padaria / Marmitaria</option>
+              <option value="motorista">Motorista de App / Entregador (ANP)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="space-y-4 pt-1">
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <label for="input-spend" class="text-slate-300 font-medium">Gasto Mensal Atual (Mercado + Combustível + Luz)</label>
+              <span id="lbl-spend" class="font-mono-code font-bold text-amber-400">R$ 2.400</span>
+            </div>
+            <input id="input-spend" type="range" min="600" max="25000" step="100" value="2400" class="w-full accent-amber-500 cursor-pointer">
+            <div class="flex justify-between text-[11px] text-slate-500 font-mono-code">
+              <span>R$ 600 (Individual)</span>
+              <span>R$ 2.400 (Família Média)</span>
+              <span>R$ 25.000 (Comércio)</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <label for="input-ptax" class="text-slate-300 font-medium">Câmbio Dólar PTAX (R$/US$)</label>
+                <span id="lbl-ptax" class="font-mono-code font-bold text-emerald-400">R$ 5,82</span>
+              </div>
+              <input id="input-ptax" type="range" min="4.80" max="6.80" step="0.02" value="5.82" class="w-full accent-emerald-400 cursor-pointer">
+            </div>
+
+            <div>
+              <label for="select-flag" class="block text-xs font-medium text-slate-300 mb-1">Bandeira Tarifária ANEEL</label>
+              <select id="select-flag" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:border-amber-400 focus:outline-none">
+                <option value="verde">Verde (Sem custo extra kWh)</option>
+                <option value="amarela" selected>Amarela (+R$ 1,885 / 100 kWh)</option>
+                <option value="vermelha1">Vermelha Patamar 1 (+R$ 4,463 / 100 kWh)</option>
+                <option value="vermelha2">Vermelha Patamar 2 (+R$ 7,877 / 100 kWh)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary Impact Box -->
+      <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-4">
+        <div class="space-y-2">
+          <span class="text-xs font-mono-code uppercase text-slate-400">Projeção em 30 Dias no Seu Bolso</span>
+          <div class="flex items-baseline gap-3">
+            <span id="out-monthly-delta" class="text-3xl sm:text-4xl font-extrabold font-mono-code text-rose-400">+R$ 114,80</span>
+            <span id="out-pct-delta" class="text-xs font-mono-code px-2 py-0.5 rounded bg-rose-500/20 text-rose-300">+4,78% / mês</span>
+          </div>
+          <p id="out-stock-advice" class="text-xs text-slate-300 leading-relaxed">
+            Estocar agora: Café Torrado/Moído, Carne Bovina (Acém/Patinho) e Gasolina antes do repasse cambial. Aguardar queda: Arroz e Leite UHT.
+          </p>
+        </div>
+
+        <div class="bg-emerald-950/40 border border-emerald-700/40 rounded-lg p-3 space-y-1">
+          <div class="text-xs font-semibold text-emerald-300">Economia Estimada ao Antecipar Compras:</div>
+          <div id="out-savings-est" class="text-xl font-bold font-mono-code text-emerald-400">R$ 68,40 neste mês</div>
+          <div class="text-[11px] text-slate-400">Baseado na elasticidade de repasse de 21 dias entre atacado (IGP-M/PTAX) e gôndola varejista (IPCA).</div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+          <a id="btn-whatsapp-share" href="https://wa.me/?text=Termometro%20do%20Bolso" target="_blank" rel="noopener noreferrer"
+             class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition flex items-center justify-center gap-2">
+            <span>Compartilhar Card no WhatsApp</span>
+          </a>
+          <button id="btn-copy-card" type="button"
+                  class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-lg text-xs transition">
+            Copiar Resumo
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8-Item Radar Grid -->
+    <section class="space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-lg sm:text-xl font-bold text-white">
+          Radar de 8 Itens Essenciais (Supermercado, ANP &amp; Energia)
+        </h2>
+        <span class="text-xs font-mono-code text-slate-400">Fontes: IBGE SIDRA IPCA • BCB Olinda PTAX • ANP Síntese Semanal</span>
+      </div>
+
+      <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Populated via pure DOM nodes in app.js (ZERO innerHTML) -->
+      </div>
+    </section>
+
+    <!-- WhatsApp Preview & Monetization Banner -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3 flex flex-col justify-between">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono-code uppercase text-emerald-400 font-semibold">PRÉVIA DO CARD DE ALERTA PARA WHATSAPP</span>
+            <span id="copy-feedback" class="text-xs font-mono-code text-amber-400 hidden">Copiado!</span>
+          </div>
+          <pre id="whatsapp-preview-box" class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs font-mono-code text-slate-200 whitespace-pre-wrap leading-relaxed overflow-x-auto"></pre>
+        </div>
+        <p class="text-xs text-slate-400">
+          Ideal para enviar no grupo da família, condomínio, motoristas de aplicativo ou equipe de compras do restaurante.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5 bg-gradient-to-br from-amber-500/15 via-slate-900 to-slate-950 border border-amber-500/40 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+        <div class="space-y-2">
+          <span class="inline-block px-2.5 py-0.5 rounded bg-amber-500 text-slate-950 font-mono-code font-bold text-xs">
+            ASSINATURA POPULAR • PIX INSTANTÂNEO
+          </span>
+          <h3 class="text-xl font-bold text-white">
+            Planilha &amp; Alerta Semanal de Compra/Estocagem
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Receba toda segunda-feira às 07h30 no seu WhatsApp a lista exata dos itens em queda na sua região + planilha automática de controle para famílias, restaurantes e motoristas.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1 pt-1 font-mono-code">
+            <li>✓ Radar Regional (Londrina/PR, Capitais e Interior)</li>
+            <li>✓ Alerta de Reajuste Gasolina/Diesel ANP antes do posto</li>
+            <li>✓ Planilha de Estoque Doméstico &amp; Comércio (Excel/Sheets)</li>
+          </ul>
+        </div>
+
+        <div class="pt-2 border-t border-slate-800 flex items-center justify-between gap-3">
+          <div>
+            <span class="text-xs text-slate-400 block">Acesso Completo + Alertas</span>
+            <span class="text-2xl font-extrabold font-mono-code text-amber-400">R$ 9,90</span>
+            <span class="text-[11px] text-slate-400"> / pagamento único via Pix</span>
+          </div>
+          <button id="btn-open-pix-card" type="button"
+                  class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold px-5 py-3 rounded-xl text-sm transition shadow-lg">
+            Desbloquear por R$ 9,90
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Configurable Pix / Polar.sh Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <span class="text-xs font-mono-code uppercase text-amber-400 font-semibold">CHECKOUT SEGURO • PIX / POLAR.SH</span>
+          <h3 id="modal-title" class="text-lg font-bold text-white mt-0.5">Planilha &amp; Alerta Semanal de Compra (R$ 9,90)</h3>
+        </div>
+        <button id="btn-close-modal" type="button" class="text-slate-400 hover:text-white text-sm font-mono-code px-2 py-1 rounded">
+          [ESC]
+        </button>
+      </div>
+
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+        <!-- Padrão EMVCo BR.GOV.BCB.PIX -->
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Status Chave Pix:</span>
+          <span id="modal-env-badge" class="text-emerald-400 font-semibold">CHAVE ATIVA • vudotsur@gmail.com</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Valor Pix (BCB):</span>
+          <span class="text-white font-bold">R$ 9,90</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Identificador (txid):</span>
+          <span id="modal-txid" class="text-amber-300">POC01</span>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-key-input" class="block text-xs font-mono-code text-slate-400">Chave Pix (E-mail Direto):</label>
+        <div class="flex gap-2">
+          <input id="pix-key-input" type="text" readonly value="vudotsur@gmail.com"
+                 class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-emerald-300 font-bold select-all">
+          <button id="btn-copy-pix-key" type="button" class="bg-slate-800 hover:bg-slate-700 text-amber-300 font-mono-code font-bold px-3 py-2 rounded-lg text-xs transition">
+            Copiar Chave Pix
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-brcode-input" class="block text-xs font-mono-code text-slate-400">Pix Copia e Cola (EMVCo Bacen c/ valor R$ 9,90 preenchido):</label>
+        <input id="pix-brcode-input" type="text" readonly
+               value="00020126400014br.gov.bcb.pix0118vudotsur@gmail.com52040000530398654049.905802BR5908VUDOTSUR6008LONDRINA62090505POC01630403CD"
+               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-slate-300 select-all">
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+        <button id="btn-copy-pix" type="button" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm transition">
+          Copiar Código Pix Copia e Cola
+        </button>
+        <a id="link-polar-fallback" href="https://polar.sh" target="_blank" rel="noopener noreferrer"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition">
+          Cartão Global (Polar.sh)
+        </a>
+      </div>
+
+      <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
+        <button id="btn-unlock-pro" type="button" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-lg text-xs transition">
+          Já Paguei • Baixar Planilha Pro (CSV)
+        </button>
+        <a id="link-confirm-pix" href="mailto:vudotsur@gmail.com?subject=Comprovante%20Pix%20POC01%20Termometro%20do%20Bolso"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono-code py-2 px-3 rounded-lg text-xs text-center transition">
+          Confirmar por E-mail
+        </a>
+      </div>
+      <p id="pix-copied-msg" class="text-xs font-mono-code text-emerald-400 text-center hidden">
+        Copiado para a área de transferência! Chave: vudotsur@gmail.com
+      </p>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 px-4 text-center text-xs text-slate-500 font-mono-code">
+    Termômetro do Bolso 2026 • Dados Abertos IBGE SIDRA + BCB Olinda PTAX + ANP • Zero raw HTML injection
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

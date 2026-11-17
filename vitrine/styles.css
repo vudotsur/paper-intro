@@ -1,0 +1,111 @@
+/* vitrine/styles.css - Crisp Stripe/Linear/Raycast Editorial Storefront */
+:root {
+  --bg-page: #fafafa;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f4f4f5;
+  --ink-primary: #09090b;
+  --ink-secondary: #52525b;
+  --ink-muted: #71717a;
+  --border-hairline: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --accent-emerald: #059669;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-page);
+  color: var(--ink-primary);
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.025em;
+}
+
+.tabular-price {
+  font-variant-numeric: tabular-nums;
+}
+
+.font-mono-code {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.site-header {
+  background: rgba(250, 250, 250, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.bento-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 14px;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.bento-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 8px 24px -12px rgba(9, 9, 11, 0.08);
+  transform: translateY(-1px);
+}
+
+.bento-bundle-primary {
+  background: var(--bg-surface);
+  border: 1.5px solid #09090b;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px -16px rgba(9, 9, 11, 0.14);
+}
+
+.bento-bundle-secondary {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 14px;
+}
+
+.filter-pill {
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-surface);
+  color: var(--ink-secondary);
+  transition: all 0.14s ease;
+}
+
+.filter-pill:hover {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+}
+
+.filter-pill[aria-pressed="true"] {
+  background: var(--ink-primary);
+  border-color: var(--ink-primary);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.qr-frame {
+  background: #ffffff;
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  padding: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-frame svg {
+  width: 200px;
+  height: 200px;
+  display: block;
+  shape-rendering: crispEdges;
+}

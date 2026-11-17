@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprar Agora ou Esperar? | Detector de Desconto Real vs Black Fraude</title>
+  <meta name="description" content="Descubra se o preço de celulares, notebooks, geladeiras, TVs e passagens aéreas está realmente em promoção ou se é 'metade do dobro'. Calculador PTAX + Selic.">
+  <meta property="og:title" content="Comprar Agora ou Esperar? — Detector de Desconto Real vs Black Fraude">
+  <meta property="og:description" content="Não caia em falso desconto. Avaliamos dólar PTAX, curva sazonal do varejo e desconto Pix vs Parcelado com a Selic atual.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://portfolio.local/poc_3_hora_certa_comprar/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0b0d14; color: #f8fafc; }
+    .font-serif-ed { font-family: 'Playfair Display', serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-violet-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/90 sticky top-0 z-30 backdrop-blur">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-violet-400 animate-pulse"></span>
+        <span class="font-mono-code text-xs uppercase tracking-wider text-violet-400 font-semibold">AUDITOR VAREJO • BCB PTAX + SELIC + SAZONALIDADE</span>
+      </div>
+      <div class="flex items-center gap-3 text-xs font-mono-code text-slate-400">
+        <span>CDI Líquido: <strong class="text-slate-100">0,94% a.m.</strong></span>
+        <button id="btn-open-pix-top" type="button" class="bg-violet-500 hover:bg-violet-400 text-white font-bold px-3 py-1 rounded text-xs transition">
+          Alerta Preço-Alvo R$ 9,90
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+    <!-- Hero -->
+    <section class="space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-semibold">
+        <span>DEFESA DO CONSUMIDOR • DETECTOR DE "METADE DO DOBRO"</span>
+      </div>
+      <h1 class="font-serif-ed text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        Comprar Agora ou Esperar? Detector de Desconto Real vs. "Black Fraude"
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-3xl">
+        Antes de passar o cartão ou fazer o Pix, verifique se o preço anunciado está abaixo da mediana de 90 dias, como o <strong>Dólar PTAX</strong> afeta o estoque e se vale mais a pena pagar à vista ou parcelar aplicando na <strong>Selic</strong>.
+      </p>
+    </section>
+
+    <!-- Main Audit Console -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+      <div class="lg:col-span-7 space-y-5">
+        <h2 class="text-sm font-mono-code uppercase tracking-wider text-violet-400 font-semibold">
+          1. Dados da Oferta que Você Encontrou
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="select-category" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Categoria do Produto</label>
+            <select id="select-category" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-400 focus:outline-none">
+              <option value="smartphone" selected>Smartphone / Celular (Alta Dolarização)</option>
+              <option value="notebook">Notebook / Hardware / GPU</option>
+              <option value="tv">Smart TV 4K / Áudio (Curva Sazonal)</option>
+              <option value="eletro">Geladeira / Lavadora / Ar-Condicionado</option>
+              <option value="passagem">Passagem Aérea Nacional / Internacional</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="select-window" class="block text-xs font-semibold uppercase text-slate-400 mb-1">Momento / Sazonalidade do Varejo</label>
+            <select id="select-window" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-400 focus:outline-none">
+              <option value="pre_promo" selected>Pré-Evento (15 a 30 dias antes de grande promoção)</option>
+              <option value="dia_promo">Dia de Megapromoção / Black Friday / Liquidação</option>
+              <option value="pos_lancamento">Pós-Lançamento de Modelo Novo (Queima de Estoque)</option>
+              <option value="alta_demanda">Alta Temporada / Véspera de Data Comemorativa</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label for="input-price-now" class="block text-xs font-medium text-slate-300 mb-1">Preço Hoje no Pix (R$)</label>
+            <input id="input-price-now" type="number" min="100" max="100000" step="50" value="3199"
+                   class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm font-mono-code text-white focus:border-violet-400 focus:outline-none">
+          </div>
+
+          <div>
+            <label for="input-price-ref" class="block text-xs font-medium text-slate-300 mb-1">Preço Médio 90 Dias (R$)</label>
+            <input id="input-price-ref" type="number" min="100" max="100000" step="50" value="2899"
+                   class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm font-mono-code text-white focus:border-violet-400 focus:outline-none">
+          </div>
+
+          <div>
+            <label for="input-price-card" class="block text-xs font-medium text-slate-300 mb-1">Total em 10x Sem Juros (R$)</label>
+            <input id="input-price-card" type="number" min="100" max="100000" step="50" value="3499"
+                   class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm font-mono-code text-white focus:border-violet-400 focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-xs mb-1">
+            <label for="input-ptax-shock" class="text-slate-300 font-medium">Variação Recente do Dólar PTAX (Últimos 30 dias)</label>
+            <span id="lbl-ptax-shock" class="font-mono-code font-bold text-amber-400">+1,8%</span>
+          </div>
+          <input id="input-ptax-shock" type="range" min="-6.0" max="8.0" step="0.2" value="1.8" class="w-full accent-violet-500 cursor-pointer">
+          <div class="flex justify-between text-[11px] text-slate-500 font-mono-code">
+            <span>-6% (Dólar em Queda)</span>
+            <span>0% (Estável)</span>
+            <span>+8% (Forte Alta Cambial)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Immediate Verdict Panel -->
+      <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-4">
+        <div class="space-y-2">
+          <span class="text-xs font-mono-code uppercase text-slate-400">Veredito Algorítmico Imediato</span>
+          <div id="verdict-badge" class="inline-block px-3 py-1 rounded-lg font-mono-code font-extrabold text-sm bg-rose-500/20 text-rose-300 border border-rose-500/40">
+            DESCONTO INFLADO • AGUARDAR 18 DIAS
+          </div>
+          <div class="pt-1">
+            <span class="text-xs text-slate-400 block">Preço-Alvo Justo Recomendado:</span>
+            <span id="out-target-price" class="text-3xl font-extrabold font-mono-code text-emerald-400">R$ 2.580,11</span>
+          </div>
+          <p id="out-verdict-reason" class="text-xs text-slate-300 leading-relaxed">
+            O preço atual está +10,35% acima da mediana de 90 dias, típico de inflação pré-evento ("metade do dobro").
+          </p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-3 space-y-1">
+          <span class="text-xs font-mono-code text-violet-300 font-semibold block">Pix à Vista vs. 10x Aplicando no CDI (Selic):</span>
+          <p id="out-payment-verdict" class="text-xs text-slate-200 leading-relaxed">
+            O desconto no Pix é de 8,57%, superando o ganho do CDI em 10 meses (~4,92%). Pague no Pix.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2.5">
+          <a id="btn-whatsapp-share" href="https://wa.me/?text=Detector%20de%20Desconto" target="_blank" rel="noopener noreferrer"
+             class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition">
+            Compartilhar no WhatsApp
+          </a>
+          <button id="btn-copy-verdict" type="button"
+                  class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-lg text-xs transition">
+            Copiar Análise
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benchmark Products Table / Cards -->
+    <section class="space-y-3">
+      <h2 class="text-lg font-bold text-white">Exemplos Reais Monitorados Hoje (Clique para Simular)</h2>
+      <div id="presets-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <!-- Populated via pure DOM in app.js -->
+      </div>
+    </section>
+
+    <!-- WhatsApp Preview + Pix Monetization -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3 flex flex-col justify-between">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono-code uppercase text-violet-400 font-semibold">CARD DE ALERTA CONTRA "BLACK FRAUDE"</span>
+            <span id="copy-feedback" class="text-xs font-mono-code text-emerald-400 hidden">Copiado!</span>
+          </div>
+          <pre id="whatsapp-preview-box" class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs font-mono-code text-slate-200 whitespace-pre-wrap leading-relaxed overflow-x-auto"></pre>
+        </div>
+        <p class="text-xs text-slate-400">
+          Compartilhe com amigos e familiares antes de comprarem eletrônicos ou eletrodomésticos.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5 bg-gradient-to-br from-violet-500/15 via-slate-900 to-slate-950 border border-violet-500/40 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+        <div class="space-y-2">
+          <span class="inline-block px-2.5 py-0.5 rounded bg-violet-500 text-white font-mono-code font-bold text-xs">
+            CAÇADOR DE PREÇO-ALVO • PIX R$ 9,90
+          </span>
+          <h3 class="text-xl font-bold text-white">
+            Alerta Instantâneo de Preço-Alvo no WhatsApp
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Não fique atualizando abas de lojas o dia todo. Cadastre até 5 produtos e receba aviso imediato no WhatsApp no segundo exato em que atingirem o <strong>Preço-Alvo Justo</strong>.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1 pt-1 font-mono-code">
+            <li>✓ Monitoramento 24/7 sem anúncios ou links patrocinados</li>
+            <li>✓ Histórico real de 180 dias + cupom auditado</li>
+            <li>✓ Se você economizar R$ 200+, o alerta se paga 20x</li>
+          </ul>
+        </div>
+
+        <div class="pt-2 border-t border-slate-800 flex items-center justify-between gap-3">
+          <div>
+            <span class="text-xs text-slate-400 block">Pacote 5 Alertas por 90 Dias</span>
+            <span class="text-2xl font-extrabold font-mono-code text-violet-400">R$ 9,90</span>
+            <span class="text-[11px] text-slate-400"> / único via Pix</span>
+          </div>
+          <button id="btn-open-pix-card" type="button"
+                  class="bg-violet-500 hover:bg-violet-400 text-white font-extrabold px-5 py-3 rounded-xl text-sm transition shadow-lg">
+            Ativar Alerta R$ 9,90
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Configurable Pix / Polar.sh Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <span class="text-xs font-mono-code uppercase text-violet-400 font-semibold">CHECKOUT SEGURO • PIX / POLAR.SH</span>
+          <h3 id="modal-title" class="text-lg font-bold text-white mt-0.5">Alerta de Preço-Alvo no WhatsApp (R$ 9,90)</h3>
+        </div>
+        <button id="btn-close-modal" type="button" class="text-slate-400 hover:text-white text-sm font-mono-code px-2 py-1 rounded">
+          [ESC]
+        </button>
+      </div>
+
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+        <!-- Padrão EMVCo BR.GOV.BCB.PIX -->
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Status Chave Pix:</span>
+          <span class="text-emerald-400 font-semibold">CHAVE ATIVA • vudotsur@gmail.com</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Valor Pix (BCB):</span>
+          <span class="text-white font-bold">R$ 9,90</span>
+        </div>
+        <div class="flex justify-between text-xs font-mono-code">
+          <span class="text-slate-400">Identificador (txid):</span>
+          <span id="modal-txid" class="text-violet-300">POC03</span>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-key-input" class="block text-xs font-mono-code text-slate-400">Chave Pix (E-mail Direto):</label>
+        <div class="flex gap-2">
+          <input id="pix-key-input" type="text" readonly value="vudotsur@gmail.com"
+                 class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-emerald-300 font-bold select-all">
+          <button id="btn-copy-pix-key" type="button" class="bg-slate-800 hover:bg-slate-700 text-violet-300 font-mono-code font-bold px-3 py-2 rounded-lg text-xs transition">
+            Copiar Chave Pix
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label for="pix-brcode-input" class="block text-xs font-mono-code text-slate-400">Pix Copia e Cola (EMVCo Bacen c/ valor R$ 9,90 preenchido):</label>
+        <input id="pix-brcode-input" type="text" readonly
+               value="00020126400014br.gov.bcb.pix0118vudotsur@gmail.com52040000530398654049.905802BR5908VUDOTSUR6008LONDRINA62090505POC036304474E"
+               class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono-code text-slate-300 select-all">
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+        <button id="btn-copy-pix" type="button" class="flex-1 bg-violet-500 hover:bg-violet-400 text-white font-bold py-2.5 px-4 rounded-lg text-xs sm:text-sm transition">
+          Copiar Código Pix Copia e Cola
+        </button>
+        <a id="link-polar-fallback" href="https://polar.sh" target="_blank" rel="noopener noreferrer"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-4 rounded-lg text-xs sm:text-sm text-center transition">
+          Cartão Global (Polar.sh)
+        </a>
+      </div>
+
+      <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
+        <button id="btn-unlock-pro" type="button" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-lg text-xs transition">
+          Já Paguei • Baixar Planilha Preço-Alvo (CSV)
+        </button>
+        <a id="link-confirm-pix" href="mailto:vudotsur@gmail.com?subject=Comprovante%20Pix%20POC03%20Hora%20Certa%20Comprar"
+           class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono-code py-2 px-3 rounded-lg text-xs text-center transition">
+          Confirmar por E-mail
+        </a>
+      </div>
+      <p id="pix-copied-msg" class="text-xs font-mono-code text-emerald-400 text-center hidden">
+        Copiado para a área de transferência! Chave: vudotsur@gmail.com
+      </p>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 px-4 text-center text-xs text-slate-500 font-mono-code">
+    Comprar Agora ou Esperar? • Modelo Econométrico PTAX + Selic + Sazonalidade • Zero raw HTML injection
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

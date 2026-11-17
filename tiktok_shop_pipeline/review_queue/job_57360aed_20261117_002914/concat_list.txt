@@ -1,0 +1,9 @@
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_57360aed_20261117_002914/frame_00_hook.png'
+duration 3.0
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_57360aed_20261117_002914/frame_01_agitation.png'
+duration 6.0
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_57360aed_20261117_002914/frame_02_solution.png'
+duration 11.0
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_57360aed_20261117_002914/frame_03_cta.png'
+duration 6.0
+file 'C:/Users/a918803/admin/tiktok_shop_pipeline/review_queue/job_57360aed_20261117_002914/frame_03_cta.png'

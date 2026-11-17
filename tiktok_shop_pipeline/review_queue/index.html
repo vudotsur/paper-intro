@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok & TikTok Shop — Fila de Revisão Human-in-the-Loop</title>
+  <meta name="description" content="Fila de revisão humana lado a lado para validação de vídeos 9:16 originais, compliance AIGC e inteligência competitiva de afiliados.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              yellow: '#FFE600',
+              red: '#FF0050',
+              cyan: '#00F2FE',
+              dark: '#0B0F19',
+              card: '#111827',
+              border: '#1F2937'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased flex flex-col font-sans selection:bg-yellow-400 selection:text-black">
+
+  <!-- Top Header Navigation -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <a href="../../admin_portal/index.html" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition text-xs font-semibold flex items-center gap-1.5 border border-slate-700">
+          <span>&larr;</span>
+          <span>Admin Portal</span>
+        </a>
+        <div class="h-5 w-px bg-slate-800 hidden sm:block"></div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-pink-500/20 text-pink-400 border border-pink-500/30">
+              TIKTOK SHOP PIPELINE
+            </span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-yellow-400/20 text-yellow-300 border border-yellow-400/30">
+              $0 OPEX
+            </span>
+          </div>
+          <h1 class="text-base sm:text-lg font-black text-white tracking-tight mt-0.5">
+            Fila de Revisão Human-in-the-Loop (Módulo 3)
+          </h1>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="btn-export-decisions" type="button" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow-sm flex items-center gap-1.5">
+          <span>Exportar Decisões (JSON)</span>
+        </button>
+        <button id="btn-reset-filters" type="button" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition border border-slate-700">
+          Atualizar Fila
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+    <!-- KPI Summary Cards -->
+    <section class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Total de Jobs</p>
+        <p id="kpi-total-jobs" class="text-2xl font-black text-white mt-1">0</p>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <p class="text-xs font-medium text-amber-400 uppercase tracking-wider">Pendentes</p>
+        <p id="kpi-pending-jobs" class="text-2xl font-black text-amber-400 mt-1">0</p>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <p class="text-xs font-medium text-emerald-400 uppercase tracking-wider">Aprovados</p>
+        <p id="kpi-approved-jobs" class="text-2xl font-black text-emerald-400 mt-1">0</p>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <p class="text-xs font-medium text-rose-400 uppercase tracking-wider">Rejeitados</p>
+        <p id="kpi-rejected-jobs" class="text-2xl font-black text-rose-400 mt-1">0</p>
+      </div>
+    </section>
+
+    <!-- Operational Banner -->
+    <div class="p-4 rounded-xl bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="space-y-1">
+        <h2 class="text-sm font-bold text-white flex items-center gap-2">
+          <span>Protocolo de Governança Editorial & Anti-Shadowban ByteDance</span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">100% ORIGINAL</span>
+        </h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Cada ativo é gerado 100% do zero por código (Pillow + FFmpeg), rotulado obrigatoriamente com a flag AIGC e posicionado na Safe Zone (y: 220-1580px) para máxima retenção e elegibilidade FYP. O operador valida a correspondência antes de qualquer postagem.
+        </p>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <button id="filter-all" type="button" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white transition">Todos</button>
+        <button id="filter-pending" type="button" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 transition">Pendentes</button>
+        <button id="filter-approved" type="button" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 transition">Aprovados</button>
+        <button id="filter-rejected" type="button" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 transition">Rejeitados</button>
+      </div>
+    </div>
+
+    <!-- Review Queue Container -->
+    <section id="review-queue-container" class="space-y-6">
+      <!-- Populated via pure DOM in app.js -->
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>

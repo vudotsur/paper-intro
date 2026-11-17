@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia + Planilha Anti-Inflação no Supermercado | Economia Real</title>
+  <meta name="description" content="Reduza sua conta do supermercado em até 28% sem passar vontade. Receba o Guia Prático + Planilha de Compras Anti-Inflação imediatamente via Pix.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+  <!-- Distraction-Free Above-the-Fold Hero (NO top nav bar) -->
+  <header class="bg-white border-b border-slate-200/80">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-12 sm:pt-14 sm:pb-16 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide uppercase mb-5">
+        <span>Entrega Imediata</span>
+        <span aria-hidden="true">•</span>
+        <span>Pagamento Único</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-950 leading-tight mb-4">
+        Pare de deixar R$ 350+ a mais no caixa do supermercado todo mês
+      </h1>
+
+      <p class="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-7">
+        Receba agora o <strong class="text-slate-900">Guia + Planilha Anti-Inflação no Supermercado</strong>: lista inteligente por corredor, tabela de trocas inteligentes e controle de preço por quilo/litro para baixar sua fatura já na próxima compra.
+      </p>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 max-w-md mx-auto mb-6 shadow-sm">
+        <div class="flex items-center justify-center gap-3 mb-2">
+          <span class="text-sm text-slate-400 line-through font-medium">De R$ 29,90</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">67% de desconto</span>
+        </div>
+        <div class="text-4xl sm:text-5xl font-extrabold text-slate-950 tracking-tight mb-1">
+          R$ 9,90
+        </div>
+        <p class="text-xs text-slate-500 mb-5">Acesso imediato à planilha (.csv) + guia prático (.txt) após o Pix</p>
+
+        <button type="button" data-open-pix class="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-600/20 transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 9,90
+        </button>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-500">
+        Garantia incondicional de 7 dias (CDC Art. 49) • Sem mensalidade • Zero spam
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+
+    <!-- Interactive Free Preview / Mini-Calculator -->
+    <section aria-labelledby="calc-heading" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+      <div class="mb-6">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Prévia Gratuita Interativa</span>
+        <h2 id="calc-heading" class="text-2xl font-bold text-slate-950 mt-1">
+          Simulador de Economia no Supermercado
+        </h2>
+        <p class="text-sm text-slate-600 mt-1">
+          Informe quanto sua casa gasta hoje por mês para descobrir quanto dinheiro está escapando nas compras sem planejamento.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div>
+          <label for="grocery-spend" class="block text-xs font-semibold text-slate-700 mb-1.5">Gasto mensal atual (R$)</label>
+          <input id="grocery-spend" type="number" min="200" max="20000" step="50" value="1400" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+        <div>
+          <label for="household-size" class="block text-xs font-semibold text-slate-700 mb-1.5">Pessoas na casa</label>
+          <select id="household-size" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="1">1 pessoa</option>
+            <option value="2">2 pessoas</option>
+            <option value="3" selected>3 pessoas</option>
+            <option value="4">4+ pessoas</option>
+          </select>
+        </div>
+        <div>
+          <label for="impulse-freq" class="block text-xs font-semibold text-slate-700 mb-1.5">Idas sem lista por mês</label>
+          <select id="impulse-freq" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-slate-900 font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="0.14">Quase nunca (0-1x)</option>
+            <option value="0.22" selected>Às vezes (2-4x)</option>
+            <option value="0.28">Toda semana (5x+)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-emerald-50/70 border border-emerald-200 rounded-xl p-5 mb-6">
+        <div>
+          <div class="text-xs font-semibold text-emerald-800 uppercase">Economia mensal estimada</div>
+          <div id="calc-monthly-save" class="text-3xl font-extrabold text-emerald-700 mt-1">R$ 308,00</div>
+          <div id="calc-per-person" class="text-xs text-emerald-900/80 mt-1">R$ 102,67 economizados por pessoa</div>
+        </div>
+        <div>
+          <div class="text-xs font-semibold text-emerald-800 uppercase">Em 12 meses no seu bolso</div>
+          <div id="calc-yearly-save" class="text-3xl font-extrabold text-slate-950 mt-1">R$ 3.696,00</div>
+          <div class="text-xs text-slate-600 mt-1">Retorno de mais de 30x já na 1ª compra</div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-bold text-slate-900 mb-3">Amostra de Trocas Inteligentes (inclusa no guia completo):</h3>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-100 text-slate-700 font-semibold">
+              <tr>
+                <th class="py-2.5 px-3">Item tradicional</th>
+                <th class="py-2.5 px-3">Troca inteligente</th>
+                <th class="py-2.5 px-3 text-right">Economia média</th>
+              </tr>
+            </thead>
+            <tbody id="swap-preview-body" class="divide-y divide-slate-200 bg-white"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAS + Fascination Bullets -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-950 mb-3">Por que a conta do mercado sobe mesmo comprando menos?</h2>
+        <p class="text-slate-600 leading-relaxed mb-3">
+          <strong>O problema:</strong> embalagens estão encolhendo (reduflação) enquanto marcas líderes sobem preços toda semana. Entrar no mercado sem saber o teto por quilo/litro faz você pagar até 40% mais caro pelo mesmo alimento.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          <strong>A solução prática:</strong> em 10 minutos antes de sair de casa, você preenche sua lista na planilha, trava o orçamento por categoria e leva o guia de trocas diretas no celular.
+        </p>
+      </div>
+
+      <div class="border-t border-slate-200 pt-6">
+        <h3 class="text-lg font-bold text-slate-950 mb-4">O que você recebe imediatamente:</h3>
+        <ul class="space-y-3 text-slate-700 text-sm sm:text-base">
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Planilha Anti-Inflação (.csv):</strong> compatível com Excel e Google Sheets, já com categorias de açougue, hortifrúti, mercearia e limpeza + alerta de teto de gasto.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Guia de Compras por Corredor (.txt):</strong> método de 5 passos para blindar seu carrinho contra armadilhas de gôndola e compras por impulso.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Regra do Preço por Quilo/Litro:</strong> como comparar embalagens econômicas vs. falsas promoções de "leve 3 pague 2" em segundos.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Tabela de Substituições Nutritivas:</strong> corte até R$ 300/mês sem perder proteína, qualidade ou sabor nas refeições da família.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-2">
+        <button type="button" data-open-pix class="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base sm:text-lg shadow-md transition cursor-pointer">
+          QUERO ACESSAR AGORA VIA PIX — R$ 9,90
+        </button>
+      </div>
+    </section>
+
+    <!-- Risk-Reversal Micro-FAQ -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+      <h2 class="text-xl font-bold text-slate-950 mb-5">Dúvidas Frequentes e Garantia</h2>
+      <div class="space-y-4 text-sm text-slate-600">
+        <div class="border-b border-slate-100 pb-4">
+          <h3 class="font-bold text-slate-900 mb-1">1. Como recebo o material após pagar o Pix?</h3>
+          <p>O acesso é imediato na própria tela após a confirmação do Pix: os botões para baixar a planilha (.csv) e o guia completo (.txt) ficam liberados na hora.</p>
+        </div>
+        <div class="border-b border-slate-100 pb-4">
+          <h3 class="font-bold text-slate-900 mb-1">2. E se eu não gostar ou não economizar nada?</h3>
+          <p>Você tem <strong>garantia incondicional de 7 dias</strong> (CDC Art. 49). Basta enviar um e-mail para <span class="font-semibold text-slate-800">vudotsur@gmail.com</span> informando o comprovante e devolvemos 100% via Pix, sem burocracia.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900 mb-1">3. Tem alguma mensalidade ou taxa escondida?</h3>
+          <p>Não. O pagamento de R$ 9,90 (ou R$ 17,80 se escolher o combo com o Cardápio 30 Dias) é único e vitalício. Os arquivos ficam salvos com você para sempre.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LGPD Zero-Cookie Footer -->
+  <footer class="border-t border-slate-200 bg-white py-8 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-3xl mx-auto space-y-2">
+      <p class="font-semibold text-slate-700">Privacidade e Conformidade Legal (LGPD &amp; CDC)</p>
+      <p>Este site opera com <strong>zero cookies de rastreamento</strong> e zero compartilhamento de dados pessoais. Todas as simulações acontecem localmente no seu navegador (Lei 13.709/2018 - LGPD).</p>
+      <p>Direito de arrependimento garantido por 7 dias conforme Art. 49 do Código de Defesa do Consumidor (Lei 8.078/1990). Suporte e reembolsos: vudotsur@gmail.com.</p>
+    </div>
+  </footer>
+
+  <!-- Pix Checkout Modal -->
+  <div id="pix-modal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="pix-modal-title">
+    <div class="bg-white rounded-2xl max-w-md w-full max-h-[92vh] overflow-y-auto p-6 shadow-2xl border border-slate-200 relative">
+      <button id="close-pix-modal" type="button" aria-label="Fechar janela de pagamento" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer">
+        ✕
+      </button>
+
+      <div class="mb-4 pr-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Pagamento Seguro via Pix</span>
+        <h2 id="pix-modal-title" class="text-xl font-extrabold text-slate-950 mt-0.5">Guia + Planilha Anti-Inflação</h2>
+      </div>
+
+      <!-- Order Bump -->
+      <label class="block bg-amber-50 border-2 border-amber-300 rounded-xl p-3.5 mb-5 cursor-pointer hover:bg-amber-100/60 transition">
+        <div class="flex items-start gap-3">
+          <input id="order-bump-checkbox" type="checkbox" class="mt-1 h-4 w-4 rounded border-amber-400 text-emerald-600 focus:ring-emerald-500">
+          <div class="text-xs sm:text-sm">
+            <div class="font-bold text-slate-950">Adicionar Cardápio Econômico 30 Dias (+ R$ 7,90)</div>
+            <p class="text-slate-600 mt-0.5">Leve 30 sugestões de almoço e jantar baratos integrados à sua lista de compras. Total com oferta: <strong>R$ 17,80</strong>.</p>
+          </div>
+        </div>
+      </label>
+
+      <!-- Total Price -->
+      <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 mb-4">
+        <span class="text-sm font-semibold text-slate-700">Total a pagar via Pix:</span>
+        <span id="modal-total-price" class="text-2xl font-extrabold text-emerald-700">R$ 9,90</span>
+      </div>
+
+      <!-- QR Code Container -->
+      <div class="flex flex-col items-center bg-white border border-slate-200 rounded-xl p-4 mb-4">
+        <div id="qr-svg-container" class="w-44 h-44 flex items-center justify-center"></div>
+        <p class="text-xs text-slate-500 mt-2 text-center">Abra o app do seu banco e aponte a câmera para o QR Code</p>
+      </div>
+
+      <!-- Copy Buttons -->
+      <div class="space-y-2.5 mb-5">
+        <div class="flex items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
+          <div class="text-xs truncate">
+            <span class="text-slate-500">Chave Pix (E-mail): </span>
+            <strong class="text-slate-900">vudotsur@gmail.com</strong>
+          </div>
+          <button id="btn-copy-key" type="button" class="shrink-0 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold cursor-pointer">
+            Copiar Chave
+          </button>
+        </div>
+
+        <div>
+          <label for="pix-brcode-input" class="block text-xs font-semibold text-slate-600 mb-1">Pix Copia e Cola:</label>
+          <div class="flex gap-2">
+            <input id="pix-brcode-input" type="text" readonly class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs text-slate-700 font-mono">
+            <button id="btn-copy-brcode" type="button" class="shrink-0 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold cursor-pointer">
+              Copiar Código
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instant Deliverable Download -->
+      <div class="border-t border-slate-200 pt-4 space-y-2.5">
+        <p class="text-xs text-slate-600 text-center">Após realizar o Pix, baixe seus arquivos imediatamente abaixo:</p>
+        <button id="btn-download-csv" type="button" class="w-full py-3 px-4 rounded-xl bg-slate-950 hover:bg-slate-800 text-white text-sm font-bold transition cursor-pointer">
+          Baixar Planilha Anti-Inflação (.csv)
+        </button>
+        <button id="btn-download-txt" type="button" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 text-sm font-bold transition cursor-pointer">
+          Baixar Guia Completo (+ Cardápio) (.txt)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
