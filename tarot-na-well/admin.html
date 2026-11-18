@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.workers.dev https://script.google.com https://script.googleusercontent.com https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Tarot na Well — Console do Operador (Tablet Admin)</title>
+  <meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tarot Admin">
+  <meta name="tarot-api-base" content="">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/icon-192.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="./index.html" class="brand" aria-label="Tarot na Well — Voltar para página pública">
+        <svg class="brand-mark" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true">
+          <rect x="8" y="4" width="32" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <ellipse cx="24" cy="30" rx="9" ry="3.5" fill="none" stroke="#D97706" stroke-width="2.2"/>
+          <circle cx="24" cy="30" r="1.8" fill="#D97706"/>
+          <path d="M24 11 L25.6 16.4 L31 18 L25.6 19.6 L24 25 L22.4 19.6 L17 18 L22.4 16.4 Z" fill="currentColor"/>
+        </svg>
+        <span class="brand-text">
+          <strong class="brand-name">Tarot na Well · Console Tablet</strong>
+          <span class="brand-sub">Operação de Presença &amp; Confirmação Pix (vudotsur@gmail.com)</span>
+        </span>
+      </a>
+
+      <div class="header-controls">
+        <span id="admin-status-badge" class="status-pill status-offline" role="status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="admin-status-badge-text">OFFLINE_LIMITED</span>
+        </span>
+        <button type="button" id="btn-theme-toggle" class="btn btn-outline btn-sm" aria-pressed="false">
+          Tema Escuro
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- PAINEL DE LOGIN DO OPERADOR + CONFIGURAÇÃO DE BACKEND -->
+    <section id="admin-login-section" class="card checkout-card" aria-labelledby="admin-login-title">
+      <div class="section-head">
+        <span class="step-tag">Acesso Restrito · Operador</span>
+        <h1 id="admin-login-title" class="section-title">Entrar no Console de Campo</h1>
+        <p class="section-lead">
+          Autentique com seu PIN/Token de operador. Requisições usam POST <code>text/plain;charset=utf-8</code> para compatibilidade total sem bloqueio de preflight CORS.
+        </p>
+      </div>
+
+      <form id="admin-login-form" class="checkout-form" novalidate>
+        <div class="form-field">
+          <label for="admin-api-base-input" class="form-label">
+            URL do Backend ao Vivo (Cloudflare Worker ou Google Apps Script — deixe vazio para modo local no aparelho)
+          </label>
+          <input
+            id="admin-api-base-input"
+            type="url"
+            class="form-input mono-input"
+            placeholder="https://tarot-na-well-api.workers.dev ou https://script.google.com/macros/s/.../exec"
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="admin-token-input" class="form-label">PIN / Token do Operador</label>
+          <input
+            id="admin-token-input"
+            type="password"
+            class="form-input"
+            required
+            autocomplete="current-password"
+            placeholder="Digite seu PIN ou Token administrativo"
+          >
+        </div>
+
+        <p id="admin-login-error" class="form-error" role="alert" hidden></p>
+
+        <button type="submit" id="btn-admin-login" class="btn btn-primary btn-lg btn-block">
+          Desbloquear Console do Operador
+        </button>
+      </form>
+    </section>
+
+    <!-- PAINEL OPERACIONAL TÁTIL (TABLET CONSOLE) -->
+    <section id="admin-console-section" class="section-block" aria-labelledby="console-heading" hidden>
+      <!-- Barra superior de telemetria: Heartbeat 30s + WakeLock + Trocar Backend / Sair -->
+      <div class="card admin-telemetry-bar">
+        <div class="admin-telemetry-info">
+          <strong id="console-heading" class="section-title-sm">Telemetria Ativa do Tablet</strong>
+          <p id="admin-heartbeat-status" class="meta-text">Heartbeat 30s: aguardando ciclo...</p>
+          <p id="admin-backend-label" class="meta-text"></p>
+        </div>
+        <div class="admin-telemetry-actions">
+          <button type="button" id="btn-wakelock" class="btn btn-accent btn-sm" aria-pressed="false">
+            Manter Tela Acesa (WakeLock): OFF
+          </button>
+          <button type="button" id="btn-refresh-state" class="btn btn-outline btn-sm">
+            Sincronizar Agora
+          </button>
+          <button type="button" id="btn-admin-logout" class="btn btn-ghost btn-sm">
+            Bloquear / Sair
+          </button>
+        </div>
+      </div>
+
+      <!-- CHAVE TÁTIL DE 3 ESTADOS (GRANDE PARA TABLET AO SOL) -->
+      <div class="card admin-switch-card">
+        <div class="section-head">
+          <span class="step-tag">Chave de Presença em Tempo Real</span>
+          <h2 class="section-title">Escolha seu modo de operação agora</h2>
+          <p class="section-lead">
+            Ao ativar o modo Online, o heartbeat automático de 30s mantém seus horários imediatos abertos na página pública.
+          </p>
+        </div>
+
+        <div class="admin-state-grid" role="group" aria-label="Estados de presença do operador">
+          <button
+            type="button"
+            id="btn-state-live"
+            class="btn btn-lg admin-state-btn admin-state-live"
+            data-state="LIVE_ON_CAMPUS"
+            aria-pressed="false"
+          >
+            <span class="admin-state-title">LIVE_ON_CAMPUS</span>
+            <span class="admin-state-sub">Estou no Campus Agora — Online</span>
+          </button>
+
+          <button
+            type="button"
+            id="btn-state-focus"
+            class="btn btn-lg admin-state-btn admin-state-focus"
+            data-state="FOCUS_PAUSED"
+            aria-pressed="false"
+          >
+            <span class="admin-state-title">FOCUS_PAUSED</span>
+            <span class="admin-state-sub">Modo Foco: 30m / 1h / 2h / Resto do dia</span>
+          </button>
+
+          <button
+            type="button"
+            id="btn-state-offline"
+            class="btn btn-lg admin-state-btn admin-state-offline"
+            data-state="OFFLINE_LIMITED"
+            aria-pressed="true"
+          >
+            <span class="admin-state-title">OFFLINE_LIMITED</span>
+            <span class="admin-state-sub">Offline — Só Agenda Programada</span>
+          </button>
+        </div>
+
+        <!-- Seletores rápidos de duração do Modo Foco -->
+        <div class="admin-focus-presets" aria-label="Duração da pausa do Modo Foco">
+          <span class="form-label">Ativar Modo Foco (FOCUS_PAUSED) por:</span>
+          <div class="admin-focus-buttons">
+            <button type="button" class="btn btn-outline btn-sm btn-focus-preset" data-pause="30">
+              Modo Foco: 30m
+            </button>
+            <button type="button" class="btn btn-outline btn-sm btn-focus-preset" data-pause="60">
+              Modo Foco: 1h
+            </button>
+            <button type="button" class="btn btn-outline btn-sm btn-focus-preset" data-pause="120">
+              Modo Foco: 2h
+            </button>
+            <button type="button" class="btn btn-outline btn-sm btn-focus-preset" data-pause="rest_of_day">
+              Modo Foco: Resto do dia
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MACRO-ZONA (Z1..Z4) + PONTO EXATO DA MESA (REVELADO SOMENTE PÓS-PIX) -->
+      <div class="card">
+        <div class="section-head">
+          <span class="step-tag">Geoprivacidade (&gt;= 150 m) + Revelação Pós-Pix</span>
+          <h2 class="section-title">Localização da Mesa e Identificação Visual</h2>
+        </div>
+
+        <form id="admin-location-form" class="checkout-form" novalidate>
+          <div class="form-field">
+            <label for="admin-macro-zone" class="form-label">Macro-Zona Pública (Z1..Z4 — visível antes do Pix)</label>
+            <select id="admin-macro-zone" class="form-input">
+              <option value="Z1">Z1 — Área de Convivência Central (Raio &gt;= 150 m)</option>
+              <option value="Z2">Z2 — Entorno da Biblioteca &amp; Humanas (Raio &gt;= 150 m)</option>
+              <option value="Z3">Z3 — Entorno do Restaurante &amp; Praça Central (Raio &gt;= 150 m)</option>
+              <option value="Z4">Z4 — Entorno Comércio &amp; Cafés da Via Principal (Raio &gt;= 150 m)</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="admin-spot-hint" class="form-label">
+              Ponto Exato da Mesa &amp; Sinal Visual (<code>exact_spot_hint</code> — revelado SOMENTE após confirmação do Pix)
+            </label>
+            <input
+              id="admin-spot-hint"
+              type="text"
+              class="form-input"
+              maxlength="140"
+              required
+              value="Mesa de madeira próxima ao café central — caderno capa preta"
+              placeholder="Mesa de madeira próxima ao café central — caderno capa preta"
+            >
+          </div>
+
+          <div class="admin-form-actions">
+            <button type="submit" id="btn-save-location" class="btn btn-primary">
+              Salvar Zona &amp; Ponto Exato da Mesa
+            </button>
+          </div>
+        </form>
+
+        <p id="admin-feedback" class="copy-feedback" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- LISTA AO VIVO DE RESERVAS + 1-TAP "CONFIRMAR PIX AGORA" + "WORK-OVERRIDE / CANCELAR" -->
+      <div class="card">
+        <div class="saved-booking-header">
+          <div>
+            <span class="step-tag">Fila em Tempo Real · Pix vudotsur@gmail.com</span>
+            <h2 class="section-title">Reservas &amp; Confirmação em 1 Toque</h2>
+            <p class="section-lead">
+              Se o aviso de Pix por e-mail levar mais de 10s, toque em <strong>Confirmar Pix Agora</strong> ao ver o comprovante do cliente.
+            </p>
+          </div>
+          <button type="button" id="btn-seed-demo-booking" class="btn btn-outline btn-sm">
+            + Gerar Reserva Teste (15M / R$ 20)
+          </button>
+        </div>
+
+        <div id="admin-bookings-list" class="admin-bookings-list" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Tarot na Well · Console do Operador</strong>
+        <span>Chave Pix Oficial: vudotsur@gmail.com (VUDOTSUR · LONDRINA)</span>
+      </div>
+      <div class="footer-links">
+        <a href="./index.html" class="btn btn-ghost btn-sm">Abrir Página Pública de Agendamento</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./admin.js" type="module"></script>
+</body>
+</html>

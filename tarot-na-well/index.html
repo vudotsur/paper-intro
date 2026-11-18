@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.workers.dev https://script.google.com https://script.googleusercontent.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <title>Tarot na Well — Leituras Presenciais na Região do Campus</title>
+  <meta name="description" content="Clareza em 15 ou 30 minutos com leitura presencial de tarô perto do campus. Escolha o horário ao vivo, pague via Pix e receba o ponto exato na hora.">
+  <meta property="og:title" content="Tarot na Well — Leituras Presenciais de Tarô">
+  <meta property="og:description" content="Sessões presenciais de 15 min (R$ 20) ou 30 min (R$ 50) na região do campus em Londrina/PR. Sem mensagens, confirmação imediata no Pix.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tarot Well">
+  <!-- Preencha com a URL do Cloudflare Worker em produção; vazio ativa prévia de demonstração -->
+  <meta name="tarot-api-base" content="">
+  <meta name="tarot-turnstile-sitekey" content="">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/icon-192.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#pacotes">Ir direto para pacotes e horários</a>
+
+  <!-- Banner explícito de instalação na Tela Inicial / Área de Trabalho (auto-oculta em standalone) -->
+  <aside id="pwa-install-banner" class="install-banner" aria-label="Salvar aplicativo na tela inicial">
+    <div class="container install-banner-inner">
+      <div class="install-banner-copy">
+        <span class="install-badge" aria-hidden="true">ATALHO RÁPIDO</span>
+        <p class="install-banner-text">
+          <strong>Salvar Ícone na Área de Trabalho / Tela Inicial:</strong>
+          <span id="install-banner-hint">acesse horários e seu comprovante em 1 toque, mesmo sem internet.</span>
+        </p>
+      </div>
+      <div class="install-banner-actions">
+        <button type="button" id="btn-open-install" class="btn btn-accent btn-sm">
+          Salvar Ícone Agora
+        </button>
+        <button type="button" id="btn-dismiss-install" class="btn btn-ghost btn-sm" aria-label="Dispensar aviso de atalho">
+          Agora não
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#topo" class="brand" id="topo" aria-label="Tarot na Well — Início">
+        <svg class="brand-mark" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true">
+          <rect x="8" y="4" width="32" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <ellipse cx="24" cy="30" rx="9" ry="3.5" fill="none" stroke="#D97706" stroke-width="2.2"/>
+          <circle cx="24" cy="30" r="1.8" fill="#D97706"/>
+          <path d="M24 11 L25.6 16.4 L31 18 L25.6 19.6 L24 25 L22.4 19.6 L17 18 L22.4 16.4 Z" fill="currentColor"/>
+        </svg>
+        <span class="brand-text">
+          <strong class="brand-name">Tarot na Well</strong>
+          <span class="brand-sub">Região do Campus · Londrina/PR</span>
+        </span>
+      </a>
+
+      <div class="header-controls">
+        <button type="button" id="btn-header-install" class="btn btn-outline btn-sm">
+          Salvar Ícone
+        </button>
+        <button type="button" id="btn-theme-toggle" class="btn btn-outline btn-sm" aria-pressed="false" aria-label="Alternar tema claro e escuro">
+          Tema Escuro
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- Comprovante salvo offline no aparelho (exibido automaticamente quando houver sessão confirmada) -->
+    <section id="saved-booking-section" class="card saved-booking-card" aria-labelledby="saved-booking-title" hidden>
+      <div class="saved-booking-header">
+        <div>
+          <span class="status-pill status-online">CONFIRMADO NO APARELHO</span>
+          <h2 id="saved-booking-title" class="section-title-sm">Seu próximo horário está garantido</h2>
+        </div>
+        <button type="button" id="btn-clear-saved-booking" class="btn btn-ghost btn-sm">
+          Limpar comprovante
+        </button>
+      </div>
+      <div id="saved-booking-details" class="saved-booking-body"></div>
+      <div class="saved-booking-actions">
+        <button type="button" id="btn-saved-ics" class="btn btn-accent">
+          Adicionar à Agenda (.ics)
+        </button>
+      </div>
+    </section>
+
+    <!-- HERO: Clareza em 5 segundos above-the-fold -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <p class="hero-eyebrow">Atendimento presencial sem troca de mensagens · Maiores de 18 anos</p>
+      <h1 id="hero-heading" class="hero-title">
+        Travado em uma decisão hoje? Tenha clareza em 15 ou 30 minutos.
+      </h1>
+      <p class="hero-subtitle">
+        Escolha seu horário ao vivo perto do campus, pague via Pix em segundos e receba na tela o ponto exato da mesa — direto ao assunto, sem precisar conversar antes.
+      </p>
+
+      <div class="hero-cta-row">
+        <a href="#pacotes" class="btn btn-primary btn-lg">
+          Quero reservar meu horário agora — a partir de R$ 20
+        </a>
+      </div>
+
+      <div class="disclaimer-box" role="note" aria-label="Avisos importantes sobre o atendimento">
+        <p>
+          <strong>Aviso cultural e de independência:</strong> Atividade cultural, lúdica e de aconselhamento reflexivo pessoal exclusiva para <strong>maiores de 18 anos</strong>. Não substitui acompanhamento médico, psicológico, jurídico ou consultoria financeira, sem garantia de resultados futuros.
+        </p>
+        <p>
+          Atendimento 100% independente na região do campus universitário em Londrina/PR — sem vínculo institucional, patrocínio ou endosso de qualquer universidade.
+        </p>
+      </div>
+    </section>
+
+    <!-- RADAR DE PRESENÇA AO VIVO -->
+    <section id="radar-section" class="card radar-card" aria-labelledby="radar-title">
+      <div class="radar-grid">
+        <div class="radar-info">
+          <div class="radar-status-row">
+            <span id="radar-badge" class="status-pill status-online">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span id="radar-badge-text">Disponível agora na região</span>
+            </span>
+            <span id="radar-updated" class="meta-text"></span>
+          </div>
+          <h2 id="radar-title" class="section-title">Presença na Região</h2>
+          <p id="radar-zone-text" class="radar-zone-desc"></p>
+          <p id="radar-privacy-note" class="meta-text">
+            Por segurança, apenas a região ampla (raio mínimo de 150 m) aparece aqui. O ponto exato da mesa e como identificá-la são revelados somente após o Pix.
+          </p>
+        </div>
+
+        <div class="radar-visual" aria-hidden="true">
+          <svg id="radar-svg" class="radar-svg" viewBox="0 0 280 150" width="280" height="150">
+            <rect x="2" y="2" width="276" height="146" rx="12" fill="none" stroke="currentColor" stroke-opacity="0.2" stroke-width="1.5"/>
+            <line x1="20" y1="75" x2="260" y2="75" stroke="currentColor" stroke-opacity="0.14" stroke-dasharray="4 4"/>
+            <line x1="140" y1="16" x2="140" y2="134" stroke="currentColor" stroke-opacity="0.14" stroke-dasharray="4 4"/>
+            <circle id="radar-ring-outer" cx="140" cy="75" r="54" fill="currentColor" fill-opacity="0.06" stroke="#D97706" stroke-width="2" stroke-dasharray="6 4"/>
+            <circle id="radar-ring-inner" cx="140" cy="75" r="28" fill="none" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5"/>
+            <circle id="radar-core" cx="140" cy="75" r="7" fill="#D97706"/>
+            <text id="radar-svg-label" x="140" y="139" text-anchor="middle" font-size="11" fill="currentColor">Raio público &gt;= 150 m</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Barra de simulação exibida apenas quando o site está em prévia sem backend configurado -->
+      <div id="demo-mode-bar" class="demo-bar" hidden>
+        <span class="demo-bar-label">Modo de demonstração local (nenhum Pix real será cobrado):</span>
+        <div class="demo-bar-buttons">
+          <button type="button" id="btn-demo-online" class="btn btn-outline btn-sm" aria-pressed="true">
+            Simular: Disponível agora
+          </button>
+          <button type="button" id="btn-demo-offline" class="btn btn-outline btn-sm" aria-pressed="false">
+            Simular: Agenda Offline (48h)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASSO 1: ESCOLHA DO PACOTE (2 OPÇÕES CLARAS) -->
+    <section id="pacotes" class="section-block" aria-labelledby="packages-title">
+      <div class="section-head">
+        <span class="step-tag">Passo 1 de 3</span>
+        <h2 id="packages-title" class="section-title">Escolha o formato da sua leitura</h2>
+        <p class="section-lead">Sem assinaturas ou taxas escondidas. Pagamento único via Pix.</p>
+      </div>
+
+      <div class="packages-grid" role="radiogroup" aria-label="Pacotes de leitura de tarô">
+        <article class="card package-card is-selected" data-package-id="15m">
+          <span class="segment-tag">Preciso de resposta rápida</span>
+          <div class="package-header">
+            <h3 class="package-name">Tiragem Direta</h3>
+            <p class="package-price">
+              <span class="price-duration">15 min</span>
+              <strong class="price-amount">R$ 20,00</strong>
+            </p>
+          </div>
+          <p class="package-desc">
+            Tiragem Direta — 3 Cartas, foco em 1 pergunta objetiva para destravar sua decisão hoje.
+          </p>
+          <ul class="package-list">
+            <li>Ideal para dúvida pontual (estudos, trabalho ou relacionamento)</li>
+            <li>Atendimento presencial enxuto em 15 minutos</li>
+            <li>Limite de 1 tiragem de 15 min por pessoa ao dia</li>
+          </ul>
+          <button type="button" class="btn btn-primary btn-block select-package-btn" data-package="15m" aria-pressed="true">
+            Quero a Tiragem Direta — R$ 20,00
+          </button>
+        </article>
+
+        <article class="card package-card" data-package-id="30m">
+          <span class="segment-tag segment-tag-accent">Quero visão completa</span>
+          <div class="package-header">
+            <h3 class="package-name">Leitura Profunda</h3>
+            <p class="package-price">
+              <span class="price-duration">30 min</span>
+              <strong class="price-amount">R$ 50,00</strong>
+            </p>
+          </div>
+          <p class="package-desc">
+            Leitura Profunda — Panorama + Plano de Ação + Resumo por E-mail enviado após a sessão.
+          </p>
+          <ul class="package-list">
+            <li>Visão panorâmica cruzando várias áreas e cenários</li>
+            <li>Plano de ação prático para os próximos passos</li>
+            <li>Resumo escrito exclusivo enviado no seu e-mail</li>
+          </ul>
+          <button type="button" class="btn btn-outline btn-block select-package-btn" data-package="30m" aria-pressed="false">
+            Quero a Leitura Profunda — R$ 50,00
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- PASSO 2: SELETOR DE HORÁRIOS -->
+    <section id="agendar" class="section-block" aria-labelledby="slots-title">
+      <div class="section-head">
+        <span class="step-tag">Passo 2 de 3</span>
+        <h2 id="slots-title" class="section-title">Escolha um horário livre</h2>
+        <p id="slots-subtitle" class="section-lead"></p>
+      </div>
+
+      <div id="slots-container" class="slots-grid" aria-live="polite"></div>
+      <p id="slots-empty" class="empty-state" hidden>
+        Nenhum horário disponível nesta janela no momento. Tente novamente em alguns minutos ou troque o pacote.
+      </p>
+    </section>
+
+    <!-- PASSO 3: CHECKOUT PIX EM 2 ETAPAS SEM CADASTRO -->
+    <section id="checkout-section" class="section-block card checkout-card" aria-labelledby="checkout-title" hidden>
+      <!-- Etapa 1: Dados mínimos + aceite -->
+      <div id="checkout-step-1">
+        <div class="checkout-head">
+          <div>
+            <span class="step-tag">Passo 3 de 3 · Reserva sem cadastro</span>
+            <h2 id="checkout-title" class="section-title">Confirme seus dados para gerar o Pix</h2>
+          </div>
+          <button type="button" id="btn-change-slot" class="btn btn-ghost btn-sm">
+            Trocar horário
+          </button>
+        </div>
+
+        <div id="checkout-summary-1" class="selection-summary" aria-live="polite"></div>
+
+        <form id="booking-form" class="checkout-form" novalidate>
+          <div class="form-field">
+            <label for="input-name" class="form-label">Nome ou apelido</label>
+            <input
+              id="input-name"
+              name="name"
+              type="text"
+              class="form-input"
+              required
+              minlength="2"
+              maxlength="80"
+              autocomplete="name"
+              placeholder="Como você prefere ser chamado(a)"
+            >
+          </div>
+
+          <div class="form-field">
+            <label for="input-email" class="form-label">Seu e-mail (enviamos o ponto exato e o recibo aqui)</label>
+            <input
+              id="input-email"
+              name="email"
+              type="email"
+              class="form-input"
+              required
+              maxlength="120"
+              autocomplete="email"
+              placeholder="voce@exemplo.com"
+            >
+          </div>
+
+          <div class="checkbox-group">
+            <label class="checkbox-label" for="check-terms">
+              <input id="check-terms" name="acceptedTerms" type="checkbox" class="checkbox-input" required>
+              <span>
+                Declaro ter <strong>18 anos ou mais</strong>, compreendo que a leitura tem caráter cultural/reflexivo (sem vínculo universitário ou garantia de resultados) e concordo com a tolerância máxima de <strong>10 min</strong> de atraso e remarcação gratuita até <strong>2h antes</strong> (ou 30 min em encaixes imediatos).
+              </span>
+            </label>
+
+            <label class="checkbox-label checkbox-optional" for="check-lgpd-optin">
+              <input id="check-lgpd-optin" name="lgpdOptIn" type="checkbox" class="checkbox-input">
+              <span>
+                <strong>Opcional:</strong> Aceito receber um convite pontual de retorno no próximo ciclo acadêmico por e-mail (posso cancelar com 1 clique quando quiser).
+              </span>
+            </label>
+          </div>
+
+          <div id="turnstile-container" class="turnstile-box" hidden></div>
+
+          <p id="form-error" class="form-error" role="alert" hidden></p>
+
+          <button type="submit" id="btn-submit-booking" class="btn btn-primary btn-lg btn-block">
+            Gerar Pix para confirmar horário
+          </button>
+        </form>
+      </div>
+
+      <!-- Etapa 2: QR Code Pix + Copia e Cola + Countdown 05:00 -->
+      <div id="checkout-step-2" hidden>
+        <div class="checkout-head">
+          <div>
+            <span class="step-tag">Pagamento Pix · Expira em 5 minutos</span>
+            <h2 class="section-title">Pague o Pix para travar seu horário</h2>
+          </div>
+          <div class="countdown-pill" aria-live="polite">
+            <span>Tempo restante:</span>
+            <strong id="pix-countdown">05:00</strong>
+          </div>
+        </div>
+
+        <div id="checkout-summary-2" class="selection-summary"></div>
+
+        <div class="pix-layout">
+          <div class="pix-qr-panel">
+            <div id="qr-code-mount" class="qr-mount" aria-label="Código QR para pagamento via Pix"></div>
+            <p class="meta-text">Abra o app do seu banco e aponte a câmera ou copie o código ao lado.</p>
+          </div>
+
+          <div class="pix-details-panel">
+            <div class="pix-meta-box">
+              <p><strong>Recebedor:</strong> VUDOTSUR (vudotsur@gmail.com · Londrina/PR)</p>
+              <p><strong>Valor exato:</strong> <span id="pix-amount-text">R$ 20,00</span></p>
+            </div>
+
+            <label for="pix-copy-input" class="form-label">Código Pix Copia e Cola</label>
+            <div class="copy-row">
+              <input id="pix-copy-input" type="text" class="form-input mono-input" readonly aria-label="Código Pix para copiar">
+              <button type="button" id="btn-copy-pix" class="btn btn-accent">
+                Copiar Código Pix
+              </button>
+            </div>
+            <p id="copy-feedback" class="copy-feedback" aria-live="polite"></p>
+
+            <div class="poll-status-box" aria-live="polite">
+              <span class="spinner-dot" aria-hidden="true"></span>
+              <span id="pix-poll-status">Aguardando confirmação automática do pagamento...</span>
+            </div>
+
+            <div id="demo-pix-actions" class="demo-pix-box" hidden>
+              <button type="button" id="btn-demo-confirm-pix" class="btn btn-primary btn-block">
+                Simular Pagamento Pix Confirmado (Demonstração)
+              </button>
+            </div>
+
+            <div id="pix-expired-box" class="expired-box" hidden>
+              <p><strong>O tempo de 5 minutos expirou</strong> e o horário foi liberado novamente.</p>
+              <button type="button" id="btn-restart-expired" class="btn btn-primary">
+                Escolher novo horário
+              </button>
+            </div>
+
+            <button type="button" id="btn-cancel-hold" class="btn btn-ghost btn-sm">
+              Cancelar e voltar aos horários
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirmação Pós-Pix Resiliente -->
+      <div id="checkout-step-confirmed" hidden>
+        <div class="confirmed-banner">
+          <span class="status-pill status-online">PIX CONFIRMADO · HORÁRIO GARANTIDO</span>
+          <h2 class="section-title">Tudo certo! Seu horário está reservado.</h2>
+          <p id="confirmed-subtitle" class="section-lead"></p>
+        </div>
+
+        <div class="spot-reveal-card">
+          <h3 class="spot-title">Ponto Exato de Encontro e Identificação Visual</h3>
+          <p class="spot-line">
+            <strong>Onde ir:</strong> <span id="confirmed-exact-spot"></span>
+          </p>
+          <p class="spot-line">
+            <strong>Como reconhecer a mesa:</strong> <span id="confirmed-visual-cue"></span>
+          </p>
+          <p class="spot-line">
+            <strong>Código da reserva:</strong> <span id="confirmed-ref-code"></span>
+          </p>
+        </div>
+
+        <p class="offline-guarantee-note">
+          Este comprovante foi salvo automaticamente neste aparelho. Mesmo sem sinal de internet no campus, basta abrir esta página para rever o local exato.
+        </p>
+
+        <div class="confirmed-actions">
+          <button type="button" id="btn-download-ics" class="btn btn-primary btn-lg">
+            Adicionar à Agenda (.ics)
+          </button>
+          <button type="button" id="btn-confirmed-install" class="btn btn-accent">
+            Salvar Ícone na Tela Inicial
+          </button>
+          <button type="button" id="btn-new-booking" class="btn btn-outline">
+            Fazer outro agendamento
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MICRO-FAQ: 3 OBJEÇÕES PRINCIPAIS ANTES DO PIX -->
+    <section id="faq" class="section-block" aria-labelledby="faq-title">
+      <div class="section-head">
+        <h2 id="faq-title" class="section-title">Dúvidas rápidas antes de reservar</h2>
+        <p class="section-lead">Tudo resolvido aqui, sem precisar trocar mensagens.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="card faq-item" open>
+          <summary class="faq-question">1. Onde exatamente é o ponto de encontro?</summary>
+          <div class="faq-answer">
+            <p>
+              As leituras acontecem em locais públicos, seguros e iluminados na região ao redor do campus universitário (próximo a cafés e áreas de circulação). Antes do pagamento mostramos a área ampla (raio mínimo de 150 m); assim que o Pix confirma, o endereço exato da mesa aparece na hora na tela e no seu e-mail.
+            </p>
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary class="faq-question">2. Como vou identificar você ao chegar, sem chat?</summary>
+          <div class="faq-answer">
+            <p>
+              Junto com o ponto exato pós-Pix, você recebe a descrição exata do sinal visual sobre a mesa (como a cor do estojo do baralho e do caderno). Basta chegar até 10 minutos do seu horário e se sentar.
+            </p>
+          </div>
+        </details>
+
+        <details class="card faq-item">
+          <summary class="faq-question">3. E se chover ou eu precisar remarcar?</summary>
+          <div class="faq-answer">
+            <p>
+              Atendemos em pontos cobertos ou com alternativa imediata próxima. Se houver chuva forte ou qualquer imprevisto da nossa parte, você escolhe remarcação na hora ou reembolso de 100% no Pix. Se você precisar cancelar ou remarcar, use o link no seu e-mail com pelo menos <strong>2 horas de antecedência</strong> (ou 30 min em encaixes do mesmo dia) sem custo algum.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Tarot na Well</strong>
+        <span>Londrina/PR · Atendimento presencial independente</span>
+      </div>
+      <p class="footer-disclaimer">
+        Atividade cultural/reflexiva exclusiva para maiores de 18 anos. Sem vínculo institucional, patrocínio ou endosso universitário.
+      </p>
+      <div class="footer-links">
+        <button type="button" id="btn-open-privacy" class="btn btn-ghost btn-sm">
+          Política de Privacidade e Termos
+        </button>
+        <button type="button" id="btn-footer-install" class="btn btn-ghost btn-sm">
+          Salvar Ícone na Tela Inicial
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL EXPLÍCITO DE INSTALAÇÃO NA ÁREA DE TRABALHO / TELA INICIAL -->
+  <div id="install-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="install-modal-title" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="install-modal-title" class="section-title-sm">Salvar Ícone na Área de Trabalho / Tela Inicial</h2>
+        <button type="button" id="btn-close-install-modal" class="btn btn-ghost btn-sm" aria-label="Fechar janela de instalação">
+          Fechar
+        </button>
+      </div>
+      <div id="install-modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- MODAL DE PRIVACIDADE E TERMOS (1 CLIQUE) -->
+  <div id="privacy-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="privacy-modal-title" class="section-title-sm">Política de Privacidade e Termos</h2>
+        <button type="button" id="btn-close-privacy-modal" class="btn btn-ghost btn-sm" aria-label="Fechar política de privacidade">
+          Fechar
+        </button>
+      </div>
+      <div class="modal-body policy-text">
+        <p><strong>1. Dados coletados:</strong> Solicitamos apenas seu nome/apelido e e-mail para emitir o comprovante, enviar o ponto exato de encontro, lembrete de horário e o resumo da Leitura Profunda (30 min).</p>
+        <p><strong>2. Exclusão automática (LGPD):</strong> Seu nome e e-mail são removidos ou anonimizados automaticamente em até 90 dias após a sessão, mantendo apenas registros fiscais anônimos exigidos por lei.</p>
+        <p><strong>3. Convites opcionais:</strong> O envio de convite de retorno no ciclo acadêmico só acontece se você marcar a caixa opcional e traz botão de descadastro em 1 clique.</p>
+        <p><strong>4. Regras de atendimento:</strong> Exclusivo para maiores de 18 anos. Caráter cultural, lúdico e reflexivo. Tolerância de chegada de 10 minutos. Remarcação gratuita com 2h de antecedência (ou 30 min para encaixes imediatos). Em caso de cancelamento pelo operador, o Pix é estornado integralmente.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
