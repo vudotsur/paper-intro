@@ -209,20 +209,21 @@ function detectPlatformEnvironment() {
 
 function updateInstallVisibility() {
   const standalone = isStandaloneMode();
-  const banner = document.getElementById('pwa-install-banner');
+  const pill = document.getElementById('pwa-install-pill');
   const headerBtn = document.getElementById('btn-header-install');
   const footerBtn = document.getElementById('btn-footer-install');
   const confirmedBtn = document.getElementById('btn-confirmed-install');
 
   let dismissed = false;
   try {
-    dismissed = sessionStorage.getItem(STORAGE_KEYS.installDismissed) === '1';
+    dismissed = localStorage.getItem(STORAGE_KEYS.installDismissed) === '1';
   } catch {
     dismissed = false;
   }
 
-  if (banner) {
-    banner.hidden = standalone || dismissed;
+  const hasEngaged = (typeof window !== 'undefined' && window.scrollY >= 200) || Boolean(state.deferredInstallPrompt);
+  if (pill) {
+    pill.hidden = standalone || dismissed || !hasEngaged;
   }
   if (headerBtn) {
     headerBtn.hidden = standalone;
@@ -232,18 +233,6 @@ function updateInstallVisibility() {
   }
   if (confirmedBtn) {
     confirmedBtn.hidden = standalone;
-  }
-
-  const hintEl = document.getElementById('install-banner-hint');
-  if (hintEl && !standalone) {
-    const env = detectPlatformEnvironment();
-    if (env.isInAppWebView) {
-      hintEl.textContent = 'abra no Chrome ou Safari para conseguir salvar o atalho na tela inicial.';
-    } else if (env.isIOS) {
-      hintEl.textContent = 'no iPhone/iPad, toque em Compartilhar e depois em "Adicionar à Tela de Início".';
-    } else {
-      hintEl.textContent = 'acesse horários e seu comprovante em 1 toque, mesmo sem internet.';
-    }
   }
 }
 
@@ -367,12 +356,16 @@ function initPwaAndModals() {
 
   document.getElementById('btn-dismiss-install')?.addEventListener('click', () => {
     try {
-      sessionStorage.setItem(STORAGE_KEYS.installDismissed, '1');
+      localStorage.setItem(STORAGE_KEYS.installDismissed, '1');
     } catch {
       // Ignore storage failure
     }
     updateInstallVisibility();
   });
+
+  window.addEventListener('scroll', () => {
+    updateInstallVisibility();
+  }, { passive: true });
 
   document.getElementById('btn-close-install-modal')?.addEventListener('click', () => closeModal('install-modal'));
   document.getElementById('btn-open-privacy')?.addEventListener('click', () => openModal('privacy-modal'));
